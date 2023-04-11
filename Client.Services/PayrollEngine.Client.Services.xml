@@ -1,0 +1,2204 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PayrollEngine.Client.Services</name>
+    </assembly>
+    <members>
+        <member name="T:PayrollEngine.Client.PayrollPeriodExtensions">
+            <summary>Extension methods for <see cref="T:PayrollEngine.IPayrollPeriod"/></summary>
+        </member>
+        <member name="M:PayrollEngine.Client.PayrollPeriodExtensions.GetDatePeriod(PayrollEngine.IPayrollPeriod)">
+            <summary>Get date period</summary>
+            <param name="payrollPeriod">The payrun period</param>
+            <returns>Date period</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.PayrollPeriodExtensions.GetOffsetDatePeriod(PayrollEngine.IPayrollPeriod,System.Int32)">
+            <summary>Get offset period</summary>
+            <param name="payrollPeriod">The payrun period</param>
+            <param name="offset">The period offset count</param>
+            <returns>Offset period</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.PayrollPeriodExtensions.GetContinuePeriods(PayrollEngine.IPayrollPeriod,System.DateTime,System.Int32)">
+            <summary>/// Get all periods between this period and the period containing the target moment<br />
+            The starting payrun period is not included<br />
+            The payrun period containing the target moment is included</summary>
+            <param name="payrollPeriod">The payrun period</param>
+            <param name="targetMoment">Target moment</param>
+            <param name="maxCount">Maximum result count</param>
+            <returns>Payrun periods between this and the target moment, sorted from the oldest to the newest one</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableController`1">
+            <summary>Case available function controller</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableController`1"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableController`1.IsAvailable(System.String)">
+            <summary>Determines whether the existing case is available</summary>
+            <param name="caseName">Name of the case</param>
+            <returns>True if the specified case is available</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableController`1.IsAvailable(System.String,PayrollEngine.Client.Model.Case)">
+            <summary>Determines whether the specified case is available</summary>
+            <param name="caseName">Name of the case</param>
+            <param name="case">The case to validate</param>
+            <returns>True if the specified case is available</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1">
+            <summary>Case available function invoker</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Invoker constructor</summary>
+            <param name="httpClient">The Payroll http configuration</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1.Available(System.String)">
+            <summary>Determines whether the existing case is available</summary>
+            <param name="caseName">Name of the case</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1.Available(System.String,PayrollEngine.Client.Model.Case)">
+            <summary>Determines whether the existing case is available</summary>
+            <param name="caseName">Name of the case</param>
+            <param name="case">The case to validate</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1.Available(System.String,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Determines whether the existing case is available</summary>
+            <param name="caseName">Name of the case</param>
+            <param name="configuration">The scripting configuration</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1.Available(System.String,PayrollEngine.Client.Model.Case,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Determines whether the existing case is available</summary>
+            <param name="caseName">Name of the case</param>
+            <param name="case">The case to validate</param>
+            <param name="configuration">The scripting configuration</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionResult">
+            <summary>Result of the case available function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionResult.Available">
+            <summary>The available result</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionResult.Case">
+            <summary>The case</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionResult.ToString">
+            <summary>Returns a string that represents this instance</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseBuildController`1">
+            <summary>Case build function controller</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseBuildController`1"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildController`1.Build(System.String)">
+            <summary>Build a case</summary>
+            <param name="caseName">Name of the case</param>
+            <returns>True if the specified case is valid</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildController`1.Build(PayrollEngine.Client.Model.CaseSet)">
+            <summary>Build a case</summary>
+            <param name="caseSet">The case to build</param>
+            <returns>True if the specified case is valid</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1">
+            <summary>Case build function invoker</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Invoker constructor</summary>
+            <param name="httpClient">The Payroll http configuration</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1.Build(System.String)">
+            <summary>Build a case</summary>
+            <param name="caseName">Name of the case</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1.Build(PayrollEngine.Client.Model.CaseSet)">
+            <summary>Build a case</summary>
+            <param name="caseSet">The case set</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1.Build(System.String,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Build a case</summary>
+            <param name="caseName">Name of the case</param>
+            <param name="configuration">The scripting configuration</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1.Build(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Build a case</summary>
+            <param name="caseSet">The case set</param>
+            <param name="configuration">The scripting configuration</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionResult">
+            <summary>Result of the case build function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionResult.Build">
+            <summary>The build result</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionResult.CaseSet">
+            <summary>The case set</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionResult.ToString">
+            <summary>Returns a string that represents this instance</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseChangeController`3">
+            <summary>Case change function controller</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseChangeController`3.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseChangeController`3"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseController`3">
+            <summary>Case function controller</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseController`3.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseController`3"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseController`3.GetCase(System.String)">
+            <summary>Load the payroll case</summary>
+            <param name="caseName">Name of the case</param>
+            <returns>The case</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseController`3.GetCaseSet(System.String)">
+            <summary>Load the payroll case</summary>
+            <param name="caseName">Name of the case</param>
+            <returns>The case</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseController`3.GetCaseSet``1(System.String)">
+            <summary>Load the payroll case</summary>
+            <param name="caseName">Name of the case</param>
+            <returns>The case</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildController`1">
+            <summary>Case relation build function controller</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildController`1"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildController`1.Build(System.String,System.String)">
+            <summary>Execute the case relation build function</summary>
+            <param name="sourceCaseName">The source case name</param>
+            <param name="targetCaseName">The target case name</param>
+            <returns>True if the specified case is valid</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildController`1.Build(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet)">
+            <summary>RelationMap a case</summary>
+            <param name="sourceCaseSet">The source case set</param>
+            <param name="targetCaseSet">The target case set</param>
+            <returns>True if the specified case is valid</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1">
+            <summary>Case relation build function invoker</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Invoker constructor</summary>
+            <param name="httpClient">The Payroll http configuration</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1.Build(System.String,System.String)">
+            <summary>Build a case relation</summary>
+            <param name="sourceCaseName">The source case name</param>
+            <param name="targetCaseName">The target case name</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1.Build(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet)">
+            <summary>Build a case relation</summary>
+            <param name="sourceCaseSet">The source case set</param>
+            <param name="targetCaseSet">The target case set</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1.Build(System.String,System.String,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Build a case relation</summary>
+            <param name="sourceCaseName">The source case name</param>
+            <param name="targetCaseName">The target case name</param>
+            <param name="configuration">The scripting configuration</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1.Build(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Build a case relation</summary>
+            <param name="sourceCaseSet">The source case set</param>
+            <param name="targetCaseSet">The target case set</param>
+            <param name="configuration">The scripting configuration</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionResult">
+            <summary>Result of the case relation build function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionResult.Build">
+            <summary>The build result</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionResult.SourceCaseSet">
+            <summary>The source case set</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionResult.TargetCaseSet">
+            <summary>The target case set</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionResult.ToString">
+            <summary>Returns a string that represents this instance</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationController`3">
+            <summary>Case relation function controller</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationController`3.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationController`3"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationController`3.GetCaseSet(System.String)">
+            <summary>Load the payroll case</summary>
+            <param name="caseName">Name of the case</param>
+            <returns>The case</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationController`3.GetCaseSet``1(System.String)">
+            <summary>Load the payroll case</summary>
+            <param name="caseName">Name of the case</param>
+            <returns>The case</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateController`1">
+            <summary>Case build validate controller</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateController`1"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateController`1.Validate(System.String,System.String)">
+            <summary>Execute the case relation build function</summary>
+            <param name="sourceCaseName">The source case name</param>
+            <param name="targetCaseName">The target case name</param>
+            <returns>True if the specified case is valid</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateController`1.Validate(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet)">
+            <summary>RelationMap a case</summary>
+            <param name="sourceCaseSet">The source case set</param>
+            <param name="targetCaseSet">The target case set</param>
+            <returns>True if the specified case is valid</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1">
+            <summary>Case relation validate function invoker</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Invoker constructor</summary>
+            <param name="httpClient">The Payroll http configuration</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1.Validate(System.String,System.String)">
+            <summary>Validate a case relation</summary>
+            <param name="sourceCaseName">The source case name</param>
+            <param name="targetCaseName">The target case name</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1.Validate(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet)">
+            <summary>Validate a case relation</summary>
+            <param name="sourceCaseSet">The source case set</param>
+            <param name="targetCaseSet">The target case set</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1.Validate(System.String,System.String,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Validate a case relation</summary>
+            <param name="sourceCaseName">The source case name</param>
+            <param name="targetCaseName">The target case name</param>
+            <param name="configuration">The scripting configuration</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1.Validate(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Validate a case relation</summary>
+            <param name="sourceCaseSet">The source case set</param>
+            <param name="targetCaseSet">The target case set</param>
+            <param name="configuration">The scripting configuration</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionResult">
+            <summary>Result of the case relation validate function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionResult.Valid">
+            <summary>The validation result</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionResult.SourceCaseSet">
+            <summary>The source case set</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionResult.TargetCaseSet">
+            <summary>The target case set</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionResult.Issues">
+            <summary>The validation issues</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionResult.ToString">
+            <summary>Returns a string that represents this instance</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseValidateController`1">
+            <summary>Case validate function controller</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseValidateController`1"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateController`1.Validate(System.String)">
+            <summary>Determines whether the existing case is available</summary>
+            <param name="caseName">Name of the case</param>
+            <returns>True if the specified case is valid</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateController`1.Validate(System.String,PayrollEngine.Client.Model.CaseSet)">
+            <summary>Determines whether the specified case is available</summary>
+            <param name="caseName">Name of the case</param>
+            <param name="caseSet">The case to validate</param>
+            <returns>True if the specified case is valid</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1">
+            <summary>Case validate function invoker</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Invoker constructor</summary>
+            <param name="httpClient">The Payroll http configuration</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1.Validate(System.String)">
+            <summary>Determines whether the existing case is valid</summary>
+            <param name="caseName">Name of the case</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1.Validate(System.String,PayrollEngine.Client.Model.CaseSet)">
+            <summary>Determines whether the existing case is valid</summary>
+            <param name="caseName">Name of the case</param>
+            <param name="caseSet">The case set</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1.Validate(System.String,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Determines whether the existing case is valid</summary>
+            <param name="caseName">Name of the case</param>
+            <param name="configuration">The scripting configuration</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1.Validate(System.String,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Determines whether the existing case is valid</summary>
+            <param name="caseName">Name of the case</param>
+            <param name="caseSet">The case set</param>
+            <param name="configuration">The scripting configuration</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionResult">
+            <summary>Result of the case validate function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionResult.Valid">
+            <summary>The validation result</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionResult.CaseSet">
+            <summary>The case set</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionResult.Issues">
+            <summary>The validation issues</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionResult.ToString">
+            <summary>Returns a string that represents this instance</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.FunctionControllerBase`3">
+            <summary>Function controller</summary>
+            <typeparam name="TFunc">The function</typeparam>
+            <typeparam name="TFuncAttribute">The function attribute</typeparam>
+            <typeparam name="TScriptAttribute">The script attribute</typeparam>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.FunctionControllerBase`3.HttpClient">
+            <summary>The Payroll http client</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.FunctionControllerBase`3.Function">
+            <summary>The function attribute</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.FunctionControllerBase`3.Methods">
+            <summary>The function method attributes</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.FunctionControllerBase`3.#ctor(PayrollEngine.Client.PayrollHttpClient)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.FunctionControllerBase`3"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.FunctionControllerBase`3.GetScriptMethod(System.String)">
+            <summary>Gets the script method by script key</summary>
+            <param name="scriptKey">The script key</param>
+            <returns>The scripting method</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.FunctionControllerBase`3.GetScriptAttribute(System.String)">
+            <summary>Gets the script method by script key</summary>
+            <param name="scriptKey">The script key</param>
+            <returns>The scripting method</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.FunctionInvokerBase">
+            <summary>Function invoker base</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.FunctionInvokerBase.HttpClient">
+            <summary>The Payroll http client</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.FunctionInvokerBase.Configuration">
+            <summary>The scripting configuration</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.FunctionInvokerBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Invoker constructor</summary>
+            <param name="httpClient">The Payroll http configuration</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.FunctionResultBase">
+            <summary>Result of a function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.FunctionResultBase.Calendar">
+            <summary>The calendar</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.FunctionResultBase.Tenant">
+            <summary>The tenant</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.FunctionResultBase.Employee">
+            <summary>The employee</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.FunctionResultBase.Payroll">
+            <summary>The payroll</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3">
+            <summary>Function controller</summary>
+            <typeparam name="TFunc">The function</typeparam>
+            <typeparam name="TFuncAttribute">The function attribute</typeparam>
+            <typeparam name="TScriptAttribute">The script attribute</typeparam>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.Configuration">
+            <summary>The scripting configuration</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.Tenant">
+            <summary>The tenant</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.User">
+            <summary>The user</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.Payroll">
+            <summary>The payroll</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.Employee">
+            <summary>The employee</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.NewScriptingCalendar">
+            <summary>New scripting calendar using the tenant calendar</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.NewScriptingCalendar(PayrollEngine.CalendarConfiguration)">
+            <summary>New scripting calendar</summary>
+            <param name="calendarConfiguration">The calendar configuration</param>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.QueryInvoker">
+            <summary>Query invoker</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.QueryInvoker.HttpClient">
+            <summary>The Payroll http client</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.QueryInvoker.#ctor(PayrollEngine.Client.PayrollHttpClient)">
+            <summary>Invoker constructor</summary>
+            <param name="httpClient">The Payroll http configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.QueryInvoker.InvokeQueriesAsync(System.String,System.String,System.String,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Get report</summary>
+            <param name="tenantIdentifier">The tenant identifier</param>
+            <param name="regulationName">The regulation name</param>
+            <param name="reportName">Name of the report</param>
+            <param name="reportRequest">The report request</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.QueryInvoker.InvokeQueriesAsync(System.String,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Get report</summary>
+            <param name="reportName">Name of the report</param>
+            <param name="reportRequest">The report request, including the tenant and regulation parameters</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.QueryInvoker.InvokeQueriesAsync(System.Int32,System.Int32,System.String,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Get report</summary>
+            <param name="tenantId">The tenant id</param>
+            <param name="regulationId">The regulation id</param>
+            <param name="reportName">Name of the report</param>
+            <param name="reportRequest">The report request</param>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportBuildController`1">
+            <summary>Report build function controller</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildController`1.#ctor(PayrollEngine.Client.PayrollHttpClient)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.ReportBuildController`1"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildController`1.Execute(System.String)">
+            <summary>Report build</summary>
+            <param name="reportName">Name of the report</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildController`1.Execute(PayrollEngine.Client.Model.ReportSet)">
+            <summary>Report build</summary>
+            <param name="report">The report</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildController`1.Execute(System.String,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Report build</summary>
+            <param name="reportName">Name of the report</param>
+            <param name="reportRequest">The report request</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildController`1.Execute(PayrollEngine.Client.Model.ReportSet,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Report build</summary>
+            <param name="report">The report</param>
+            <param name="reportRequest">The report request</param>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportBuildFunctionInvoker`1">
+            <summary>Report build function invoker</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+            <summary>Invoker constructor</summary>
+            <param name="httpClient">The Payroll http configuration</param>
+            <param name="configuration">The scripting configuration</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildFunctionInvoker`1.BuildReportRequest(System.String)">
+            <summary>Build the report request using the function attributes</summary>
+            <param name="reportName">Name of the report</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildFunctionInvoker`1.Build(System.String)">
+            <summary>Report build</summary>
+            <param name="reportName">Name of the report</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildFunctionInvoker`1.Build(System.String,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Report build</summary>
+            <param name="reportName">Name of the report</param>
+            <param name="reportRequest">The report request</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildFunctionInvoker`1.Build(PayrollEngine.Client.Model.ReportSet)">
+            <summary>Report build</summary>
+            <param name="report">The report</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildFunctionInvoker`1.Build(PayrollEngine.Client.Model.ReportSet,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Report build</summary>
+            <param name="report">The report</param>
+            <param name="reportRequest">The report request</param>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportBuildFunctionResult">
+            <summary>Result of the report build function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportBuildFunctionResult.Report">
+            <summary>The build report</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportEndController`1">
+            <summary>Report end function controller</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndController`1.#ctor(PayrollEngine.Client.PayrollHttpClient)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.ReportEndController`1"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndController`1.Execute(System.String,System.Data.DataSet)">
+            <summary>Report end</summary>
+            <param name="reportName">Name of the report</param>
+            <param name="dataSet">The report data set</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndController`1.Execute(PayrollEngine.Client.Model.ReportSet,System.Data.DataSet)">
+            <summary>Report end</summary>
+            <param name="report">The report</param>
+            <param name="dataSet">The report data set</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndController`1.Execute(System.String,PayrollEngine.Client.Model.ReportRequest,System.Data.DataSet)">
+            <summary>Report end</summary>
+            <param name="reportName">Name of the report</param>
+            <param name="reportRequest">The report request</param>
+            <param name="dataSet">The report data set</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndController`1.Execute(PayrollEngine.Client.Model.ReportSet,PayrollEngine.Client.Model.ReportRequest,System.Data.DataSet)">
+            <summary>Report end</summary>
+            <param name="report">The report</param>
+            <param name="reportRequest">The report request</param>
+            <param name="dataSet">The report data set</param>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionInvoker`1">
+            <summary>Report end function invoker</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionInvoker`1.QueryFileName">
+            <summary>Query input file name</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionInvoker`1.ResultFileName">
+            <summary>Result output file name</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration,System.String,System.String)">
+            <summary>Invoker constructor</summary>
+            <param name="httpClient">The Payroll http configuration</param>
+            <param name="configuration">The scripting configuration</param>
+            <param name="queryFileName">Query input file name</param>
+            <param name="resultFileName">Result output file name</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionInvoker`1.BuildReportRequest(System.String)">
+            <summary>Build the report request using the function attributes</summary>
+            <param name="reportName">Name of the report</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionInvoker`1.End(System.String,System.Data.DataSet)">
+            <summary>Report end</summary>
+            <param name="reportName">Name of the report</param>
+            <param name="dataSet">The report data set</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionInvoker`1.End(System.String,PayrollEngine.Client.Model.ReportRequest,System.Data.DataSet)">
+            <summary>Report end</summary>
+            <param name="reportName">Name of the report</param>
+            <param name="reportRequest">The report request</param>
+            <param name="dataSet">The report data set</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionInvoker`1.End(PayrollEngine.Client.Model.ReportSet,System.Data.DataSet)">
+            <summary>Report end</summary>
+            <param name="report">The report</param>
+            <param name="dataSet">The report data set</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionInvoker`1.End(PayrollEngine.Client.Model.ReportSet,PayrollEngine.Client.Model.ReportRequest,System.Data.DataSet)">
+            <summary>Report end</summary>
+            <param name="report">The report</param>
+            <param name="reportRequest">The report request</param>
+            <param name="dataSet">The report data set</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionResult">
+            <summary>Result of the report start function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionResult.DataSet">
+            <summary>The report queries</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionResult.ToString">
+            <summary>Returns a string that represents this instance</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportFunctionController`3">
+            <summary>Function controller</summary>
+            <typeparam name="TFunc">The function</typeparam>
+            <typeparam name="TFuncAttribute">The function attribute</typeparam>
+            <typeparam name="TScriptAttribute">The script attribute</typeparam>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportFunctionController`3.#ctor(PayrollEngine.Client.PayrollHttpClient)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.ReportFunctionController`3"/> class</summary>
+            <param name="httpClient">The Report http client</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportFunctionController`3.Regulation">
+            <summary>The regulation</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportFunctionController`3.Tenant">
+            <summary>The tenant</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportFunctionController`3.User">
+            <summary>The user</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportFunctionController`3.GetReport(System.String)">
+            <summary>Get report</summary>
+            <param name="reportName">Name of the report</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportFunctionController`3.BuildReportRequest(System.String)">
+            <summary>Build the report request using the function attributes</summary>
+            <param name="reportName">Name of the report</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportFunctionController`3.GetReport(System.String,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Get report</summary>
+            <param name="reportName">Name of the report</param>
+            <param name="reportRequest">The report request</param>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportParameterParser">
+            <summary>Report parameter parser</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportParameterParser.HttpClient">
+            <summary>The Payroll http client</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportParameterParser.TenantId">
+            <summary>The tenant id</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportParameterParser.RegulationId">
+            <summary>The regulation id id</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportParameterParser.#ctor(PayrollEngine.Client.PayrollHttpClient,System.Int32,System.Nullable{System.Int32})">
+            <summary>Parser constructor</summary>
+            <param name="httpClient">The Payroll http configuration</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="regulationId">The regulation id</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportParameterParser.ParseParametersAsync(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>Get report</summary>
+            <param name="parameters">The report parameters</param>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportStartController`1">
+            <summary>Report start function controller</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportStartController`1.ExecuteQueries">
+            <summary>Store query results to the <see cref="P:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionResult.DataSet"/></summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartController`1.#ctor(PayrollEngine.Client.PayrollHttpClient)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.ReportStartController`1"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartController`1.Execute(System.String)">
+            <summary>Report start</summary>
+            <param name="reportName">Name of the report</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartController`1.Execute(PayrollEngine.Client.Model.ReportSet)">
+            <summary>Report start</summary>
+            <param name="report">The report</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartController`1.Execute(System.String,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Report start</summary>
+            <param name="reportName">Name of the report</param>
+            <param name="reportRequest">The report request</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartController`1.Execute(PayrollEngine.Client.Model.ReportSet,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Report start</summary>
+            <param name="report">The report</param>
+            <param name="reportRequest">The report request</param>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionInvoker`1">
+            <summary>Report start function invoker</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionInvoker`1.QueryFileName">
+            <summary>Query output file name</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration,System.String)">
+            <summary>Invoker constructor</summary>
+            <param name="httpClient">The Payroll http configuration</param>
+            <param name="configuration">The scripting configuration</param>
+            <param name="queryFileName">Query output file name</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionInvoker`1.BuildReportRequest(System.String)">
+            <summary>Build the report request using the function attributes</summary>
+            <param name="reportName">Name of the report</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionInvoker`1.Start(System.String)">
+            <summary>Report start</summary>
+            <param name="reportName">Name of the report</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionInvoker`1.Start(System.String,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Report start</summary>
+            <param name="reportName">Name of the report</param>
+            <param name="reportRequest">The report request</param>
+            <returns>The function result</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionInvoker`1.Start(PayrollEngine.Client.Model.ReportSet)">
+            <summary>Report start</summary>
+            <param name="report">The report</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionInvoker`1.Start(PayrollEngine.Client.Model.ReportSet,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Report start</summary>
+            <param name="report">The report</param>
+            <param name="reportRequest">The report request</param>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionResult">
+            <summary>Result of the report start function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionResult.Queries">
+            <summary>The report queries</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionResult.DataSet">
+            <summary>The queries results</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionResult.ToString">
+            <summary>Returns a string that represents this instance</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseAvailableRuntime">
+            <summary>Runtime for the case available function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseAvailableRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.Case,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseAvailableRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="case">The runtime case</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseAvailableRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseAvailableRuntime.GetAvailableActions">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseBuildRuntime">
+            <summary>Runtime for the case build function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseBuildRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseBuildRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="caseSet">The runtime case set</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseBuildRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseBuildRuntime.GetBuildActions">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseBuildRuntime.GetFieldBuildActions(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime">
+            <summary>Runtime for the case change function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.Case">
+            <summary>The case set</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="caseSet">The runtime case set</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.CancellationDate">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.CaseAvailable(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.SetCaseAttribute(System.String,System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.RemoveCaseAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.GetCase(System.String)">
+            <summary>
+            Get case by name
+            </summary>
+            <param name="caseName">The name of the case</param>
+            <returns>The case set matching the name, script exception on missing case</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.GetFieldNames">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.HasFields">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.HasField(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.IsFieldComplete(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.IsFieldEmpty(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.FieldAvailable(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.FieldAvailable(System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.HasStart(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.GetStart(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.SetStart(System.String,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.InitStart(System.String,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.HasEnd(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.GetEnd(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.SetEnd(System.String,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.InitEnd(System.String,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.GetValueType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.HasValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.GetValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.SetValue(System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.InitValue(System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.AddCaseValueTag(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.RemoveCaseValueTag(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.GetCaseFieldAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.SetCaseFieldAttribute(System.String,System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.RemoveCaseFieldAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.GetCaseValueAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.SetCaseValueAttribute(System.String,System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.RemoveCaseValueAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.GetCaseFieldSet(System.String,System.Boolean)">
+            <summary>
+            Get case field by name
+            </summary>
+            <param name="caseFieldName">The name of the case field</param>
+            <param name="addField">Add unknown field</param>
+            <returns>The derived case field</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationBuildRuntime">
+            <summary>Runtime for the case relation build function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationBuildRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationBuildRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="sourceCaseSet">The source case set</param>
+            <param name="targetCaseSet">The target case set</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationBuildRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationBuildRuntime.GetBuildActions">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime">
+            <summary>Runtime for the case relation function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.SourceCaseSet">
+            <summary>The source case set</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.TargetCaseSet">
+            <summary>The target case set</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="sourceCaseSet">The source case set</param>
+            <param name="targetCaseSet">The target case set</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.LogOwner">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.RelationName">
+            <summary>Gets the case relation name</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.SourceCaseName">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.SourceCaseSlot">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.SourceCaseCancellationDate">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetSourceFieldNames">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.HasSourceFields">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.HasSourceField(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.IsSourceFieldComplete(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.IsSourceFieldEmpty(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.HasSourceStart(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetSourceStart(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.HasSourceEnd(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetSourceEnd(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetSourceValueType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.HasSourceValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetSourceValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetSourceCaseAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetSourceCaseFieldAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetSourceCaseValueAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.TargetCaseName">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.TargetCaseSlot">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.TargetCaseCancellationDate">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetTargetFieldNames">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.HasTargetFields">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.HasTargetField(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.IsTargetFieldComplete(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.IsTargetFieldEmpty(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.HasTargetStart(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetTargetStart(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.SetTargetStart(System.String,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.InitTargetStart(System.String,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.HasTargetEnd(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetTargetEnd(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.SetTargetEnd(System.String,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.InitTargetEnd(System.String,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetTargetValueType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.HasTargetValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetTargetValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.SetTargetValue(System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.InitTargetValue(System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.TargetFieldAvailable(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.TargetFieldAvailable(System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetTargetCaseAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetTargetCaseFieldAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.GetTargetCaseValueAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.InitStart(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.CopyStart(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.InitEnd(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.CopyEnd(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.InitValue(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.CopyValue(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntime.InvokeWebhook(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime">
+            <summary>Runtime for the case relation validate function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime.Issues">
+            <summary>The validation issues</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="sourceCaseSet">The source case set</param>
+            <param name="targetCaseSet">The target case set</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime.GetValidateActions">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime.HasIssues">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime.AddIssue(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime.AddIssue(System.String,System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntime">
+            <summary>Runtime for the case function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntime.Case">
+            <summary>The case</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.Case,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="case">The runtime case</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntime.CaseName">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntime.CaseType">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntime.LogOwner">
+            <summary>The log owner, the source identifier</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntime.GetCaseAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntime.InvokeWebhook(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime">
+            <summary>Runtime for the case validate function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime.Issues">
+            <summary>The validation issues</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="caseSet">The runtime case set</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime.GetValidateActions">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime.GetFieldValidateActions(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime.HasIssues">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime.AddIssue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime.AddIssue(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorApplyRuntime">
+            <summary>Runtime for the collector apply function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorApplyRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorApplyRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorApplyRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorApplyRuntime.WageTypeNumber">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorApplyRuntime.WageTypeName">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorApplyRuntime.WageTypeValue">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorEndRuntime">
+            <summary>Runtime for the collector end function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorEndRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorEndRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorEndRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorEndRuntime.GetValues">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorEndRuntime.SetValues(System.Decimal[])">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime">
+            <summary>Runtime for the collector function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.CollectorName">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.CollectorGroups">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.CollectType">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.CollectorThreshold">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.CollectorMinResult">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.CollectorMaxResult">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.CollectorResult">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.CollectorCount">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.CollectorSum">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.CollectorMin">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.CollectorMax">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.CollectorAverage">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.GetResultTags">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.SetResultTags(System.Collections.Generic.List{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.GetCollectorAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.LogOwner">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.GetCollectorValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.Reset">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.GetResultAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.SetResultAttribute(System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.AddPayrunResult(System.String,System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.AddCustomResult(System.String,System.Decimal,System.DateTime,System.DateTime,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntime.ScheduleRetroPayrun(System.DateTime,System.Collections.Generic.List{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorStartRuntime">
+            <summary>Runtime for the collector start function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorStartRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorStartRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="employeeId">The employee id</param>
+            <param name="payrollId">The payroll id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorStartRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorStartRuntime.GetValues">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorStartRuntime.SetValues(System.Decimal[])">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime">
+            <summary>Runtime for the payroll function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.EmployeeService">
+            <summary>The employee service</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.PayrollService">
+            <summary>The payroll service</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.RegulationService">
+            <summary>The regulation service</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Calendar">
+            <summary>The calendar</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Language">
+            <summary>The language</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.EmployeeId">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.EmployeeIdentifier">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetEmployeeAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.PayrollId">
+            <summary>The payroll id</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Payroll">
+            <summary>The payroll</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.PayrollCountry">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Cycle">
+            <summary>The payroll cycle</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Period">
+            <summary>The payroll period</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.RegulationDate">
+            <summary>The regulation date</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.EvaluationDate">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetEvaluationPeriod">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetPeriod(System.DateTime,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCycle(System.DateTime,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCaseValueType(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCaseFieldAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCaseValueAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCaseValueSlots(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCaseValueTags(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCaseValue(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCaseValues(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCasePeriodValues(System.DateTime,System.DateTime,System.String[])">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetLookup(System.String,System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetRangeLookup(System.String,System.Decimal,System.String,System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeAvailableRuntime">
+            <summary>Runtime for the payrun employee available function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeAvailableRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeAvailableRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeAvailableRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeEndRuntime">
+            <summary>Runtime for the payrun employee end function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeEndRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeEndRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeEndRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeStartRuntime">
+            <summary>Runtime for the payrun employee start function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeStartRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeStartRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeStartRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEndRuntime">
+            <summary>Runtime for the payrun employee available function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEndRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEndRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEndRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEndRuntime.GetPayrunRuntimeValues">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEndRuntime.GetRuntimeValuesEmployees">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEndRuntime.GetEmployeeRuntimeValues(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime">
+            <summary>Runtime for the payrun function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="employeeId">The employee id</param>
+            <param name="payrollId">The payroll id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.LogOwner">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.PayrunId">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.PayrunName">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.ExecutionPhase">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.RetroPeriod">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.Forecast">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.CycleName">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.PeriodName">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.GetPayrunJobAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.SetPayrunJobAttribute(System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.RemovePayrunJobAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.HasPayrunRuntimeValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.GetPayrunRuntimeValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.SetPayrunRuntimeValue(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.HasEmployeeRuntimeValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.GetEmployeeRuntimeValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.SetEmployeeRuntimeValue(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.GetWageTypeResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.GetConsolidatedWageTypeResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.GetWageTypeCustomResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.GetConsolidatedWageTypeCustomResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.GetRetroWageTypeResults(System.Decimal,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.GetCollectorResults(System.Collections.Generic.IList{System.String},System.DateTime,System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.GetConsolidatedCollectorResults(System.Collections.Generic.IList{System.String},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.GetCollectorCustomResults(System.Collections.Generic.IList{System.String},System.DateTime,System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.GetConsolidatedCollectorCustomResults(System.Collections.Generic.IList{System.String},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntime.InvokeWebhook(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunStartRuntime">
+            <summary>Runtime for the payrun employee available function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunStartRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunStartRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunStartRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunWageTypeAvailableRuntime">
+            <summary>Runtime for the payrun wage type available function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunWageTypeAvailableRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunWageTypeAvailableRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunWageTypeAvailableRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunWageTypeAvailableRuntime.WageTypeNumber">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunWageTypeAvailableRuntime.GetWageTypeAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.ReportBuildRuntime">
+            <summary>Runtime for the report build function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportBuildRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,System.Int32,System.Int32,PayrollEngine.Client.Model.ReportSet,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.ReportBuildRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="report">The report</param>
+            <param name="reportRequest">The report request</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportBuildRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportBuildRuntime.SetParameter(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportBuildRuntime.SetParameterAttribute(System.String,System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime">
+            <summary>Runtime for the report end function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime.DataSet">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,System.Int32,System.Int32,PayrollEngine.Client.Model.ReportSet,PayrollEngine.Client.Model.ReportRequest,System.Data.DataSet)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="report">The report</param>
+            <param name="reportRequest">The report request</param>
+            <param name="dataSet">The report data set</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime.ExecuteQuery(System.String,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime.ExecuteMergeQuery(System.String,System.String,System.Int32,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime">
+            <summary>Runtime for the payroll report function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.Report">
+            <summary>The report</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ReportRequest">
+            <summary>The report request</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,System.Int32,System.Int32,PayrollEngine.Client.Model.ReportSet,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="report">The report</param>
+            <param name="reportRequest">The report request</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.LogOwner">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ReportName">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.Language">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.GetReportAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.HasParameter(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.GetParameter(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.SetParameterInternal(System.String,System.String)">
+            <summary>
+            Set the report parameter
+            </summary>
+            <param name="parameterName">Name of the parameter</param>
+            <param name="value">The parameter value</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.GetParameterAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteQuery(System.String,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteLookupValueQuery(System.Int32,System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteGlobalCaseValueQuery(System.String,System.Tuple{System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64}})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteNationalCaseValueQuery(System.String,System.Tuple{System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64}})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteCompanyCaseValueQuery(System.String,System.Tuple{System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64}})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteEmployeeCaseValueQuery(System.String,System.Int32,System.Tuple{System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64}})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteWageTypeQuery(System.String,System.Int32,System.Tuple{System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64}})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecutePayrollResultQuery(System.String,System.Tuple{System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64}})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteWageTypeResultQuery(System.String,System.Int32,System.Tuple{System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64}})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteWageTypeCustomResultQuery(System.String,System.Int32,System.Int32,System.Tuple{System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64}})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteCollectorResultQuery(System.String,System.Int32,System.Tuple{System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64}})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteCollectorCustomResultQuery(System.String,System.Int32,System.Int32,System.Tuple{System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64}})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecutePayrunResultQuery(System.String,System.Int32,System.Tuple{System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64}})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.AddReportLog(System.String,System.String,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.InvokeWebhook(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.ReportStartRuntime">
+            <summary>Runtime for the report start function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportStartRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,System.Int32,System.Int32,PayrollEngine.Client.Model.ReportSet,PayrollEngine.Client.Model.ReportRequest)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.ReportStartRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="report">The report</param>
+            <param name="reportRequest">The report request</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportStartRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportStartRuntime.SetParameter(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportStartRuntime.HasQuery(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportStartRuntime.GetQuery(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportStartRuntime.SetQuery(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.Runtime">
+            <summary>Runtime for the function</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.HttpClient">
+            <summary>The Payroll http client</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.TenantService">
+            <summary>The tenant service</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.UserService">
+            <summary>The user service</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.#ctor(PayrollEngine.Client.PayrollHttpClient,System.Int32,System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.Runtime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.Tenant">
+            <summary>The tenant</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.TenantId">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.TenantIdentifier">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.GetTenantAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.User">
+            <summary>The user</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.UserId">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.UserLanguage">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.UserIdentifier">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.GetUserAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.LogOwner">
+            <summary>The log owner, the source identifier</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.AddLog(System.Int32,System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.AddTask(System.String,System.String,System.DateTime,System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeResultRuntime">
+            <summary>Runtime for the wage type result function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeResultRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeResultRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeResultRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeResultRuntime.WageTypeValue">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime">
+            <summary>Runtime for the wage type function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.WageTypeNumber">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.WageTypeName">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.WageTypeDescription">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.Collectors">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.CollectorGroups">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.GetResultTags">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.SetResultTags(System.Collections.Generic.List{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.GetWageTypeAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.GetWageTypeValue(System.Decimal)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.GetCollectorValue(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.EnableCollector(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.DisableCollector(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.GetResultAttribute(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.SetResultAttribute(System.String,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.AddPayrunResult(System.String,System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.AddCustomResult(System.String,System.Decimal,System.DateTime,System.DateTime,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.Nullable{System.Int32})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.ScheduleRetroPayrun(System.DateTime,System.Collections.Generic.List{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime">
+            <summary>Runtime for the wage type value function</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime"/> class</summary>
+            <param name="httpClient">The Payroll http client</param>
+            <param name="calendar">The calendar</param>
+            <param name="tenantId">The tenant id</param>
+            <param name="userId">The user id</param>
+            <param name="payrollId">The payroll id</param>
+            <param name="employeeId">The employee id</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime.LogOwnerType">
+            <summary>The log owner type</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime.ExecutionCount">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime.RestartExecution">
+            <inheritdoc />
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.MonthPayrollPeriod">
+            <summary>Payroll month period, implements the <see cref="T:PayrollEngine.IPayrollPeriod" /></summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.MonthPayrollPeriod.Calendar">
+            <summary>The payroll calendar</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.MonthPayrollPeriod.#ctor(PayrollEngine.IPayrollCalendar,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.MonthPayrollPeriod.#ctor(PayrollEngine.IPayrollCalendar,System.Int32,System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.MonthPayrollPeriod"/> class</summary>
+            <param name="calendar">The calendar</param>
+            <param name="year">The year</param>
+            <param name="month">The month</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.MonthPayrollPeriod.Start">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.MonthPayrollPeriod.End">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.MonthPayrollPeriod.Name">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.MonthPayrollPeriod.GetPayrollPeriod(System.DateTime,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.MonthPayrollPeriod.ToString">
+            <summary>Returns a <see cref="T:System.String" /> that represents this instance</summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.ScriptingCalendar">
+            <summary>Script calendar</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.Configuration">
+            <summary>The scripting configuration</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.PayrollCalendar">
+            <summary>The payroll calendar</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.Language">
+            <summary>The language</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.PeriodDate">
+            <summary>The regulation date</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.EvaluationDate">
+            <summary>The evaluation date</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.RegulationDate">
+            <summary>The regulation date</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.ScriptingCalendar.#ctor(PayrollEngine.Client.ScriptingConfiguration,PayrollEngine.PayrollCalendar,System.Nullable{PayrollEngine.Client.Scripting.Language})">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.ScriptingCalendar"/> class</summary>
+            <param name="configuration">The scripting configuration</param>
+            <param name="payrollCalendar">The payroll calendar</param>
+            <param name="language">The language</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.ScriptingCalendar.ToString">
+            <summary>Returns a string that represents this instance</summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.WeekPayrollCycle">
+            <summary>Payroll cycle for week periods, implements the <see cref="T:PayrollEngine.IPayrollPeriod" /></summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.Calendar">
+            <summary>The payroll calendar</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.WeekOfYear">
+            <summary>Gets the week of year</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollCycle.#ctor(PayrollEngine.IPayrollCalendar,System.Int32,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollCycle.#ctor(PayrollEngine.IPayrollCalendar,System.DateTime)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.WeekPayrollCycle"/> class</summary>
+            <param name="calendar">The calendar</param>
+            <param name="moment">The moment</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.Start">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.End">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.Name">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollCycle.GetPayrollPeriod(System.DateTime,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollCycle.ToString">
+            <summary>Returns a <see cref="T:System.String" /> that represents this instance</summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.WeekPayrollPeriod">
+            <summary>Payroll week period, implements the <see cref="T:PayrollEngine.IPayrollPeriod" /></summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollPeriod.Calendar">
+            <summary>The payroll calendar</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollPeriod.WeekOfYear">
+            <summary>Gets the week of year</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollPeriod.#ctor(PayrollEngine.IPayrollCalendar,System.Int32,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollPeriod.#ctor(PayrollEngine.IPayrollCalendar,System.DateTime)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.WeekPayrollPeriod"/> class</summary>
+            <param name="calendar">The calendar</param>
+            <param name="moment">The moment</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollPeriod.Start">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollPeriod.End">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollPeriod.Name">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollPeriod.GetPayrollPeriod(System.DateTime,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollPeriod.ToString">
+            <summary>Returns a <see cref="T:System.String" /> that represents this instance</summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.YearPayrollCycle">
+            <summary>Payroll year cycle, implements the <see cref="T:PayrollEngine.IPayrollPeriod" /></summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.YearPayrollCycle.Calendar">
+            <summary>The payroll calendar</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.YearPayrollCycle.#ctor(PayrollEngine.IPayrollCalendar,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.YearPayrollCycle.#ctor(PayrollEngine.IPayrollCalendar,System.Int32,System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.YearPayrollCycle"/> class</summary>
+            <param name="calendar">The calendar</param>
+            <param name="year">The year</param>
+            <param name="month">The month</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.YearPayrollCycle.Start">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.YearPayrollCycle.End">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.YearPayrollCycle.Name">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.YearPayrollCycle.GetPayrollPeriod(System.DateTime,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.YearPayrollCycle.ToString">
+            <summary>Returns a <see cref="T:System.String" /> that represents this instance</summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance</returns>
+        </member>
+        <member name="T:PayrollEngine.Client.ScriptingConfiguration">
+            <summary>The Payroll scripting configuration</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.ScriptingConfiguration.EvaluationDate">
+            <summary>The evaluation date</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.ScriptingConfiguration.PeriodDate">
+            <summary>The period date</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.ScriptingConfiguration.RegulationDate">
+            <summary>The regulation date</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.ScriptingConfiguration.ToString">
+            <summary>Returns a <see cref="T:System.String" /> that represents this instance</summary>
+        </member>
+    </members>
+</doc>

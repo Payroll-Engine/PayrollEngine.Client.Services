@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>PayrollEngine.Client.Services</AssemblyName>
+		<RootNamespace>PayrollEngine.Client</RootNamespace>
+		<Authors>Jani Giannoudis</Authors>
+		<Company>Software Consulting Giannoudis</Company>
+		<Product>Payroll Engine</Product>
+		<Description>Payroll Engine Client Services</Description>
+	</PropertyGroup>
+
+	<!-- help file generation -->
+	<PropertyGroup>
+		<DocumentationFile>$(AssemblyName).xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+		<PackageReference Include="PayrollEngine.Client.Scripting" Version="0.5.0-pre-230411" />
+		<PackageReference Include="PayrollEngine.Client.Test" Version="0.5.0-pre-230411" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Remove="C:\Shared\PayrollEngine\Repos\PayrollEngine.Client.Services\Client.Services\..\..\.schemas\PayrollEngine.CaseTest.schema.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Remove="C:\Shared\PayrollEngine\Repos\PayrollEngine.Client.Services\Client.Services\..\..\.schemas\PayrollEngine.CaseTest.schema.json" />
+	</ItemGroup>
+
+	<!-- include xml documention files to the nuget package -->
+	<ItemGroup>
+		<!-- ReSharper disable UnknownProperty -->
+		<None Include="$(OutputDir)*.xml" Pack="true">
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+		</None>
+		<!-- ReSharper restore UnknownProperty -->
+	</ItemGroup>
+
+	<!-- additional package files -->
+	<ItemGroup>
+		<!-- API schema for the client case test model -->
+		<Content Include="$(ProjectDir)..\..\.schemas\PayrollEngine.CaseTest.schema.json" />
+		<!-- API schema for the client exchange model -->
+		<Content Include="$(ProjectDir)..\..\.schemas\PayrollEngine.Exchange.schema.json" />
+		<!-- Client services help file -->
+		<Content Include="help\PayrollEngineClientServices.chm" />
+	</ItemGroup>
+
+	<!-- copy nuget to package folder -->
+	<Target Name="CopyPackage" AfterTargets="Pack">
+		<Message Importance="High" Text="Deploying package global" />
+		<!-- ReSharper disable UnknownProperty -->
+		<Copy SourceFiles="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(ProjectDir)\..\..\.packages" />
+		<!-- ReSharper restore UnknownProperty -->
+	</Target>
+
+</Project>
