@@ -62,7 +62,7 @@ public class ReportEndController<TFunc> : ReportFunctionController<TFunc, Report
         // result
         var result = new ReportEndFunctionResult
         {
-            DataSet = dataSet
+            DataSet = runtime.DataSet
         };
         return result;
     }
