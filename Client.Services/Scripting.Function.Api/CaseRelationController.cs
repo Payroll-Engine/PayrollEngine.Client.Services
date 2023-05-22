@@ -34,6 +34,6 @@ public abstract class CaseRelationController<TFunc, TFuncAttribute, TScriptAttri
         {
             throw new ArgumentException(nameof(caseName));
         }
-        return await new PayrollService(HttpClient).BuildCaseSetAsync<T>(new(Tenant.Id, Payroll.Id), caseName, Employee.Id);
+        return await new PayrollService(HttpClient).BuildCaseAsync<T>(new(Tenant.Id, Payroll.Id), caseName, Employee.Id);
     }
 }

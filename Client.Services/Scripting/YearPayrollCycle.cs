@@ -23,10 +23,6 @@ public class YearPayrollCycle : IPayrollPeriod
     public YearPayrollCycle(IPayrollCalendar calendar, int year, int month)
     {
         Calendar = calendar ?? throw new ArgumentNullException(nameof(calendar));
-        if (calendar.Configuration.FirstMonthOfYear == PayrollEngine.Month.NotSet)
-        {
-            throw new PayrollException("Calendar without year start month");
-        }
 
         // period
         var periodStart = new DateTime(year, month, 1, 0, 0, 0, 0, calendar.Calendar, DateTimeKind.Utc);

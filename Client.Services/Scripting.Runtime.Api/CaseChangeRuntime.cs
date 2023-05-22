@@ -32,7 +32,7 @@ public abstract class CaseChangeRuntime : CaseRuntime, ICaseChangeRuntime
 
     /// <inheritdoc />
     public bool CaseAvailable(string caseName) =>
-        GetCase(caseName) != null;
+        GetCaseSet(caseName) != null;
 
     /// <inheritdoc />
     public void SetCaseAttribute(string caseName, string attributeName, object value)
@@ -80,14 +80,14 @@ public abstract class CaseChangeRuntime : CaseRuntime, ICaseChangeRuntime
     /// </summary>
     /// <param name="caseName">The name of the case</param>
     /// <returns>The case set matching the name, script exception on missing case</returns>
-    protected CaseSet GetCase(string caseName)
+    protected CaseSet GetCaseSet(string caseName)
     {
         if (string.IsNullOrWhiteSpace(caseName))
         {
             throw new ArgumentException(nameof(caseName));
         }
         // cache or search
-        return Case.FindCase(caseName) ?? PayrollService.BuildCaseSetAsync<CaseSet>(
+        return Case.FindCase(caseName) ?? PayrollService.BuildCaseAsync<CaseSet>(
             new(TenantId, PayrollId), caseName, UserId, EmployeeId).Result;
     }
 

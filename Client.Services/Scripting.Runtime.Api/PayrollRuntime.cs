@@ -254,7 +254,7 @@ public abstract class PayrollRuntime : Runtime, IPayrollRuntime
         {
             throw new ScriptException($"Unknown case field: {caseFieldName}");
         }
-        var @case = PayrollService.BuildCaseSetAsync<CaseSet>(
+        var @case = PayrollService.BuildCaseAsync<CaseSet>(
             new(TenantId, PayrollId), caseName, UserId, EmployeeId).Result;
         if (@case == null || @case.Id == default)
         {
@@ -367,7 +367,7 @@ public abstract class PayrollRuntime : Runtime, IPayrollRuntime
         DateTime endDate, params string[] caseFieldNames)
     {
         // period values
-        var periodValues = PayrollService.GetPayrollAvailableCaseFieldValuesAsync(new(TenantId, PayrollId),
+        var periodValues = PayrollService.GetAvailableCaseFieldValuesAsync(new(TenantId, PayrollId),
             UserId,
             employeeId: EmployeeId,
             caseFieldNames: caseFieldNames,

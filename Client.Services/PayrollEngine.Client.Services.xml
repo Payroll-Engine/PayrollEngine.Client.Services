@@ -872,7 +872,7 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.RemoveCaseAttribute(System.String,System.String)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.GetCase(System.String)">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntime.GetCaseSet(System.String)">
             <summary>
             Get case by name
             </summary>
