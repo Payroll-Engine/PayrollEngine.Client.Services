@@ -1,11 +1,10 @@
-# PayrollEngine.Client.Services
-[Payroll Engine](https://github.com/Payroll-Engine) client services library:
+<h1>Payroll Engine Client Services</h1>
 
-- Function controllers
+Main library for Payroll Engine clients, including all required dependencies:
+- Function controllers (local scripting development)
 - Function invokers
-- Json schemas
+- JSON schemas
 
 ## Build
-Runtime environment variables:
-
+Supported runtime environment variables:
 - *PayrollEnginePackageDir* - the NuGet package target direcotry (optional)

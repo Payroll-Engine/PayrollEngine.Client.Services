@@ -5,6 +5,7 @@
 		<RootNamespace>PayrollEngine.Client</RootNamespace>
 		<Authors>Jani Giannoudis</Authors>
 		<Company>Software Consulting Giannoudis</Company>
+		<Copyright>2023 Software Consulting Giannoudis</Copyright>
 		<Product>Payroll Engine</Product>
 		<Description>Payroll Engine Client Services</Description>
 	</PropertyGroup>
@@ -17,8 +18,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
-		<PackageReference Include="PayrollEngine.Client.Scripting" Version="0.5.0-pre-230526" />
-		<PackageReference Include="PayrollEngine.Client.Test" Version="0.5.0-pre-230526" />
+		<PackageReference Include="PayrollEngine.Client.Scripting" Version="0.5.0-pre-230527" />
+		<PackageReference Include="PayrollEngine.Client.Test" Version="0.5.0-pre-230527" />
 	</ItemGroup>
 
 	<!-- include xml documention files and json schemas to the nuget package -->
