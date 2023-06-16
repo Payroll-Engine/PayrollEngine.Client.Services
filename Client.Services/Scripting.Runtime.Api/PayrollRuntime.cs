@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Service;
 using PayrollEngine.Client.Service.Api;
+using CultureInfo = System.Globalization.CultureInfo;
 
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
@@ -21,24 +22,27 @@ public abstract class PayrollRuntime : Runtime, IPayrollRuntime
     /// <summary>The regulation service</summary>
     protected IRegulationService RegulationService { get; }
 
+    /// <summary>The calendar service</summary>
+    protected ICalendarService CalendarService { get; }
+
     /// <summary>The calendar</summary>
-    public ScriptingCalendar Calendar { get; }
+    public ScriptingCalendar ScriptCalendar { get; }
 
     /// <summary>The language</summary>
-    protected Language Language => Calendar.Language;
+    protected Language Language => ScriptCalendar.Language;
 
     /// <summary>Initializes a new instance of the <see cref="PayrollRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
-    /// <param name="calendar">The calendar</param>
+    /// <param name="scriptCalendar">The calendar</param>
     /// <param name="tenantId">The tenant id</param>
     /// <param name="userId">The user id</param>
     /// <param name="payrollId">The payroll id</param>
     /// <param name="employeeId">The employee id</param>
-    protected PayrollRuntime(PayrollHttpClient httpClient, ScriptingCalendar calendar,
+    protected PayrollRuntime(PayrollHttpClient httpClient, ScriptingCalendar scriptCalendar,
         int tenantId, int userId, int payrollId, int? employeeId = null) :
         base(httpClient, tenantId, userId)
     {
-        Calendar = calendar ?? throw new ArgumentNullException(nameof(calendar));
+        ScriptCalendar = scriptCalendar ?? throw new ArgumentNullException(nameof(scriptCalendar));
 
         // employee
         if (employeeId <= 0)
@@ -61,8 +65,22 @@ public abstract class PayrollRuntime : Runtime, IPayrollRuntime
 
         // periods
         // TODO: make cycle/period configurable
-        Cycle = new YearPayrollCycle(calendar.PayrollCalendar, calendar.PeriodDate);
-        Period = new MonthPayrollPeriod(calendar.PayrollCalendar, calendar.PeriodDate);
+
+        // culture
+        var culture = CultureInfo.CurrentCulture;
+
+        // calendar
+        CalendarService = new CalendarService(httpClient);
+        Calendar calendar = null;
+        if (!string.IsNullOrWhiteSpace(scriptCalendar.CalendarName))
+        {
+            calendar = new CalendarService(httpClient).
+                GetAsync<Calendar>(new(tenantId), scriptCalendar.CalendarName).Result;
+        }
+        calendar ??= new();
+
+        Cycle = new YearPayrollCycle(culture, calendar, scriptCalendar.PeriodDate);
+        Period = new MonthPayrollPeriod(culture, calendar, scriptCalendar.PeriodDate);
     }
 
     #region Employee
@@ -70,19 +88,34 @@ public abstract class PayrollRuntime : Runtime, IPayrollRuntime
     /// <inheritdoc />
     public int? EmployeeId { get; }
 
-    /// <inheritdoc />
-    public string EmployeeIdentifier
+    private Employee employee;
+
+    /// <summary>The employee</summary>
+    protected Employee Employee
     {
         get
         {
-            if (!EmployeeId.HasValue)
+            if (employee == null)
             {
-                throw new PayrollException("Employee not available");
+                if (!EmployeeId.HasValue)
+                {
+                    throw new PayrollException("Employee not available");
+                }
+                employee = EmployeeService.GetAsync<Employee>(
+                    new(TenantId), EmployeeId.Value).Result;
             }
-            return EmployeeService.GetAsync<Employee>(
-                new(TenantId), EmployeeId.Value).Result?.Identifier;
+            return employee;
         }
     }
+
+    /// <inheritdoc />
+    public string EmployeeIdentifier => Employee.Identifier;
+
+    /// <inheritdoc />
+    public string EmployeeCulture => Employee.Culture;
+
+    /// <inheritdoc />
+    public string EmployeeCalendar => Employee.Calendar;
 
     /// <inheritdoc />
     public virtual object GetEmployeeAttribute(string attributeName)
@@ -148,10 +181,10 @@ public abstract class PayrollRuntime : Runtime, IPayrollRuntime
     public IPayrollPeriod Period { get; }
 
     /// <summary>The regulation date</summary>
-    public DateTime RegulationDate => Calendar.RegulationDate;
+    public DateTime RegulationDate => ScriptCalendar.RegulationDate;
 
     /// <inheritdoc />
-    public DateTime EvaluationDate => Calendar.EvaluationDate;
+    public DateTime EvaluationDate => ScriptCalendar.EvaluationDate;
 
     #endregion
 
@@ -160,22 +193,20 @@ public abstract class PayrollRuntime : Runtime, IPayrollRuntime
     /// <inheritdoc />
     public virtual Tuple<DateTime, DateTime> GetEvaluationPeriod()
     {
-        var period = TenantService.GetCalendarPeriodAsync(TenantId,
-            calculationMode: Calendar.PayrollCalendar.Configuration.CalculationMode,
-            periodMoment: EvaluationDate,
-            calendar: Calendar.PayrollCalendar.Configuration,
-            culture: Calendar.PayrollCalendar.Culture.Name).Result;
+        var period = CalendarService.GetPeriodAsync(TenantId,
+            cultureName: ScriptCalendar.CultureName,
+            calendarName: ScriptCalendar.CalendarName,
+            periodMoment: EvaluationDate).Result;
         return new(period.Start, period.End);
     }
 
     /// <inheritdoc />
     public virtual Tuple<DateTime, DateTime> GetPeriod(DateTime periodMoment, int offset)
     {
-        var period = TenantService.GetCalendarPeriodAsync(TenantId,
-            calculationMode: Calendar.PayrollCalendar.Configuration.CalculationMode,
+        var period = CalendarService.GetPeriodAsync(TenantId,
+            cultureName: ScriptCalendar.CultureName,
+            calendarName: ScriptCalendar.CalendarName,
             periodMoment: periodMoment,
-            calendar: Calendar.PayrollCalendar.Configuration,
-            culture: Calendar.PayrollCalendar.Culture.Name,
             offset: offset).Result;
         return new(period.Start, period.End);
     }
@@ -187,11 +218,10 @@ public abstract class PayrollRuntime : Runtime, IPayrollRuntime
     /// <inheritdoc />
     public virtual Tuple<DateTime, DateTime> GetCycle(DateTime cycleMoment, int offset)
     {
-        var cycle = TenantService.GetCalendarCycleAsync(TenantId,
-            calculationMode: Calendar.PayrollCalendar.Configuration.CalculationMode,
+        var cycle = CalendarService.GetCycleAsync(TenantId,
+            cultureName: ScriptCalendar.CultureName,
+            calendarName: ScriptCalendar.CalendarName,
             cycleMoment: cycleMoment,
-            calendar: Calendar.PayrollCalendar.Configuration,
-            culture: Calendar.PayrollCalendar.Culture.Name,
             offset: offset).Result;
         return new(cycle.Start, cycle.End);
     }

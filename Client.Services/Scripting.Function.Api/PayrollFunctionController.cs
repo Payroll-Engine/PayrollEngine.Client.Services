@@ -106,20 +106,8 @@ public abstract class PayrollFunctionController<TFunc, TFuncAttribute, TScriptAt
     /// <summary>New scripting calendar using the tenant calendar</summary>
     protected ScriptingCalendar NewScriptingCalendar()
     {
-        var calendar = Tenant.Calendar;
-        if (calendar == null)
-        {
-            throw new ScriptException("Tenant calendar is mandatory");
-        }
-        return NewScriptingCalendar(calendar);
-    }
-
-    /// <summary>New scripting calendar</summary>
-    /// <param name="calendarConfiguration">The calendar configuration</param>
-    protected ScriptingCalendar NewScriptingCalendar(CalendarConfiguration calendarConfiguration)
-    {
-        var payrollCalendar = new PayrollCalendar(calendarConfiguration, Tenant.Id, User?.Id);
-        var functionCalendar = new ScriptingCalendar(Configuration, payrollCalendar);
+        var calendarName = Tenant.Calendar;
+        var functionCalendar = new ScriptingCalendar(Configuration, calendarName);
         return functionCalendar;
     }
 }

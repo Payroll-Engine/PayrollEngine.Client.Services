@@ -5,6 +5,12 @@ namespace PayrollEngine.Client;
 /// <summary>The Payroll scripting configuration</summary>
 public class ScriptingConfiguration
 {
+    /// <summary>The culture name</summary>
+    public string CultureName { get; set; }
+
+    /// <summary>The calendar name</summary>
+    public string CalendarName { get; set; }
+
     /// <summary>The evaluation date</summary>
     public DateTime EvaluationDate { get; set; }
 

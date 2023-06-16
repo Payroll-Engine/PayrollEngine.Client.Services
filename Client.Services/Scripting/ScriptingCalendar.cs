@@ -10,10 +10,13 @@ public class ScriptingCalendar
     public ScriptingConfiguration Configuration { get; }
 
     /// <summary>The payroll calendar</summary>
-    public PayrollCalendar PayrollCalendar { get; }
+    public string CalendarName { get; }
 
     /// <summary>The language</summary>
     public Language Language { get; }
+
+    /// <summary>The culture name</summary>
+    public string CultureName => Configuration.CultureName;
 
     /// <summary>The regulation date</summary>
     public DateTime PeriodDate => Configuration.PeriodDate;
@@ -26,13 +29,14 @@ public class ScriptingCalendar
 
     /// <summary>Initializes a new instance of the <see cref="ScriptingCalendar"/> class</summary>
     /// <param name="configuration">The scripting configuration</param>
-    /// <param name="payrollCalendar">The payroll calendar</param>
+    /// <param name="tenantCalendar">The payroll calendar</param>
     /// <param name="language">The language</param>
-    public ScriptingCalendar(ScriptingConfiguration configuration, PayrollCalendar payrollCalendar,
+    public ScriptingCalendar(ScriptingConfiguration configuration, string tenantCalendar,
         Language? language = null)
     {
         Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-        PayrollCalendar = payrollCalendar ?? throw new ArgumentNullException(nameof(payrollCalendar));
+        // fallback to tenant calendar
+        CalendarName = Configuration.CalendarName ?? tenantCalendar;
         Language = language ?? default;
     }
 

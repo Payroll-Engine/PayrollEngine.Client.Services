@@ -493,10 +493,6 @@
         <member name="M:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.NewScriptingCalendar">
             <summary>New scripting calendar using the tenant calendar</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.NewScriptingCalendar(PayrollEngine.CalendarConfiguration)">
-            <summary>New scripting calendar</summary>
-            <param name="calendarConfiguration">The calendar configuration</param>
-        </member>
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.QueryInvoker">
             <summary>Query invoker</summary>
         </member>
@@ -809,7 +805,7 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseAvailableRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.Case,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseAvailableRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
-            <param name="calendar">The calendar</param>
+            <param name="scriptCalendar">The calendar</param>
             <param name="tenantId">The tenant id</param>
             <param name="userId">The user id</param>
             <param name="payrollId">The payroll id</param>
@@ -1211,7 +1207,7 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.Case,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
-            <param name="calendar">The calendar</param>
+            <param name="scriptCalendar">The calendar</param>
             <param name="tenantId">The tenant id</param>
             <param name="userId">The user id</param>
             <param name="payrollId">The payroll id</param>
@@ -1426,7 +1422,10 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.RegulationService">
             <summary>The regulation service</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Calendar">
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.CalendarService">
+            <summary>The calendar service</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.ScriptCalendar">
             <summary>The calendar</summary>
         </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Language">
@@ -1435,7 +1434,7 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
-            <param name="calendar">The calendar</param>
+            <param name="scriptCalendar">The calendar</param>
             <param name="tenantId">The tenant id</param>
             <param name="userId">The user id</param>
             <param name="payrollId">The payroll id</param>
@@ -1444,7 +1443,16 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.EmployeeId">
             <inheritdoc />
         </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Employee">
+            <summary>The employee</summary>
+        </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.EmployeeIdentifier">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.EmployeeCulture">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.EmployeeCalendar">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetEmployeeAttribute(System.String)">
@@ -1964,6 +1972,9 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.WageTypeDescription">
             <inheritdoc />
         </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.WageTypeCalendar">
+            <inheritdoc />
+        </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntime.Collectors">
             <inheritdoc />
         </member>
@@ -2030,14 +2041,22 @@
         <member name="T:PayrollEngine.Client.Scripting.MonthPayrollPeriod">
             <summary>Payroll month period, implements the <see cref="T:PayrollEngine.IPayrollPeriod" /></summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.MonthPayrollPeriod.Calendar">
-            <summary>The payroll calendar</summary>
+        <member name="P:PayrollEngine.Client.Scripting.MonthPayrollPeriod.Culture">
+            <summary>
+            The culture
+            </summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.MonthPayrollPeriod.#ctor(PayrollEngine.IPayrollCalendar,System.DateTime)">
+        <member name="P:PayrollEngine.Client.Scripting.MonthPayrollPeriod.Calendar">
+            <summary>
+            The date calendar
+            </summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.MonthPayrollPeriod.#ctor(System.Globalization.CultureInfo,PayrollEngine.Client.Model.Calendar,System.DateTime)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.MonthPayrollPeriod.#ctor(PayrollEngine.IPayrollCalendar,System.Int32,System.Int32)">
+        <member name="M:PayrollEngine.Client.Scripting.MonthPayrollPeriod.#ctor(System.Globalization.CultureInfo,PayrollEngine.Client.Model.Calendar,System.Int32,System.Int32)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.MonthPayrollPeriod"/> class</summary>
+            <param name="culture">The culture</param>
             <param name="calendar">The calendar</param>
             <param name="year">The year</param>
             <param name="month">The month</param>
@@ -2064,11 +2083,14 @@
         <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.Configuration">
             <summary>The scripting configuration</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.PayrollCalendar">
+        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.CalendarName">
             <summary>The payroll calendar</summary>
         </member>
         <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.Language">
             <summary>The language</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.CultureName">
+            <summary>The culture name</summary>
         </member>
         <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.PeriodDate">
             <summary>The regulation date</summary>
@@ -2079,62 +2101,37 @@
         <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.RegulationDate">
             <summary>The regulation date</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.ScriptingCalendar.#ctor(PayrollEngine.Client.ScriptingConfiguration,PayrollEngine.PayrollCalendar,System.Nullable{PayrollEngine.Client.Scripting.Language})">
+        <member name="M:PayrollEngine.Client.Scripting.ScriptingCalendar.#ctor(PayrollEngine.Client.ScriptingConfiguration,System.String,System.Nullable{PayrollEngine.Client.Scripting.Language})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.ScriptingCalendar"/> class</summary>
             <param name="configuration">The scripting configuration</param>
-            <param name="payrollCalendar">The payroll calendar</param>
+            <param name="tenantCalendar">The payroll calendar</param>
             <param name="language">The language</param>
         </member>
         <member name="M:PayrollEngine.Client.Scripting.ScriptingCalendar.ToString">
             <summary>Returns a string that represents this instance</summary>
         </member>
-        <member name="T:PayrollEngine.Client.Scripting.WeekPayrollCycle">
-            <summary>Payroll cycle for week periods, implements the <see cref="T:PayrollEngine.IPayrollPeriod" /></summary>
-        </member>
-        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.Calendar">
-            <summary>The payroll calendar</summary>
-        </member>
-        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.WeekOfYear">
-            <summary>Gets the week of year</summary>
-        </member>
-        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollCycle.#ctor(PayrollEngine.IPayrollCalendar,System.Int32,System.Int32,System.Int32)">
-            <inheritdoc />
-        </member>
-        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollCycle.#ctor(PayrollEngine.IPayrollCalendar,System.DateTime)">
-            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.WeekPayrollCycle"/> class</summary>
-            <param name="calendar">The calendar</param>
-            <param name="moment">The moment</param>
-        </member>
-        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.Start">
-            <inheritdoc />
-        </member>
-        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.End">
-            <inheritdoc />
-        </member>
-        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.Name">
-            <inheritdoc />
-        </member>
-        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollCycle.GetPayrollPeriod(System.DateTime,System.Int32)">
-            <inheritdoc />
-        </member>
-        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollCycle.ToString">
-            <summary>Returns a <see cref="T:System.String" /> that represents this instance</summary>
-            <returns>A <see cref="T:System.String" /> that represents this instance</returns>
-        </member>
         <member name="T:PayrollEngine.Client.Scripting.WeekPayrollPeriod">
             <summary>Payroll week period, implements the <see cref="T:PayrollEngine.IPayrollPeriod" /></summary>
         </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollPeriod.Culture">
+            <summary>
+            The culture
+            </summary>
+        </member>
         <member name="P:PayrollEngine.Client.Scripting.WeekPayrollPeriod.Calendar">
-            <summary>The payroll calendar</summary>
+            <summary>
+            The date calendar
+            </summary>
         </member>
         <member name="P:PayrollEngine.Client.Scripting.WeekPayrollPeriod.WeekOfYear">
             <summary>Gets the week of year</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollPeriod.#ctor(PayrollEngine.IPayrollCalendar,System.Int32,System.Int32,System.Int32)">
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollPeriod.#ctor(System.Globalization.CultureInfo,PayrollEngine.Client.Model.Calendar,System.Int32,System.Int32,System.Int32)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollPeriod.#ctor(PayrollEngine.IPayrollCalendar,System.DateTime)">
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollPeriod.#ctor(System.Globalization.CultureInfo,PayrollEngine.Client.Model.Calendar,System.DateTime)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.WeekPayrollPeriod"/> class</summary>
+            <param name="culture">The culture</param>
             <param name="calendar">The calendar</param>
             <param name="moment">The moment</param>
         </member>
@@ -2157,14 +2154,18 @@
         <member name="T:PayrollEngine.Client.Scripting.YearPayrollCycle">
             <summary>Payroll year cycle, implements the <see cref="T:PayrollEngine.IPayrollPeriod" /></summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.YearPayrollCycle.Calendar">
-            <summary>The payroll calendar</summary>
+        <member name="P:PayrollEngine.Client.Scripting.YearPayrollCycle.Culture">
+            <summary>The culture</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.YearPayrollCycle.#ctor(PayrollEngine.IPayrollCalendar,System.DateTime)">
+        <member name="P:PayrollEngine.Client.Scripting.YearPayrollCycle.Calendar">
+            <summary>The date calendar</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.YearPayrollCycle.#ctor(System.Globalization.CultureInfo,PayrollEngine.Client.Model.Calendar,System.DateTime)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.YearPayrollCycle.#ctor(PayrollEngine.IPayrollCalendar,System.Int32,System.Int32)">
+        <member name="M:PayrollEngine.Client.Scripting.YearPayrollCycle.#ctor(System.Globalization.CultureInfo,PayrollEngine.Client.Model.Calendar,System.Int32,System.Int32)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.YearPayrollCycle"/> class</summary>
+            <param name="culture">The culture</param>
             <param name="calendar">The calendar</param>
             <param name="year">The year</param>
             <param name="month">The month</param>
@@ -2187,6 +2188,12 @@
         </member>
         <member name="T:PayrollEngine.Client.ScriptingConfiguration">
             <summary>The Payroll scripting configuration</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.ScriptingConfiguration.CultureName">
+            <summary>The culture name</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.ScriptingConfiguration.CalendarName">
+            <summary>The calendar name</summary>
         </member>
         <member name="P:PayrollEngine.Client.ScriptingConfiguration.EvaluationDate">
             <summary>The evaluation date</summary>

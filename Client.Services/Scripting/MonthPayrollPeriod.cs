@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using Calendar = PayrollEngine.Client.Model.Calendar;
 
 namespace PayrollEngine.Client.Scripting;
 
@@ -7,25 +9,37 @@ public class MonthPayrollPeriod : IPayrollPeriod
 {
     private DatePeriod Period { get; }
 
-    /// <summary>The payroll calendar</summary>
-    public IPayrollCalendar Calendar { get; }
+
+    /// <summary>
+    /// The culture
+    /// </summary>
+    public CultureInfo Culture { get; }
+
+    /// <summary>
+    /// The date calendar
+    /// </summary>
+    public Calendar Calendar { get; }
 
     /// <inheritdoc />
-    public MonthPayrollPeriod(IPayrollCalendar calendar, DateTime moment) :
-        this(calendar, moment.Year, moment.Month)
+    public MonthPayrollPeriod(CultureInfo culture, Calendar calendar, DateTime moment) :
+        this(culture, calendar, moment.Year, moment.Month)
     {
     }
 
     /// <summary>Initializes a new instance of the <see cref="MonthPayrollPeriod"/> class</summary>
+    /// <param name="culture">The culture</param>
     /// <param name="calendar">The calendar</param>
     /// <param name="year">The year</param>
     /// <param name="month">The month</param>
-    public MonthPayrollPeriod(IPayrollCalendar calendar, int year, int month)
+    public MonthPayrollPeriod(CultureInfo culture, Calendar calendar, int year, int month)
     {
+        Culture = culture ?? throw new ArgumentNullException(nameof(culture));
         Calendar = calendar ?? throw new ArgumentNullException(nameof(calendar));
+
+        // period
         Period = new(
-            new(year, month, 1, 0, 0, 0, 0, calendar.Calendar, DateTimeKind.Utc),
-            new DateTime(year, month, PayrollEngine.Date.DaysInMonth(year, month), 0, 0, 0, 0, calendar.Calendar, DateTimeKind.Utc).LastMomentOfDay());
+            new(year, month, 1, 0, 0, 0, 0, Culture.Calendar, DateTimeKind.Utc),
+            new DateTime(year, month, PayrollEngine.Date.DaysInMonth(year, month), 0, 0, 0, 0, Culture.Calendar, DateTimeKind.Utc).LastMomentOfDay());
     }
 
     #region IPayrollPeriod
@@ -39,12 +53,12 @@ public class MonthPayrollPeriod : IPayrollPeriod
     /// <inheritdoc />
     public virtual string Name =>
         // ReSharper disable once StringLiteralTypo
-        Period.Start.ToString("yyyy-MM", Calendar.Culture);
+        Period.Start.ToString("yyyy-MM", Culture);
 
     /// <inheritdoc />
     public virtual IPayrollPeriod GetPayrollPeriod(DateTime moment, int offset = 0) =>
-        offset == 0 ? new(Calendar, moment) :
-            new MonthPayrollPeriod(Calendar, moment.AddMonths(offset));
+        offset == 0 ? new(Culture, Calendar, moment) :
+            new MonthPayrollPeriod(Culture, Calendar, moment.AddMonths(offset));
 
     #endregion
 

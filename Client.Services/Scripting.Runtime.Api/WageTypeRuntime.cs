@@ -35,6 +35,11 @@ public abstract class WageTypeRuntime : PayrunRuntime, IWageTypeRuntime
         default;
 
     /// <inheritdoc />
+    public string WageTypeCalendar =>
+        // implementation
+        default;
+
+    /// <inheritdoc />
     public string[] Collectors =>
         // implementation
         default;
