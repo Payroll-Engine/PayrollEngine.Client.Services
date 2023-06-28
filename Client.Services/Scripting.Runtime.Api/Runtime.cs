@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Service;
 using PayrollEngine.Client.Service.Api;
@@ -34,6 +35,9 @@ public abstract class Runtime : IRuntime
         TenantService = new TenantService(httpClient);
         Tenant = TenantService.GetAsync<Tenant>(new(), tenantId).Result;
 
+        // culture by priority: Tenant > System
+        Culture = Tenant.Culture ?? CultureInfo.CurrentCulture.Name;
+
         // user
         if (userId <= 0)
         {
@@ -42,6 +46,13 @@ public abstract class Runtime : IRuntime
         UserService = new UserService(httpClient);
         User = UserService.GetAsync<User>(new(tenantId), userId).Result;
     }
+
+    #region Culture
+
+    /// <inheritdoc />
+    public virtual string Culture { get; }
+
+    #endregion
 
     #region Tenant
 
@@ -67,9 +78,6 @@ public abstract class Runtime : IRuntime
 
     /// <inheritdoc />
     public int UserId => User.Id;
-
-    /// <inheritdoc />
-    public int UserLanguage => (int)User.Language;
 
     /// <inheritdoc />
     public string UserIdentifier => User.Identifier;

@@ -148,7 +148,7 @@ public class QueryInvoker
             foreach (var query in report.Queries)
             {
                 // execute report query
-                var dataTable = await service.ExecuteReportQueryAsync(tenantId, query.Value, reportRequest.Language,
+                var dataTable = await service.ExecuteReportQueryAsync(tenantId, query.Value, reportRequest.Culture,
                     reportRequest.Parameters);
                 if (dataTable != null)
                 {

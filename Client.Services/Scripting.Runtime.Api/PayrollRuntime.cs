@@ -28,8 +28,9 @@ public abstract class PayrollRuntime : Runtime, IPayrollRuntime
     /// <summary>The calendar</summary>
     public ScriptingCalendar ScriptCalendar { get; }
 
-    /// <summary>The language</summary>
-    protected Language Language => ScriptCalendar.Language;
+    /// <summary>The culture by priority: script > tenant > system</summary>
+    public override string Culture => 
+        ScriptCalendar.Culture ?? base.Culture;
 
     /// <summary>Initializes a new instance of the <see cref="PayrollRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
@@ -423,31 +424,29 @@ public abstract class PayrollRuntime : Runtime, IPayrollRuntime
     #region Regulation Lookup
 
     /// <inheritdoc />
-    public virtual string GetLookup(string lookupName, string lookupKey, int? languageCode = null)
+    public virtual string GetLookup(string lookupName, string lookupKey, string culture = null)
     {
-        var language = languageCode.HasValue ? (PayrollEngine.Language)languageCode : default;
         var value = PayrollService.GetLookupValueDataAsync(new(TenantId, PayrollId),
             lookupName: lookupName,
             lookupKey: lookupKey,
             regulationDate: RegulationDate,
             evaluationDate: EvaluationDate,
-            language: language).Result;
+            culture: culture).Result;
         var result = value?.Value;
         return result;
     }
 
     /// <inheritdoc />
     public virtual string GetRangeLookup(string lookupName, decimal rangeValue,
-        string lookupKey = null, int? languageCode = null)
+        string lookupKey = null, string culture = null)
     {
-        var language = languageCode.HasValue ? (PayrollEngine.Language)languageCode : default;
         var value = PayrollService.GetLookupValueDataAsync(new(TenantId, PayrollId),
             lookupName: lookupName,
             lookupKey: lookupKey,
             rangeValue: rangeValue,
             regulationDate: RegulationDate,
             evaluationDate: EvaluationDate,
-            language: language).Result;
+            culture: culture).Result;
         return value?.Value;
     }
 

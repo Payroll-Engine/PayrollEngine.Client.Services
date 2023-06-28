@@ -89,7 +89,7 @@ public class ReportStartController<TFunc> : ReportFunctionController<TFunc, Repo
         // execute all queries
         foreach (var query in report.Queries)
         {
-            var dataTable = runtime.ExecuteQuery(query.Key, query.Value, (int)reportRequest.Language, parameters);
+            var dataTable = runtime.ExecuteQuery(query.Key, query.Value, reportRequest.Culture, parameters);
             if (dataTable != null)
             {
                 dataSet.Tables.Add(dataTable);

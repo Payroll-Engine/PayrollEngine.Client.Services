@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text.Json;
 using PayrollEngine.Client.Model;
@@ -38,8 +39,9 @@ public abstract class ReportRuntime : Runtime, IReportRuntime
     /// <inheritdoc />
     public string ReportName => Report.Name;
 
-    /// <inheritdoc />
-    public Language Language => (Language)ReportRequest.Language;
+    /// <summary>The culture by priority: report request > tenant > system</summary>
+    public override string Culture =>
+        ReportRequest.Culture ?? base.Culture;
 
     /// <inheritdoc />
     public object GetReportAttribute(string attributeName) =>
@@ -136,7 +138,7 @@ public abstract class ReportRuntime : Runtime, IReportRuntime
     #region Execute Query
 
     /// <inheritdoc />
-    public virtual DataTable ExecuteQuery(string tableName, string methodName, int language, Dictionary<string, string> parameters)
+    public virtual DataTable ExecuteQuery(string tableName, string methodName, string culture, Dictionary<string, string> parameters)
     {
         if (string.IsNullOrWhiteSpace(tableName))
         {
@@ -147,17 +149,13 @@ public abstract class ReportRuntime : Runtime, IReportRuntime
             throw new ArgumentException(nameof(methodName));
         }
 
-        // language
-        if (!Enum.IsDefined((Language)language))
-        {
-            throw new PayrollException($"Invalid language code: {language}");
-        }
+        // culture
+        culture ??= CultureInfo.CurrentCulture.Name;
 
         try
         {
             // report query
-            var payrollDataTable = TenantService.ExecuteReportQueryAsync(TenantId, methodName,
-                (PayrollEngine.Language)language, parameters).Result;
+            var payrollDataTable = TenantService.ExecuteReportQueryAsync(TenantId, methodName, culture, parameters).Result;
             if (payrollDataTable == null)
             {
                 return null;
@@ -210,7 +208,7 @@ public abstract class ReportRuntime : Runtime, IReportRuntime
         foreach (var lookupValue in lookupValues)
         {
             // localized lookup json value
-            var value = Language.GetLocalization(lookupValue.ValueLocalizations, lookupValue.Value);
+            var value = Culture.GetLocalization(lookupValue.ValueLocalizations, lookupValue.Value);
             if (string.IsNullOrWhiteSpace(value))
             {
                 continue;

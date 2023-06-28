@@ -88,7 +88,7 @@ public abstract class ReportFunctionController<TFunc, TFuncAttribute, TScriptAtt
         var request = new ReportRequest
         {
             UserId = User.Id,
-            Language = (PayrollEngine.Language)scriptAttribute.Language,
+            Culture = scriptAttribute.Culture,
             Parameters = scriptAttribute.Parameters
         };
 

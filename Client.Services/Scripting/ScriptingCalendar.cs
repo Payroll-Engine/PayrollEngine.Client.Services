@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 
 namespace PayrollEngine.Client.Scripting;
@@ -12,8 +13,8 @@ public class ScriptingCalendar
     /// <summary>The payroll calendar</summary>
     public string CalendarName { get; }
 
-    /// <summary>The language</summary>
-    public Language Language { get; }
+    /// <summary>The culture</summary>
+    public string Culture { get; }
 
     /// <summary>The culture name</summary>
     public string CultureName => Configuration.CultureName;
@@ -30,14 +31,14 @@ public class ScriptingCalendar
     /// <summary>Initializes a new instance of the <see cref="ScriptingCalendar"/> class</summary>
     /// <param name="configuration">The scripting configuration</param>
     /// <param name="tenantCalendar">The payroll calendar</param>
-    /// <param name="language">The language</param>
+    /// <param name="culture">The culture</param>
     public ScriptingCalendar(ScriptingConfiguration configuration, string tenantCalendar,
-        Language? language = null)
+        string culture = null)
     {
         Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         // fallback to tenant calendar
         CalendarName = Configuration.CalendarName ?? tenantCalendar;
-        Language = language ?? default;
+        Culture = culture ?? CultureInfo.CurrentCulture.Name;
     }
 
     /// <summary>Returns a string that represents this instance</summary>

@@ -1428,8 +1428,8 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.ScriptCalendar">
             <summary>The calendar</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Language">
-            <summary>The language</summary>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Culture">
+            <summary>The culture by priority: script > tenant > system</summary>
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime"/> class</summary>
@@ -1512,10 +1512,10 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCasePeriodValues(System.DateTime,System.DateTime,System.String[])">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetLookup(System.String,System.String,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetLookup(System.String,System.String,System.String)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetRangeLookup(System.String,System.Decimal,System.String,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetRangeLookup(System.String,System.Decimal,System.String,System.String)">
             <inheritdoc />
         </member>
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeAvailableRuntime">
@@ -1754,10 +1754,10 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime.LogOwnerType">
             <summary>The log owner type</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime.ExecuteQuery(System.String,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean)">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime.ExecuteQuery(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime.ExecuteMergeQuery(System.String,System.String,System.Int32,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Int32)">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime.ExecuteMergeQuery(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.Int32)">
             <inheritdoc />
         </member>
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime">
@@ -1783,8 +1783,8 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ReportName">
             <inheritdoc />
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.Language">
-            <inheritdoc />
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.Culture">
+            <summary>The culture by priority: report request > tenant > system</summary>
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.GetReportAttribute(System.String)">
             <inheritdoc />
@@ -1805,7 +1805,7 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.GetParameterAttribute(System.String,System.String)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteQuery(System.String,System.String,System.Int32,System.Collections.Generic.Dictionary{System.String,System.String})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteQuery(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteLookupValueQuery(System.Int32,System.String,System.String,System.String)">
@@ -1894,6 +1894,9 @@
             <param name="tenantId">The tenant id</param>
             <param name="userId">The user id</param>
         </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.Culture">
+            <inheritdoc />
+        </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.Tenant">
             <summary>The tenant</summary>
         </member>
@@ -1910,9 +1913,6 @@
             <summary>The user</summary>
         </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.UserId">
-            <inheritdoc />
-        </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.UserLanguage">
             <inheritdoc />
         </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.Runtime.UserIdentifier">
@@ -2086,8 +2086,8 @@
         <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.CalendarName">
             <summary>The payroll calendar</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.Language">
-            <summary>The language</summary>
+        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.Culture">
+            <summary>The culture</summary>
         </member>
         <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.CultureName">
             <summary>The culture name</summary>
@@ -2101,11 +2101,11 @@
         <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.RegulationDate">
             <summary>The regulation date</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.ScriptingCalendar.#ctor(PayrollEngine.Client.ScriptingConfiguration,System.String,System.Nullable{PayrollEngine.Client.Scripting.Language})">
+        <member name="M:PayrollEngine.Client.Scripting.ScriptingCalendar.#ctor(PayrollEngine.Client.ScriptingConfiguration,System.String,System.String)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.ScriptingCalendar"/> class</summary>
             <param name="configuration">The scripting configuration</param>
             <param name="tenantCalendar">The payroll calendar</param>
-            <param name="language">The language</param>
+            <param name="culture">The culture</param>
         </member>
         <member name="M:PayrollEngine.Client.Scripting.ScriptingCalendar.ToString">
             <summary>Returns a string that represents this instance</summary>

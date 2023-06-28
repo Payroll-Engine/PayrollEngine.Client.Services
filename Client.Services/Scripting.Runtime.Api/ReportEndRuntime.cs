@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Scripting.Function;
 
@@ -30,10 +31,10 @@ public class ReportEndRuntime : ReportRuntime, IReportEndRuntime
     protected override string LogOwnerType => nameof(ReportEndFunction);
 
     /// <inheritdoc />
-    public DataTable ExecuteQuery(string tableName, string methodName, int language,
+    public DataTable ExecuteQuery(string tableName, string methodName, string culture,
         Dictionary<string, string> parameters, bool resultQuery)
     {
-        var table = ExecuteQuery(tableName, methodName, language, parameters);
+        var table = ExecuteQuery(tableName, methodName, culture, parameters);
         if (resultQuery && table != null)
         {
             // result table
@@ -49,7 +50,7 @@ public class ReportEndRuntime : ReportRuntime, IReportEndRuntime
     }
 
     /// <inheritdoc />
-    public DataTable ExecuteMergeQuery(string tableName, string methodName, int language, string mergeColumn,
+    public DataTable ExecuteMergeQuery(string tableName, string methodName, string culture, string mergeColumn,
         Dictionary<string, string> parameters, int schemaChange)
     {
         if (string.IsNullOrWhiteSpace(tableName))
@@ -60,20 +61,17 @@ public class ReportEndRuntime : ReportRuntime, IReportEndRuntime
         {
             throw new ArgumentException(nameof(methodName));
         }
-        // language
-        if (!Enum.IsDefined((Language)language))
-        {
-            throw new PayrollException($"Invalid language code: {language}");
-        }
         // schema change
         if (!Enum.IsDefined((DataMergeSchemaChange)schemaChange))
         {
             throw new PayrollException($"Invalid schema change: {schemaChange}");
         }
 
+        // culture
+        culture ??= CultureInfo.CurrentCulture.Name;
+
         // report query
-        var queryTable = TenantService.ExecuteReportQueryAsync(TenantId, methodName,
-            (PayrollEngine.Language)language, parameters).Result;
+        var queryTable = TenantService.ExecuteReportQueryAsync(TenantId, methodName, culture, parameters).Result;
         if (queryTable == null)
         {
             if (!DataSet.Tables.Contains(tableName))
