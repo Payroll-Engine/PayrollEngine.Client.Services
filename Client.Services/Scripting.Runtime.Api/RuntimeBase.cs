@@ -8,7 +8,7 @@ using PayrollEngine.Client.Service.Api;
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the function</summary>
-public abstract class Runtime : IRuntime
+public abstract class RuntimeBase : IRuntime
 {
     /// <summary>The Payroll http client</summary>
     public PayrollHttpClient HttpClient { get; }
@@ -19,11 +19,11 @@ public abstract class Runtime : IRuntime
     /// <summary>The user service</summary>
     protected IUserService UserService { get; }
 
-    /// <summary>Initializes a new instance of the <see cref="Runtime"/> class</summary>
+    /// <summary>Initializes a new instance of the <see cref="RuntimeBase"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
     /// <param name="tenantId">The tenant id</param>
     /// <param name="userId">The user id</param>
-    protected Runtime(PayrollHttpClient httpClient, int tenantId, int userId)
+    protected RuntimeBase(PayrollHttpClient httpClient, int tenantId, int userId)
     {
         HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 

@@ -7,7 +7,7 @@ using PayrollEngine.Client.Scripting.Function;
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the case validate function</summary>
-public class CaseValidateRuntime : CaseChangeRuntime, ICaseValidateRuntime
+public class CaseValidateRuntime : CaseChangeRuntimeBase, ICaseValidateRuntime
 {
     /// <summary>The validation issues</summary>
     public List<CaseValidationIssue> Issues { get; } = new();

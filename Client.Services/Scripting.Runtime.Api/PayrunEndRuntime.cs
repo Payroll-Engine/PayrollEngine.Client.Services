@@ -4,7 +4,7 @@ using PayrollEngine.Client.Scripting.Function;
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the payrun employee available function</summary>
-public class PayrunEndRuntime : PayrunRuntime, IPayrunEndRuntime
+public class PayrunEndRuntime : PayrunRuntimeBase, IPayrunEndRuntime
 {
     /// <summary>Initializes a new instance of the <see cref="PayrunEndRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>

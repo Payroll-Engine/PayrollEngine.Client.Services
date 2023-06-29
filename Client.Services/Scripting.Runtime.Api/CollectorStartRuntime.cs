@@ -3,7 +3,7 @@
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the collector start function</summary>
-public class CollectorStartRuntime : CollectorRuntime, ICollectorStartRuntime
+public class CollectorStartRuntime : CollectorRuntimeBase, ICollectorStartRuntime
 {
     /// <summary>Initializes a new instance of the <see cref="CollectorStartRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>

@@ -5,7 +5,7 @@ using PayrollEngine.Client.Scripting.Function;
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the case build function</summary>
-public class CaseBuildRuntime : CaseChangeRuntime, ICaseBuildRuntime
+public class CaseBuildRuntime : CaseChangeRuntimeBase, ICaseBuildRuntime
 {
     /// <summary>Initializes a new instance of the <see cref="CaseBuildRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>

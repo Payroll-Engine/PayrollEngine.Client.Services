@@ -5,7 +5,7 @@ using System;
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the case available function</summary>
-public class CaseAvailableRuntime : CaseRuntime, ICaseAvailableRuntime
+public class CaseAvailableRuntime : CaseRuntimeBase, ICaseAvailableRuntime
 {
     /// <summary>Initializes a new instance of the <see cref="CaseAvailableRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>

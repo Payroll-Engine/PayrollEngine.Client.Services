@@ -4,16 +4,16 @@ using System.Collections.Generic;
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the collector function</summary>
-public abstract class CollectorRuntime : PayrunRuntime, ICollectorRuntime
+public abstract class CollectorRuntimeBase : PayrunRuntimeBase, ICollectorRuntime
 {
-    /// <summary>Initializes a new instance of the <see cref="CollectorRuntime"/> class</summary>
+    /// <summary>Initializes a new instance of the <see cref="CollectorRuntimeBase"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
     /// <param name="calendar">The calendar</param>
     /// <param name="tenantId">The tenant id</param>
     /// <param name="userId">The user id</param>
     /// <param name="payrollId">The payroll id</param>
     /// <param name="employeeId">The employee id</param>
-    protected CollectorRuntime(PayrollHttpClient httpClient, ScriptingCalendar calendar, int tenantId,
+    protected CollectorRuntimeBase(PayrollHttpClient httpClient, ScriptingCalendar calendar, int tenantId,
         int userId, int payrollId, int? employeeId = null) :
         base(httpClient, calendar, tenantId, userId, payrollId, employeeId)
     {

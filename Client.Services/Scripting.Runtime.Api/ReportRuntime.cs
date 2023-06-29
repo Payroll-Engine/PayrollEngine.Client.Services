@@ -11,7 +11,7 @@ using PayrollEngine.Client.Service.Api;
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the payroll report function</summary>
-public abstract class ReportRuntime : Runtime, IReportRuntime
+public abstract class ReportRuntime : RuntimeBase, IReportRuntime
 {
     /// <summary>The report</summary>
     protected ReportSet Report { get; }

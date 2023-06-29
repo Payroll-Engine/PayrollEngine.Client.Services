@@ -11,7 +11,7 @@ using CultureInfo = System.Globalization.CultureInfo;
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the payroll function</summary>
-public abstract class PayrollRuntime : Runtime, IPayrollRuntime
+public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
 {
     /// <summary>The employee service</summary>
     protected IEmployeeService EmployeeService { get; }

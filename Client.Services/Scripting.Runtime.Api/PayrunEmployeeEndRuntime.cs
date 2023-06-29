@@ -3,7 +3,7 @@
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the payrun employee end function</summary>
-public class PayrunEmployeeEndRuntime : PayrunRuntime, IPayrunEmployeeEndRuntime
+public class PayrunEmployeeEndRuntime : PayrunRuntimeBase, IPayrunEmployeeEndRuntime
 {
     /// <summary>Initializes a new instance of the <see cref="PayrunEmployeeEndRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>

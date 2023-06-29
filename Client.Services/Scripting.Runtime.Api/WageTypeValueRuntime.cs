@@ -3,7 +3,7 @@
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the wage type value function</summary>
-public class WageTypeValueRuntime : WageTypeRuntime, IWageTypeValueRuntime
+public class WageTypeValueRuntime : WageTypeRuntimeBase, IWageTypeValueRuntime
 {
     /// <summary>Initializes a new instance of the <see cref="WageTypeValueRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>

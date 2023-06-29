@@ -3,7 +3,7 @@
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the collector end function</summary>
-public class CollectorEndRuntime : CollectorRuntime, ICollectorEndRuntime
+public class CollectorEndRuntime : CollectorRuntimeBase, ICollectorEndRuntime
 {
     /// <summary>Initializes a new instance of the <see cref="CollectorEndRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>

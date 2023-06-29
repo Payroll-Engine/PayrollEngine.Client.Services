@@ -6,12 +6,12 @@ using PayrollEngine.Client.Service.Api;
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the case change function</summary>
-public abstract class CaseChangeRuntime : CaseRuntime, ICaseChangeRuntime
+public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntime
 {
     /// <summary>The case set</summary>
     protected new CaseSet Case => (CaseSet)base.Case;
 
-    /// <summary>Initializes a new instance of the <see cref="CaseChangeRuntime"/> class</summary>
+    /// <summary>Initializes a new instance of the <see cref="CaseChangeRuntimeBase"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
     /// <param name="calendar">The calendar</param>
     /// <param name="tenantId">The tenant id</param>
@@ -19,7 +19,7 @@ public abstract class CaseChangeRuntime : CaseRuntime, ICaseChangeRuntime
     /// <param name="payrollId">The payroll id</param>
     /// <param name="caseSet">The runtime case set</param>
     /// <param name="employeeId">The employee id</param>
-    protected CaseChangeRuntime(PayrollHttpClient httpClient, ScriptingCalendar calendar, int tenantId,
+    protected CaseChangeRuntimeBase(PayrollHttpClient httpClient, ScriptingCalendar calendar, int tenantId,
         int userId, int payrollId, CaseSet caseSet, int? employeeId = null) :
         base(httpClient, calendar, tenantId, userId, payrollId, caseSet, employeeId)
     {

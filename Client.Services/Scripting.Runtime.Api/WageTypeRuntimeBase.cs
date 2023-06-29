@@ -4,16 +4,16 @@ using System.Collections.Generic;
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
 /// <summary>Runtime for the wage type function</summary>
-public abstract class WageTypeRuntime : PayrunRuntime, IWageTypeRuntime
+public abstract class WageTypeRuntimeBase : PayrunRuntimeBase, IWageTypeRuntime
 {
-    /// <summary>Initializes a new instance of the <see cref="WageTypeRuntime"/> class</summary>
+    /// <summary>Initializes a new instance of the <see cref="WageTypeRuntimeBase"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
     /// <param name="calendar">The calendar</param>
     /// <param name="tenantId">The tenant id</param>
     /// <param name="userId">The user id</param>
     /// <param name="payrollId">The payroll id</param>
     /// <param name="employeeId">The employee id</param>
-    protected WageTypeRuntime(PayrollHttpClient httpClient, ScriptingCalendar calendar, int tenantId,
+    protected WageTypeRuntimeBase(PayrollHttpClient httpClient, ScriptingCalendar calendar, int tenantId,
         int userId, int payrollId, int? employeeId = null) :
         base(httpClient, calendar, tenantId, userId, payrollId, employeeId)
     {
