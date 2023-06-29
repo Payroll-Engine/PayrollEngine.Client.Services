@@ -160,17 +160,6 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
         }
     }
 
-    private int? payrollCountry;
-    /// <inheritdoc />
-    public int PayrollCountry
-    {
-        get
-        {
-            payrollCountry ??= Payroll.Country;
-            return payrollCountry.Value;
-        }
-    }
-
     #endregion
 
     #region Calendar

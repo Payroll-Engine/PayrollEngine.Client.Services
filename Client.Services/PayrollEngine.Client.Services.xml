@@ -1464,9 +1464,6 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Payroll">
             <summary>The payroll</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.PayrollCountry">
-            <inheritdoc />
-        </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Cycle">
             <summary>The payroll cycle</summary>
         </member>
