@@ -9,12 +9,12 @@ public class FunctionInvokerBase
     public PayrollHttpClient HttpClient { get; }
 
     /// <summary>The scripting configuration</summary>
-    public ScriptingConfiguration Configuration { get; }
+    public ScriptConfiguration Configuration { get; }
 
     /// <summary>Invoker constructor</summary>
     /// <param name="httpClient">The Payroll http configuration</param>
     /// <param name="configuration">The scripting configuration</param>
-    protected FunctionInvokerBase(PayrollHttpClient httpClient, ScriptingConfiguration configuration)
+    protected FunctionInvokerBase(PayrollHttpClient httpClient, ScriptConfiguration configuration)
     {
         HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));

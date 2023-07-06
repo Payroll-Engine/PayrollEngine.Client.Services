@@ -9,7 +9,7 @@ public abstract class CaseChangeController<TFunc, TFuncAttribute, TScriptAttribu
     /// <summary>Initializes a new instance of the <see cref="CaseChangeController{TFunc, TFuncAttribute, TScriptAttribute}"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
     /// <param name="configuration">The scripting configuration</param>
-    protected CaseChangeController(PayrollHttpClient httpClient, ScriptingConfiguration configuration) :
+    protected CaseChangeController(PayrollHttpClient httpClient, ScriptConfiguration configuration) :
         base(httpClient, configuration)
     {
     }

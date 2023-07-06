@@ -20,7 +20,7 @@ public class CaseValidateRuntime : CaseChangeRuntimeBase, ICaseValidateRuntime
     /// <param name="payrollId">The payroll id</param>
     /// <param name="caseSet">The runtime case set</param>
     /// <param name="employeeId">The employee id</param>
-    public CaseValidateRuntime(PayrollHttpClient httpClient, ScriptingCalendar calendar, int tenantId,
+    public CaseValidateRuntime(PayrollHttpClient httpClient, ScriptCalendar calendar, int tenantId,
         int userId, int payrollId, CaseSet caseSet, int? employeeId = null) :
         base(httpClient, calendar, tenantId, userId, payrollId, caseSet, employeeId)
     {

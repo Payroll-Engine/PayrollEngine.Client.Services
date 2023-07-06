@@ -35,9 +35,6 @@ public abstract class RuntimeBase : IRuntime
         TenantService = new TenantService(httpClient);
         Tenant = TenantService.GetAsync<Tenant>(new(), tenantId).Result;
 
-        // culture by priority: Tenant > System
-        Culture = Tenant.Culture ?? CultureInfo.CurrentCulture.Name;
-
         // user
         if (userId <= 0)
         {
@@ -45,12 +42,15 @@ public abstract class RuntimeBase : IRuntime
         }
         UserService = new UserService(httpClient);
         User = UserService.GetAsync<User>(new(tenantId), userId).Result;
+
+        // user culture by priority: user >  system
+        UserCulture = User.Culture ?? CultureInfo.CurrentCulture.Name;
     }
 
     #region Culture
 
     /// <inheritdoc />
-    public virtual string Culture { get; }
+    public virtual string UserCulture { get; }
 
     #endregion
 

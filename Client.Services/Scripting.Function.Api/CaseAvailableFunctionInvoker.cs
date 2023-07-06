@@ -10,7 +10,7 @@ public class CaseAvailableFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <summary>Invoker constructor</summary>
     /// <param name="httpClient">The Payroll http configuration</param>
     /// <param name="configuration">The scripting configuration</param>
-    public CaseAvailableFunctionInvoker(PayrollHttpClient httpClient, ScriptingConfiguration configuration) :
+    public CaseAvailableFunctionInvoker(PayrollHttpClient httpClient, ScriptConfiguration configuration) :
         base(httpClient, configuration)
     {
     }
@@ -32,7 +32,7 @@ public class CaseAvailableFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <param name="caseName">Name of the case</param>
     /// <param name="configuration">The scripting configuration</param>
     /// <returns>The function result</returns>
-    public CaseAvailableFunctionResult Available(string caseName, ScriptingConfiguration configuration)
+    public CaseAvailableFunctionResult Available(string caseName, ScriptConfiguration configuration)
     {
         if (string.IsNullOrWhiteSpace(caseName))
         {
@@ -51,7 +51,7 @@ public class CaseAvailableFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <param name="case">The case to validate</param>
     /// <param name="configuration">The scripting configuration</param>
     /// <returns>The function result</returns>
-    public CaseAvailableFunctionResult Available(string caseName, Case @case, ScriptingConfiguration configuration)
+    public CaseAvailableFunctionResult Available(string caseName, Case @case, ScriptConfiguration configuration)
     {
         if (string.IsNullOrWhiteSpace(caseName))
         {

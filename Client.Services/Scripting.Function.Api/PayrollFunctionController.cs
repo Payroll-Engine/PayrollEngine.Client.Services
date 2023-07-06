@@ -14,12 +14,12 @@ public abstract class PayrollFunctionController<TFunc, TFuncAttribute, TScriptAt
     where TScriptAttribute : ScriptAttribute
 {
     /// <summary>The scripting configuration</summary>
-    public ScriptingConfiguration Configuration { get; }
+    public ScriptConfiguration Configuration { get; }
 
     /// <summary>Initializes a new instance of the <see cref="PayrollFunctionController{TFunc,TFuncAttribute,TScriptAttribute}"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
     /// <param name="configuration">The scripting configuration</param>
-    protected PayrollFunctionController(PayrollHttpClient httpClient, ScriptingConfiguration configuration) :
+    protected PayrollFunctionController(PayrollHttpClient httpClient, ScriptConfiguration configuration) :
         base(httpClient)
     {
         Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
@@ -104,10 +104,10 @@ public abstract class PayrollFunctionController<TFunc, TFuncAttribute, TScriptAt
     }
 
     /// <summary>New scripting calendar using the tenant calendar</summary>
-    protected ScriptingCalendar NewScriptingCalendar()
+    protected ScriptCalendar NewScriptingCalendar()
     {
         var calendarName = Tenant.Calendar;
-        var functionCalendar = new ScriptingCalendar(Configuration, calendarName);
+        var functionCalendar = new ScriptCalendar(Configuration, calendarName);
         return functionCalendar;
     }
 }

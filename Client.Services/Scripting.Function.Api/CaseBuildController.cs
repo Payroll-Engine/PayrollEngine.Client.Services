@@ -11,7 +11,7 @@ public class CaseBuildController<TFunc> : CaseChangeController<TFunc, CaseBuildF
     /// <summary>Initializes a new instance of the <see cref="CaseBuildController{T}"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
     /// <param name="configuration">The scripting configuration</param>
-    public CaseBuildController(PayrollHttpClient httpClient, ScriptingConfiguration configuration) :
+    public CaseBuildController(PayrollHttpClient httpClient, ScriptConfiguration configuration) :
         base(httpClient, configuration)
     {
     }

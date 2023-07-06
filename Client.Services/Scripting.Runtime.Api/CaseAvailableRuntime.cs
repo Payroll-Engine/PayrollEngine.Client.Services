@@ -15,7 +15,7 @@ public class CaseAvailableRuntime : CaseRuntimeBase, ICaseAvailableRuntime
     /// <param name="payrollId">The payroll id</param>
     /// <param name="case">The runtime case</param>
     /// <param name="employeeId">The employee id</param>
-    public CaseAvailableRuntime(PayrollHttpClient httpClient, ScriptingCalendar scriptCalendar, int tenantId,
+    public CaseAvailableRuntime(PayrollHttpClient httpClient, ScriptCalendar scriptCalendar, int tenantId,
         int userId, int payrollId, Case @case, int? employeeId = null) :
         base(httpClient, scriptCalendar, tenantId, userId, payrollId, @case, employeeId)
     {

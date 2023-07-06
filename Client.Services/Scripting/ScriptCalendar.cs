@@ -5,10 +5,10 @@ using System.Text;
 namespace PayrollEngine.Client.Scripting;
 
 /// <summary>Script calendar</summary>
-public class ScriptingCalendar
+public class ScriptCalendar
 {
     /// <summary>The scripting configuration</summary>
-    public ScriptingConfiguration Configuration { get; }
+    public ScriptConfiguration Configuration { get; }
 
     /// <summary>The payroll calendar</summary>
     public string CalendarName { get; }
@@ -28,11 +28,11 @@ public class ScriptingCalendar
     /// <summary>The regulation date</summary>
     public DateTime RegulationDate => Configuration.RegulationDate;
 
-    /// <summary>Initializes a new instance of the <see cref="ScriptingCalendar"/> class</summary>
+    /// <summary>Initializes a new instance of the <see cref="ScriptCalendar"/> class</summary>
     /// <param name="configuration">The scripting configuration</param>
     /// <param name="tenantCalendar">The payroll calendar</param>
     /// <param name="culture">The culture</param>
-    public ScriptingCalendar(ScriptingConfiguration configuration, string tenantCalendar,
+    public ScriptCalendar(ScriptConfiguration configuration, string tenantCalendar,
         string culture = null)
     {
         Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));

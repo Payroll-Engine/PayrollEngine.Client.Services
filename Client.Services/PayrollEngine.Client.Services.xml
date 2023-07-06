@@ -27,10 +27,31 @@
             <param name="maxCount">Maximum result count</param>
             <returns>Payrun periods between this and the target moment, sorted from the oldest to the newest one</returns>
         </member>
+        <member name="T:PayrollEngine.Client.ScriptConfiguration">
+            <summary>The Payroll script configuration</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.ScriptConfiguration.CultureName">
+            <summary>The culture name</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.ScriptConfiguration.CalendarName">
+            <summary>The calendar name</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.ScriptConfiguration.EvaluationDate">
+            <summary>The evaluation date</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.ScriptConfiguration.PeriodDate">
+            <summary>The period date</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.ScriptConfiguration.RegulationDate">
+            <summary>The regulation date</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.ScriptConfiguration.ToString">
+            <summary>Returns a <see cref="T:System.String" /> that represents this instance</summary>
+        </member>
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableController`1">
             <summary>Case available function controller</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableController`1"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="configuration">The scripting configuration</param>
@@ -49,7 +70,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1">
             <summary>Case available function invoker</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Invoker constructor</summary>
             <param name="httpClient">The Payroll http configuration</param>
             <param name="configuration">The scripting configuration</param>
@@ -65,13 +86,13 @@
             <param name="case">The case to validate</param>
             <returns>The function result</returns>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1.Available(System.String,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1.Available(System.String,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Determines whether the existing case is available</summary>
             <param name="caseName">Name of the case</param>
             <param name="configuration">The scripting configuration</param>
             <returns>The function result</returns>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1.Available(System.String,PayrollEngine.Client.Model.Case,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseAvailableFunctionInvoker`1.Available(System.String,PayrollEngine.Client.Model.Case,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Determines whether the existing case is available</summary>
             <param name="caseName">Name of the case</param>
             <param name="case">The case to validate</param>
@@ -93,7 +114,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseBuildController`1">
             <summary>Case build function controller</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseBuildController`1"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="configuration">The scripting configuration</param>
@@ -111,7 +132,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1">
             <summary>Case build function invoker</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Invoker constructor</summary>
             <param name="httpClient">The Payroll http configuration</param>
             <param name="configuration">The scripting configuration</param>
@@ -126,13 +147,13 @@
             <param name="caseSet">The case set</param>
             <returns>The function result</returns>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1.Build(System.String,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1.Build(System.String,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Build a case</summary>
             <param name="caseName">Name of the case</param>
             <param name="configuration">The scripting configuration</param>
             <returns>The function result</returns>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1.Build(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseBuildFunctionInvoker`1.Build(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Build a case</summary>
             <param name="caseSet">The case set</param>
             <param name="configuration">The scripting configuration</param>
@@ -153,7 +174,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseChangeController`3">
             <summary>Case change function controller</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseChangeController`3.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseChangeController`3.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseChangeController`3"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="configuration">The scripting configuration</param>
@@ -161,7 +182,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseController`3">
             <summary>Case function controller</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseController`3.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseController`3.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseController`3"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="configuration">The scripting configuration</param>
@@ -184,7 +205,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildController`1">
             <summary>Case relation build function controller</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildController`1"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="configuration">The scripting configuration</param>
@@ -204,7 +225,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1">
             <summary>Case relation build function invoker</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Invoker constructor</summary>
             <param name="httpClient">The Payroll http configuration</param>
             <param name="configuration">The scripting configuration</param>
@@ -221,14 +242,14 @@
             <param name="targetCaseSet">The target case set</param>
             <returns>The function result</returns>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1.Build(System.String,System.String,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1.Build(System.String,System.String,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Build a case relation</summary>
             <param name="sourceCaseName">The source case name</param>
             <param name="targetCaseName">The target case name</param>
             <param name="configuration">The scripting configuration</param>
             <returns>The function result</returns>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1.Build(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationBuildFunctionInvoker`1.Build(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Build a case relation</summary>
             <param name="sourceCaseSet">The source case set</param>
             <param name="targetCaseSet">The target case set</param>
@@ -253,7 +274,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationController`3">
             <summary>Case relation function controller</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationController`3.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationController`3.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationController`3"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="configuration">The scripting configuration</param>
@@ -271,7 +292,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateController`1">
             <summary>Case build validate controller</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateController`1"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="configuration">The scripting configuration</param>
@@ -291,7 +312,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1">
             <summary>Case relation validate function invoker</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Invoker constructor</summary>
             <param name="httpClient">The Payroll http configuration</param>
             <param name="configuration">The scripting configuration</param>
@@ -308,14 +329,14 @@
             <param name="targetCaseSet">The target case set</param>
             <returns>The function result</returns>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1.Validate(System.String,System.String,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1.Validate(System.String,System.String,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Validate a case relation</summary>
             <param name="sourceCaseName">The source case name</param>
             <param name="targetCaseName">The target case name</param>
             <param name="configuration">The scripting configuration</param>
             <returns>The function result</returns>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1.Validate(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseRelationValidateFunctionInvoker`1.Validate(PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Validate a case relation</summary>
             <param name="sourceCaseSet">The source case set</param>
             <param name="targetCaseSet">The target case set</param>
@@ -343,7 +364,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseValidateController`1">
             <summary>Case validate function controller</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateController`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseValidateController`1"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="configuration">The scripting configuration</param>
@@ -362,7 +383,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1">
             <summary>Case validate function invoker</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Invoker constructor</summary>
             <param name="httpClient">The Payroll http configuration</param>
             <param name="configuration">The scripting configuration</param>
@@ -378,13 +399,13 @@
             <param name="caseSet">The case set</param>
             <returns>The function result</returns>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1.Validate(System.String,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1.Validate(System.String,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Determines whether the existing case is valid</summary>
             <param name="caseName">Name of the case</param>
             <param name="configuration">The scripting configuration</param>
             <returns>The function result</returns>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1.Validate(System.String,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseValidateFunctionInvoker`1.Validate(System.String,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Determines whether the existing case is valid</summary>
             <param name="caseName">Name of the case</param>
             <param name="caseSet">The case set</param>
@@ -444,7 +465,7 @@
         <member name="P:PayrollEngine.Client.Scripting.Function.Api.FunctionInvokerBase.Configuration">
             <summary>The scripting configuration</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.FunctionInvokerBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.FunctionInvokerBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Invoker constructor</summary>
             <param name="httpClient">The Payroll http configuration</param>
             <param name="configuration">The scripting configuration</param>
@@ -473,7 +494,7 @@
         <member name="P:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.Configuration">
             <summary>The scripting configuration</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.PayrollFunctionController`3"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="configuration">The scripting configuration</param>
@@ -550,7 +571,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportBuildFunctionInvoker`1">
             <summary>Report build function invoker</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportBuildFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration)">
             <summary>Invoker constructor</summary>
             <param name="httpClient">The Payroll http configuration</param>
             <param name="configuration">The scripting configuration</param>
@@ -623,7 +644,7 @@
         <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionInvoker`1.ResultFileName">
             <summary>Result output file name</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration,System.String,System.String)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportEndFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration,System.String,System.String)">
             <summary>Invoker constructor</summary>
             <param name="httpClient">The Payroll http configuration</param>
             <param name="configuration">The scripting configuration</param>
@@ -757,7 +778,7 @@
         <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionInvoker`1.QueryFileName">
             <summary>Query output file name</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptingConfiguration,System.String)">
+        <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionInvoker`1.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.ScriptConfiguration,System.String)">
             <summary>Invoker constructor</summary>
             <param name="httpClient">The Payroll http configuration</param>
             <param name="configuration">The scripting configuration</param>
@@ -802,7 +823,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseAvailableRuntime">
             <summary>Runtime for the case available function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseAvailableRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.Case,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseAvailableRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.Case,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseAvailableRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="scriptCalendar">The calendar</param>
@@ -821,7 +842,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseBuildRuntime">
             <summary>Runtime for the case build function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseBuildRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseBuildRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseBuildRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -846,7 +867,7 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.Case">
             <summary>The case set</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -970,7 +991,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationBuildRuntime">
             <summary>Runtime for the case relation build function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationBuildRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationBuildRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationBuildRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -996,7 +1017,7 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntimeBase.TargetCaseSet">
             <summary>The target case set</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntimeBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntimeBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationRuntimeBase"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1172,7 +1193,7 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime.Issues">
             <summary>The validation issues</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRelationValidateRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1204,7 +1225,7 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntimeBase.Case">
             <summary>The case</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntimeBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.Case,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntimeBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.Case,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseRuntimeBase"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="scriptCalendar">The calendar</param>
@@ -1235,7 +1256,7 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime.Issues">
             <summary>The validation issues</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,PayrollEngine.Client.Model.CaseSet,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseValidateRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1266,7 +1287,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorApplyRuntime">
             <summary>Runtime for the collector apply function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorApplyRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorApplyRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorApplyRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1290,7 +1311,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorEndRuntime">
             <summary>Runtime for the collector end function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorEndRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorEndRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorEndRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1311,7 +1332,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase">
             <summary>Runtime for the collector function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1392,7 +1413,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorStartRuntime">
             <summary>Runtime for the collector start function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorStartRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorStartRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.CollectorStartRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1428,10 +1449,10 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.ScriptCalendar">
             <summary>The calendar</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Culture">
-            <summary>The culture by priority: script > tenant > system</summary>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.PayrollCulture">
+            <summary>The payroll culture by priority: script > tenant > system</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="scriptCalendar">The calendar</param>
@@ -1447,12 +1468,6 @@
             <summary>The employee</summary>
         </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.EmployeeIdentifier">
-            <inheritdoc />
-        </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.EmployeeCulture">
-            <inheritdoc />
-        </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.EmployeeCalendar">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetEmployeeAttribute(System.String)">
@@ -1518,7 +1533,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeAvailableRuntime">
             <summary>Runtime for the payrun employee available function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeAvailableRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeAvailableRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeAvailableRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1533,7 +1548,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeEndRuntime">
             <summary>Runtime for the payrun employee end function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeEndRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeEndRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeEndRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1548,7 +1563,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeStartRuntime">
             <summary>Runtime for the payrun employee start function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeStartRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeStartRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeStartRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1563,7 +1578,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEndRuntime">
             <summary>Runtime for the payrun employee available function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEndRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEndRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEndRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1587,7 +1602,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase">
             <summary>Runtime for the payrun function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1680,7 +1695,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunStartRuntime">
             <summary>Runtime for the payrun employee available function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunStartRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunStartRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunStartRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1695,7 +1710,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunWageTypeAvailableRuntime">
             <summary>Runtime for the payrun wage type available function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunWageTypeAvailableRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunWageTypeAvailableRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunWageTypeAvailableRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1780,7 +1795,7 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ReportName">
             <inheritdoc />
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.Culture">
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.UserCulture">
             <summary>The culture by priority: report request > tenant > system</summary>
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.GetReportAttribute(System.String)">
@@ -1891,7 +1906,7 @@
             <param name="tenantId">The tenant id</param>
             <param name="userId">The user id</param>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.Culture">
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.UserCulture">
             <inheritdoc />
         </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.Tenant">
@@ -1933,7 +1948,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeResultRuntime">
             <summary>Runtime for the wage type result function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeResultRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeResultRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeResultRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -1951,7 +1966,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase">
             <summary>Runtime for the wage type function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -2017,7 +2032,7 @@
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime">
             <summary>Runtime for the wage type value function</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptingCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,PayrollEngine.Client.Scripting.ScriptCalendar,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="calendar">The calendar</param>
@@ -2074,37 +2089,37 @@
             <summary>Returns a <see cref="T:System.String" /> that represents this instance</summary>
             <returns>A <see cref="T:System.String" /> that represents this instance</returns>
         </member>
-        <member name="T:PayrollEngine.Client.Scripting.ScriptingCalendar">
+        <member name="T:PayrollEngine.Client.Scripting.ScriptCalendar">
             <summary>Script calendar</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.Configuration">
+        <member name="P:PayrollEngine.Client.Scripting.ScriptCalendar.Configuration">
             <summary>The scripting configuration</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.CalendarName">
+        <member name="P:PayrollEngine.Client.Scripting.ScriptCalendar.CalendarName">
             <summary>The payroll calendar</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.Culture">
+        <member name="P:PayrollEngine.Client.Scripting.ScriptCalendar.Culture">
             <summary>The culture</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.CultureName">
+        <member name="P:PayrollEngine.Client.Scripting.ScriptCalendar.CultureName">
             <summary>The culture name</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.PeriodDate">
+        <member name="P:PayrollEngine.Client.Scripting.ScriptCalendar.PeriodDate">
             <summary>The regulation date</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.EvaluationDate">
+        <member name="P:PayrollEngine.Client.Scripting.ScriptCalendar.EvaluationDate">
             <summary>The evaluation date</summary>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.ScriptingCalendar.RegulationDate">
+        <member name="P:PayrollEngine.Client.Scripting.ScriptCalendar.RegulationDate">
             <summary>The regulation date</summary>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.ScriptingCalendar.#ctor(PayrollEngine.Client.ScriptingConfiguration,System.String,System.String)">
-            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.ScriptingCalendar"/> class</summary>
+        <member name="M:PayrollEngine.Client.Scripting.ScriptCalendar.#ctor(PayrollEngine.Client.ScriptConfiguration,System.String,System.String)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.ScriptCalendar"/> class</summary>
             <param name="configuration">The scripting configuration</param>
             <param name="tenantCalendar">The payroll calendar</param>
             <param name="culture">The culture</param>
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.ScriptingCalendar.ToString">
+        <member name="M:PayrollEngine.Client.Scripting.ScriptCalendar.ToString">
             <summary>Returns a string that represents this instance</summary>
         </member>
         <member name="T:PayrollEngine.Client.Scripting.WeekPayrollPeriod">
@@ -2182,27 +2197,6 @@
         <member name="M:PayrollEngine.Client.Scripting.YearPayrollCycle.ToString">
             <summary>Returns a <see cref="T:System.String" /> that represents this instance</summary>
             <returns>A <see cref="T:System.String" /> that represents this instance</returns>
-        </member>
-        <member name="T:PayrollEngine.Client.ScriptingConfiguration">
-            <summary>The Payroll scripting configuration</summary>
-        </member>
-        <member name="P:PayrollEngine.Client.ScriptingConfiguration.CultureName">
-            <summary>The culture name</summary>
-        </member>
-        <member name="P:PayrollEngine.Client.ScriptingConfiguration.CalendarName">
-            <summary>The calendar name</summary>
-        </member>
-        <member name="P:PayrollEngine.Client.ScriptingConfiguration.EvaluationDate">
-            <summary>The evaluation date</summary>
-        </member>
-        <member name="P:PayrollEngine.Client.ScriptingConfiguration.PeriodDate">
-            <summary>The period date</summary>
-        </member>
-        <member name="P:PayrollEngine.Client.ScriptingConfiguration.RegulationDate">
-            <summary>The regulation date</summary>
-        </member>
-        <member name="M:PayrollEngine.Client.ScriptingConfiguration.ToString">
-            <summary>Returns a <see cref="T:System.String" /> that represents this instance</summary>
         </member>
     </members>
 </doc>

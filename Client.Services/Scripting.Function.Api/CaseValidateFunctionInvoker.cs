@@ -10,7 +10,7 @@ public class CaseValidateFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <summary>Invoker constructor</summary>
     /// <param name="httpClient">The Payroll http configuration</param>
     /// <param name="configuration">The scripting configuration</param>
-    public CaseValidateFunctionInvoker(PayrollHttpClient httpClient, ScriptingConfiguration configuration) :
+    public CaseValidateFunctionInvoker(PayrollHttpClient httpClient, ScriptConfiguration configuration) :
         base(httpClient, configuration)
     {
     }
@@ -32,7 +32,7 @@ public class CaseValidateFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <param name="caseName">Name of the case</param>
     /// <param name="configuration">The scripting configuration</param>
     /// <returns>The function result</returns>
-    public CaseValidateFunctionResult Validate(string caseName, ScriptingConfiguration configuration)
+    public CaseValidateFunctionResult Validate(string caseName, ScriptConfiguration configuration)
     {
         if (string.IsNullOrWhiteSpace(caseName))
         {
@@ -51,7 +51,7 @@ public class CaseValidateFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <param name="caseSet">The case set</param>
     /// <param name="configuration">The scripting configuration</param>
     /// <returns>The function result</returns>
-    public CaseValidateFunctionResult Validate(string caseName, CaseSet caseSet, ScriptingConfiguration configuration)
+    public CaseValidateFunctionResult Validate(string caseName, CaseSet caseSet, ScriptConfiguration configuration)
     {
         if (string.IsNullOrWhiteSpace(caseName))
         {

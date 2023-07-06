@@ -11,7 +11,7 @@ public class CaseRelationBuildController<TFunc> : CaseRelationController<TFunc, 
     /// <summary>Initializes a new instance of the <see cref="CaseRelationBuildController{TFunc}"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
     /// <param name="configuration">The scripting configuration</param>
-    public CaseRelationBuildController(PayrollHttpClient httpClient, ScriptingConfiguration configuration) :
+    public CaseRelationBuildController(PayrollHttpClient httpClient, ScriptConfiguration configuration) :
         base(httpClient, configuration)
     {
     }

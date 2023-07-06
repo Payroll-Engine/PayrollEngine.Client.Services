@@ -6,7 +6,7 @@ namespace PayrollEngine.Client.Scripting.Function.Api;
 public abstract class FunctionResultBase
 {
     /// <summary>The calendar</summary>
-    public ScriptingCalendar Calendar { get; set; }
+    public ScriptCalendar Calendar { get; set; }
 
     /// <summary>The tenant</summary>
     public ITenant Tenant { get; set; }

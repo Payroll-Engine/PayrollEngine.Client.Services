@@ -10,7 +10,7 @@ public class CaseRelationBuildFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <summary>Invoker constructor</summary>
     /// <param name="httpClient">The Payroll http configuration</param>
     /// <param name="configuration">The scripting configuration</param>
-    public CaseRelationBuildFunctionInvoker(PayrollHttpClient httpClient, ScriptingConfiguration configuration) :
+    public CaseRelationBuildFunctionInvoker(PayrollHttpClient httpClient, ScriptConfiguration configuration) :
         base(httpClient, configuration)
     {
     }
@@ -35,7 +35,7 @@ public class CaseRelationBuildFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <param name="configuration">The scripting configuration</param>
     /// <returns>The function result</returns>
     public CaseRelationBuildFunctionResult Build(string sourceCaseName, string targetCaseName,
-        ScriptingConfiguration configuration)
+        ScriptConfiguration configuration)
     {
         if (string.IsNullOrWhiteSpace(sourceCaseName))
         {
@@ -59,7 +59,7 @@ public class CaseRelationBuildFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <param name="configuration">The scripting configuration</param>
     /// <returns>The function result</returns>
     public CaseRelationBuildFunctionResult Build(CaseSet sourceCaseSet, CaseSet targetCaseSet,
-        ScriptingConfiguration configuration)
+        ScriptConfiguration configuration)
     {
         if (sourceCaseSet == null)
         {

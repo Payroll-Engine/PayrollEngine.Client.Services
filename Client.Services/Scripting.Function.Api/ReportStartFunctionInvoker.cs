@@ -17,7 +17,7 @@ public class ReportStartFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <param name="httpClient">The Payroll http configuration</param>
     /// <param name="configuration">The scripting configuration</param>
     /// <param name="queryFileName">Query output file name</param>
-    public ReportStartFunctionInvoker(PayrollHttpClient httpClient, ScriptingConfiguration configuration,
+    public ReportStartFunctionInvoker(PayrollHttpClient httpClient, ScriptConfiguration configuration,
         string queryFileName = null) :
         base(httpClient, configuration)
     {

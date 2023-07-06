@@ -21,7 +21,7 @@ public class ReportEndFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <param name="configuration">The scripting configuration</param>
     /// <param name="queryFileName">Query input file name</param>
     /// <param name="resultFileName">Result output file name</param>
-    public ReportEndFunctionInvoker(PayrollHttpClient httpClient, ScriptingConfiguration configuration,
+    public ReportEndFunctionInvoker(PayrollHttpClient httpClient, ScriptConfiguration configuration,
         string queryFileName = null, string resultFileName = null) :
         base(httpClient, configuration)
     {

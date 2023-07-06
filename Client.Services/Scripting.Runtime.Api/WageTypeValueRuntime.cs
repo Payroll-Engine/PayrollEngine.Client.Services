@@ -12,7 +12,7 @@ public class WageTypeValueRuntime : WageTypeRuntimeBase, IWageTypeValueRuntime
     /// <param name="userId">The user id</param>
     /// <param name="payrollId">The payroll id</param>
     /// <param name="employeeId">The employee id</param>
-    public WageTypeValueRuntime(PayrollHttpClient httpClient, ScriptingCalendar calendar, int tenantId,
+    public WageTypeValueRuntime(PayrollHttpClient httpClient, ScriptCalendar calendar, int tenantId,
         int userId, int payrollId, int? employeeId = null) :
         base(httpClient, calendar, tenantId, userId, payrollId, employeeId)
     {

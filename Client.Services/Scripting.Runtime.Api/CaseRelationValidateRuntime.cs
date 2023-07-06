@@ -21,7 +21,7 @@ public class CaseRelationValidateRuntime : CaseRelationRuntimeBase, ICaseRelatio
     /// <param name="sourceCaseSet">The source case set</param>
     /// <param name="targetCaseSet">The target case set</param>
     /// <param name="employeeId">The employee id</param>
-    public CaseRelationValidateRuntime(PayrollHttpClient httpClient, ScriptingCalendar calendar, int tenantId,
+    public CaseRelationValidateRuntime(PayrollHttpClient httpClient, ScriptCalendar calendar, int tenantId,
         int payrollId, int userId, CaseSet sourceCaseSet, CaseSet targetCaseSet, int? employeeId = null) :
         base(httpClient, calendar, tenantId, userId, payrollId, sourceCaseSet, targetCaseSet, employeeId)
     {

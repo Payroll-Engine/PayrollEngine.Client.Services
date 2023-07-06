@@ -11,7 +11,7 @@ public class CaseValidateController<TFunc> : CaseChangeController<TFunc, CaseVal
     /// <summary>Initializes a new instance of the <see cref="CaseValidateController{T}"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
     /// <param name="configuration">The scripting configuration</param>
-    public CaseValidateController(PayrollHttpClient httpClient, ScriptingConfiguration configuration) :
+    public CaseValidateController(PayrollHttpClient httpClient, ScriptConfiguration configuration) :
         base(httpClient, configuration)
     {
     }

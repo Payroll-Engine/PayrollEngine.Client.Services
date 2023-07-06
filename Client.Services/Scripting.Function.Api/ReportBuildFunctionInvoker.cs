@@ -10,7 +10,7 @@ public class ReportBuildFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <summary>Invoker constructor</summary>
     /// <param name="httpClient">The Payroll http configuration</param>
     /// <param name="configuration">The scripting configuration</param>
-    public ReportBuildFunctionInvoker(PayrollHttpClient httpClient, ScriptingConfiguration configuration) :
+    public ReportBuildFunctionInvoker(PayrollHttpClient httpClient, ScriptConfiguration configuration) :
         base(httpClient, configuration)
     {
     }

@@ -22,7 +22,7 @@ public abstract class CaseRelationRuntimeBase : PayrollRuntime, ICaseRelationRun
     /// <param name="sourceCaseSet">The source case set</param>
     /// <param name="targetCaseSet">The target case set</param>
     /// <param name="employeeId">The employee id</param>
-    protected CaseRelationRuntimeBase(PayrollHttpClient httpClient, ScriptingCalendar calendar,
+    protected CaseRelationRuntimeBase(PayrollHttpClient httpClient, ScriptCalendar calendar,
         int tenantId, int userId, int payrollId, CaseSet sourceCaseSet, CaseSet targetCaseSet, int? employeeId = null) :
         base(httpClient, calendar, tenantId, userId, payrollId, employeeId)
     {

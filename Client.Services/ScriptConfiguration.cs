@@ -2,8 +2,8 @@
 
 namespace PayrollEngine.Client;
 
-/// <summary>The Payroll scripting configuration</summary>
-public class ScriptingConfiguration
+/// <summary>The Payroll script configuration</summary>
+public class ScriptConfiguration
 {
     /// <summary>The culture name</summary>
     public string CultureName { get; set; }

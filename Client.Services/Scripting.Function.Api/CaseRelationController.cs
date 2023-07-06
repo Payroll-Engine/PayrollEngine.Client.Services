@@ -14,7 +14,7 @@ public abstract class CaseRelationController<TFunc, TFuncAttribute, TScriptAttri
     /// <summary>Initializes a new instance of the <see cref="CaseRelationController{TFunc, TFuncAttribute, TScriptAttribute}"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
     /// <param name="configuration">The scripting configuration</param>
-    protected CaseRelationController(PayrollHttpClient httpClient, ScriptingConfiguration configuration) :
+    protected CaseRelationController(PayrollHttpClient httpClient, ScriptConfiguration configuration) :
         base(httpClient, configuration)
     {
     }

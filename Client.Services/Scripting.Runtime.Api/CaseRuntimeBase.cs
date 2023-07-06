@@ -17,7 +17,7 @@ public abstract class CaseRuntimeBase : PayrollRuntime, ICaseRuntime
     /// <param name="payrollId">The payroll id</param>
     /// <param name="case">The runtime case</param>
     /// <param name="employeeId">The employee id</param>
-    protected CaseRuntimeBase(PayrollHttpClient httpClient, ScriptingCalendar scriptCalendar, int tenantId,
+    protected CaseRuntimeBase(PayrollHttpClient httpClient, ScriptCalendar scriptCalendar, int tenantId,
         int userId, int payrollId, Case @case, int? employeeId = null) :
         base(httpClient, scriptCalendar, tenantId, userId, payrollId, employeeId)
     {

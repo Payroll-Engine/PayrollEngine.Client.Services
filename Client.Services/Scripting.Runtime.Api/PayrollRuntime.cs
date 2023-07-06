@@ -26,11 +26,10 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     protected ICalendarService CalendarService { get; }
 
     /// <summary>The calendar</summary>
-    public ScriptingCalendar ScriptCalendar { get; }
+    public ScriptCalendar ScriptCalendar { get; }
 
-    /// <summary>The culture by priority: script > tenant > system</summary>
-    public override string Culture => 
-        ScriptCalendar.Culture ?? base.Culture;
+    /// <summary>The payroll culture by priority: script > tenant > system</summary>
+    public string PayrollCulture { get; }
 
     /// <summary>Initializes a new instance of the <see cref="PayrollRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
@@ -39,7 +38,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     /// <param name="userId">The user id</param>
     /// <param name="payrollId">The payroll id</param>
     /// <param name="employeeId">The employee id</param>
-    protected PayrollRuntime(PayrollHttpClient httpClient, ScriptingCalendar scriptCalendar,
+    protected PayrollRuntime(PayrollHttpClient httpClient, ScriptCalendar scriptCalendar,
         int tenantId, int userId, int payrollId, int? employeeId = null) :
         base(httpClient, tenantId, userId)
     {
@@ -64,11 +63,13 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
         PayrollService = new PayrollService(httpClient);
         RegulationService = new RegulationService(httpClient);
 
-        // periods
-        // TODO: make cycle/period configurable
+        // user culture by priority: script > user > system
+        PayrollCulture = ScriptCalendar.Culture ??
+                         User.Culture ??
+                         CultureInfo.CurrentCulture.Name;
 
-        // culture
-        var culture = CultureInfo.CurrentCulture;
+        // payroll culture
+        var payrollCulture = CultureInfo.CurrentCulture;
 
         // calendar
         CalendarService = new CalendarService(httpClient);
@@ -80,8 +81,8 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
         }
         calendar ??= new();
 
-        Cycle = new YearPayrollCycle(culture, calendar, scriptCalendar.PeriodDate);
-        Period = new MonthPayrollPeriod(culture, calendar, scriptCalendar.PeriodDate);
+        Cycle = new YearPayrollCycle(payrollCulture, calendar, scriptCalendar.PeriodDate);
+        Period = new MonthPayrollPeriod(payrollCulture, calendar, scriptCalendar.PeriodDate);
     }
 
     #region Employee
@@ -111,12 +112,6 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
 
     /// <inheritdoc />
     public string EmployeeIdentifier => Employee.Identifier;
-
-    /// <inheritdoc />
-    public string EmployeeCulture => Employee.Culture;
-
-    /// <inheritdoc />
-    public string EmployeeCalendar => Employee.Calendar;
 
     /// <inheritdoc />
     public virtual object GetEmployeeAttribute(string attributeName)
