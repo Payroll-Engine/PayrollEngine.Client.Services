@@ -1347,7 +1347,10 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectorGroups">
             <inheritdoc />
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectType">
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectMode">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.Negated">
             <inheritdoc />
         </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectorThreshold">

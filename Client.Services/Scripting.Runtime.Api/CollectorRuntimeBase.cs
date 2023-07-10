@@ -30,7 +30,12 @@ public abstract class CollectorRuntimeBase : PayrunRuntimeBase, ICollectorRuntim
         default;
 
     /// <inheritdoc />
-    public string CollectType =>
+    public string CollectMode =>
+        // implementation
+        default;
+
+    /// <inheritdoc />
+    public bool Negated =>
         // implementation
         default;
 
