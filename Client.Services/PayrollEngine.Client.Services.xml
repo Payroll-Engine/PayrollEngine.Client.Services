@@ -1365,16 +1365,19 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectorCount">
             <inheritdoc />
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectorSum">
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectorSummary">
             <inheritdoc />
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectorMin">
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectorMinimum">
             <inheritdoc />
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectorMax">
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectorMaximum">
             <inheritdoc />
         </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectorAverage">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.CollectorRange">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.GetResultTags">

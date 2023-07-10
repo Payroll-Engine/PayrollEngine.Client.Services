@@ -60,22 +60,27 @@ public abstract class CollectorRuntimeBase : PayrunRuntimeBase, ICollectorRuntim
         default;
 
     /// <inheritdoc />
-    public decimal CollectorSum =>
+    public decimal CollectorSummary =>
         // implementation
         default;
 
     /// <inheritdoc />
-    public decimal CollectorMin =>
+    public decimal CollectorMinimum =>
         // implementation
         default;
 
     /// <inheritdoc />
-    public decimal CollectorMax =>
+    public decimal CollectorMaximum =>
         // implementation
         default;
 
     /// <inheritdoc />
     public decimal CollectorAverage =>
+        // implementation
+        default;
+
+    /// <inheritdoc />
+    public decimal CollectorRange =>
         // implementation
         default;
 
