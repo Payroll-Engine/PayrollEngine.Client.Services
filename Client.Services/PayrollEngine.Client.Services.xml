@@ -1754,6 +1754,9 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportBuildRuntime.SetParameterAttribute(System.String,System.String,System.Object)">
             <inheritdoc />
         </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportBuildRuntime.SetParameterHidden(System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.ReportEndRuntime">
             <summary>Runtime for the report end function</summary>
         </member>
@@ -1821,6 +1824,9 @@
             <param name="value">The parameter value</param>
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.GetParameterAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ParameterHidden(System.String)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteQuery(System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">

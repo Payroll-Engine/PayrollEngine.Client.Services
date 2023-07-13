@@ -133,6 +133,26 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
         return null;
     }
 
+    /// <inheritdoc />
+    public bool ParameterHidden(string parameterName)
+    {
+        if (string.IsNullOrWhiteSpace(parameterName))
+        {
+            throw new ArgumentException(nameof(parameterName));
+        }
+        // report parameter
+        if (Report.Parameters == null)
+        {
+            throw new ArgumentException($"Invalid report parameter {parameterName}");
+        }
+        var reportParameter = Report.Parameters.FirstOrDefault(x => string.Equals(x.Name, parameterName));
+        if (reportParameter == null)
+        {
+            throw new ArgumentException($"Unknown report parameter {parameterName}");
+        }
+        return reportParameter.Hidden;
+    }
+
     #endregion
 
     #region Execute Query
