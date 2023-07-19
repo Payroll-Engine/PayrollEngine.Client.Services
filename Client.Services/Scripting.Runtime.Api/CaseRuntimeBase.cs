@@ -36,10 +36,4 @@ public abstract class CaseRuntimeBase : PayrollRuntime, ICaseRuntime
     /// <inheritdoc />
     public object GetCaseAttribute(string attributeName) =>
         Case.Attributes?.GetValue<object>(attributeName);
-
-    /// <inheritdoc />
-    public string InvokeWebhook(string requestOperation, string requestMessage = null)
-    {
-        throw new NotSupportedException("Webhooks are not supported through the client services");
-    }
 }

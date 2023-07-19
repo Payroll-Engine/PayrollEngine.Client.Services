@@ -132,4 +132,14 @@ public abstract class RuntimeBase : IRuntime
 
     #endregion
 
+    #region Webhook
+
+    /// <inheritdoc />
+    public string InvokeWebhook(string requestOperation, string requestMessage = null)
+    {
+        throw new NotSupportedException("Webhooks are not supported through the client services");
+    }
+
+    #endregion
+
 }
