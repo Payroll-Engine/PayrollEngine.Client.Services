@@ -1,58 +1,50 @@
 # Payroll Engine Client Reference
 
 ## Core
-- [Date](xref:PayrollEngine.Client.Scripting.Function.Date)
-- [DatePeriod](xref:PayrollEngine.Client.Scripting.Function.DatePeirod)
+- [Date](xref:PayrollEngine.Date)
+- [DatePeriod](xref:PayrollEngine.DatePeriod)
 
 ## Data
-- [Data Set](xref:PayrollEngine.Client.Scripting.Function.DataSet)
-- [Data Table](xref:PayrollEngine.Client.Scripting.Function.DataTable)
-- [Data Row](xref:PayrollEngine.Client.Scripting.Function.DataRow)
-- [Data Column](xref:PayrollEngine.Client.Scripting.Function.DataColumn)
+- [Data Set](xref:PayrollEngine.Data.DataSet)
+- [Data Table](xref:PayrollEngine.Data.DataTable)
+- [Data Row](xref:PayrollEngine.Data.DataRow)
+- [Data Column](xref:PayrollEngine.Data.DataColumn)
 
 ## Model
-- [Tenant](xref:PayrollEngine.Client.Scripting.Function.Tenant)
-- [User](xref:PayrollEngine.Client.Scripting.Function.User)
-- [Divsion](xref:PayrollEngine.Client.Scripting.Function.Division)
-- [Employee](xref:PayrollEngine.Client.Scripting.Function.Employee)
-- [Payroll](xref:PayrollEngine.Client.Scripting.Function.Payroll)
-- [Payoll Layer](xref:PayrollEngine.Client.Scripting.Function.PayrollLayer)
+- [Tenant](xref:PayrollEngine.Client.Model.Tenant)
+- [User](xref:PayrollEngine.Client.Model.User)
+- [Divsion](xref:PayrollEngine.Client.Model.Division)
+- [Employee](xref:PayrollEngine.Client.Model.Employee)
+- [Payroll](xref:PayrollEngine.Client.Model.Payroll)
+- [Payoll Layer](xref:PayrollEngine.Client.Model.PayrollLayer)
 
 ## Regulation Model
-- [Regulation](xref:PayrollEngine.Client.Scripting.Function.Regulation)
-- [Case](xref:PayrollEngine.Client.Scripting.Function.Case)
-- [Case Field](xref:PayrollEngine.Client.Scripting.Function.Casefield)
-- [Case Relation](xref:PayrollEngine.Client.Scripting.Function.CaseRelation)
-- [Collector](xref:PayrollEngine.Client.Scripting.Function.Collector)
-- [Wage Type](xref:PayrollEngine.Client.Scripting.Function.WagType)
-- [Report](xref:PayrollEngine.Client.Scripting.Function.Report)
-- [Report Parameter](xref:PayrollEngine.Client.Scripting.Function.ReportParameter)
-- [Report Template](xref:PayrollEngine.Client.Scripting.Function.ReportTemplate)
-- [Script](xref:PayrollEngine.Client.Scripting.Function.Script)
+- [Regulation](xref:PayrollEngine.Client.Model.Regulation)
+- [Case](xref:PayrollEngine.Client.Model.Case)
+- [Case Field](xref:PayrollEngine.Client.Model.CaseField)
+- [Case Relation](xref:PayrollEngine.Client.Model.CaseRelation)
+- [Collector](xref:PayrollEngine.Client.Model.Collector)
+- [Wage Type](xref:PayrollEngine.Client.Model.WageType)
+- [Report](xref:PayrollEngine.Client.Model.Report)
+- [Report Parameter](xref:PayrollEngine.Client.Model.ReportParameter)
+- [Report Template](xref:PayrollEngine.Client.Model.ReportTemplate)
+- [Script](xref:PayrollEngine.Client.Model.Script)
 
 ## Test
 **Case**
-- [Case Available Test](xref:PayrollEngine.Client.Scripting.Function.CaseAvailableTest)
-- [Case Build Test](xref:PayrollEngine.Client.Scripting.Function.CaseBuildTest)
-- [Case Validate Test](xref:PayrollEngine.Client.Scripting.Function.CaseValidateTest)
-- [Case Test Result](xref:PayrollEngine.Client.Scripting.Function.CaseTestResult)
+- [Case Available Test](xref:PayrollEngine.Client.Test.Case.CaseAvailableTest)
+- [Case Build Test](xref:PayrollEngine.Client.Test.Case.CaseBuildTest)
+- [Case Validate Test](xref:PayrollEngine.Client.Test.Case.CaseValidateTest)
+- [Case Test Result](xref:PayrollEngine.Client.Test.Case.CaseTestResult)
 
 **Payrun**
-- [Payrun Test Result](xref:PayrollEngine.Client.Scripting.Function.PayrunTestResult)
-- [Collector Result](xref:PayrollEngine.Client.Scripting.Function.CollectorResult)
-- [Collector Custom Result](xref:PayrollEngine.Client.Scripting.Function.CollectorCustomResult)
-- [Wage Type Result](xref:PayrollEngine.Client.Scripting.Function.WageTypeResult)
-- [Wage Type Custom Result](xref:PayrollEngine.Client.Scripting.Function.WageTypeCustomResult)
+- [Payrun Test Result](xref:PayrollEngine.Client.Test.Payrun.PayrunTestResult)
 
 **Report**
-- [Report Build Test](xref:PayrollEngine.Client.Scripting.Function.ReportBuildTest)
-- [Report Execute Test](xref:PayrollEngine.Client.Scripting.Function.ReportExecuteTest)
+- [Report Build Test](xref:PayrollEngine.Client.Test.Report.ReportBuildTest)
+- [Report Execute Test](xref:PayrollEngine.Client.Test.Report.ReportExecuteTest)
 
-**Exchange**
-- [Exchange Export](xref:PayrollEngine.Client.Scripting.Function.ExchangeExport)
-- [Exchange Import](xref:PayrollEngine.Client.Scripting.Function.ExchangeImport)
-- [Visitor](xref:PayrollEngine.Client.Scripting.Function.Visitor)
-
-## Other
-- [ConsoleProgram](xref:PayrollEngine.Client.Scripting.Function.ConsoleProgram)
-- [ConsoleProgram](xref:PayrollEngine.Client.Scripting.Function.ConsoleProgram)
+## Exchange
+- [Exchange Export](xref:PayrollEngine.Client.Exchange.ExchangeExport)
+- [Exchange Import](xref:PayrollEngine.Client.Exchange.ExchangeImport)
+- [Visitor](xref:PayrollEngine.Client.Exchange.Visitor)
