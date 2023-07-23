@@ -52,17 +52,19 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "logo.svg",
+          "favicon.ico"
         ]
       }
     ],
     "output": "_site",
-    "globalMetadataFiles": [],
-    "fileMetadataFiles": [],
+    "globalMetadata": {
+      "_appTitle": "PE Client Reference"
+    },
     "template": [
-      "statictoc"
+      "default",
+      "templates/darkerfx"
     ],
-    "postProcessors": [],
     "keepFileLink": false,
     "disableGitFeatures": false
   }
