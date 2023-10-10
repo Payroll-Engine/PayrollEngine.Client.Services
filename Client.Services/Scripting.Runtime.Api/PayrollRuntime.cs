@@ -319,7 +319,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
         return new(caseFieldName,
             caseValue.Created,
             new(caseValue.Start, caseValue.End),
-            ValueConvert.ToValue(caseValue.Value, caseValue.ValueType),
+            ValueConvert.ToValue(caseValue.Value, caseValue.ValueType, TenantCulture),
             caseValue.CancellationDate,
             caseValue.Tags,
             caseValue.Attributes);
@@ -369,7 +369,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
             values.Add(new(valuePeriod.CaseFieldName,
                 valuePeriod.Created,
                 new(valuePeriod.Start, valuePeriod.End),
-                ValueConvert.ToValue(valuePeriod.Value, valuePeriod.ValueType),
+                ValueConvert.ToValue(valuePeriod.Value, valuePeriod.ValueType, TenantCulture),
                 valuePeriod.CancellationDate,
                 valuePeriod.Tags,
                 valuePeriod.Attributes));
@@ -398,7 +398,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
         foreach (var periodValue in periodValues)
         {
             values[periodValue.CaseFieldName].Add(new(periodValue.Created,
-                periodValue.Start, periodValue.End, ValueConvert.ToValue(periodValue.Value, periodValue.ValueType)));
+                periodValue.Start, periodValue.End, ValueConvert.ToValue(periodValue.Value, periodValue.ValueType, TenantCulture)));
         }
         return values;
     }

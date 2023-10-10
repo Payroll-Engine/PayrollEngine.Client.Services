@@ -1912,6 +1912,9 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.Tenant">
             <summary>The tenant</summary>
         </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.TenantCulture">
+            <summary>The tenant culture</summary>
+        </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.TenantId">
             <inheritdoc />
         </member>

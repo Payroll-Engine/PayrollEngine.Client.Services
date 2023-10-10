@@ -34,6 +34,7 @@ public abstract class RuntimeBase : IRuntime
         }
         TenantService = new TenantService(httpClient);
         Tenant = TenantService.GetAsync<Tenant>(new(), tenantId).Result;
+        TenantCulture = GetTenantCulture(Tenant);
 
         // user
         if (userId <= 0)
@@ -59,6 +60,9 @@ public abstract class RuntimeBase : IRuntime
     /// <summary>The tenant</summary>
     public Tenant Tenant { get; }
 
+    /// <summary>The tenant culture</summary>
+    public CultureInfo TenantCulture { get; }
+
     /// <inheritdoc />
     public int TenantId => Tenant.Id;
 
@@ -68,6 +72,17 @@ public abstract class RuntimeBase : IRuntime
     /// <inheritdoc />
     public object GetTenantAttribute(string attributeName) =>
         Tenant.GetAttribute(attributeName);
+
+    private static CultureInfo GetTenantCulture(Tenant tenant)
+    {
+        var culture = CultureInfo.DefaultThreadCurrentCulture ?? CultureInfo.InvariantCulture;
+        if (!string.IsNullOrWhiteSpace(tenant.Culture) &&
+            !string.Equals(culture.Name, tenant.Culture))
+        {
+            culture = new CultureInfo(tenant.Culture);
+        }
+        return culture;
+    }
 
     #endregion
 

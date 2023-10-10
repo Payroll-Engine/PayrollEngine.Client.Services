@@ -105,7 +105,7 @@ public abstract class CaseRelationRuntimeBase : PayrollRuntime, ICaseRelationRun
 
     /// <inheritdoc />
     public object GetSourceValue(string caseFieldName) =>
-        GetSourceCaseField(caseFieldName).GetValue();
+        GetSourceCaseField(caseFieldName).GetValue(TenantCulture);
 
     private CaseFieldSet GetSourceCaseField(string caseFieldName)
     {
@@ -214,7 +214,7 @@ public abstract class CaseRelationRuntimeBase : PayrollRuntime, ICaseRelationRun
 
     /// <inheritdoc />
     public object GetTargetValue(string caseFieldName) =>
-        GetTargetCaseField(caseFieldName).GetValue();
+        GetTargetCaseField(caseFieldName).GetValue(TenantCulture);
 
     /// <inheritdoc />
     public void SetTargetValue(string caseFieldName, object value) =>
