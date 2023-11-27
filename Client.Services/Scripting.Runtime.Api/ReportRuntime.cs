@@ -797,7 +797,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     /// <inheritdoc />
     public void AddReportLog(string message, string key = null, DateTime? reportDate = null)
     {
-        var _ = new ReportLogService(HttpClient).CreateAsync(new(TenantId), new ReportLog
+        _ = new ReportLogService(HttpClient).CreateAsync(new(TenantId), new ReportLog
         {
             ReportName = ReportName,
             ReportDate = reportDate ?? Date.Now,
