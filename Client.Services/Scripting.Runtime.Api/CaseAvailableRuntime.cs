@@ -1,6 +1,5 @@
 ﻿using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Scripting.Function;
-using System;
 
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
@@ -26,7 +25,7 @@ public class CaseAvailableRuntime : CaseRuntimeBase, ICaseAvailableRuntime
 
     /// <inheritdoc />
     public string[] GetAvailableActions() =>
-        Case.AvailableActions == null ? Array.Empty<string>() :
+        Case.AvailableActions == null ? [] :
             Case.AvailableActions.ToArray();
 
 }

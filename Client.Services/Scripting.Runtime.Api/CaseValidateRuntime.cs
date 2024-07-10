@@ -10,7 +10,7 @@ namespace PayrollEngine.Client.Scripting.Runtime.Api;
 public class CaseValidateRuntime : CaseChangeRuntimeBase, ICaseValidateRuntime
 {
     /// <summary>The validation issues</summary>
-    public List<CaseValidationIssue> Issues { get; } = new();
+    public List<CaseValidationIssue> Issues { get; } = [];
 
     /// <summary>Initializes a new instance of the <see cref="CaseValidateRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
@@ -31,7 +31,7 @@ public class CaseValidateRuntime : CaseChangeRuntimeBase, ICaseValidateRuntime
 
     /// <inheritdoc />
     public string[] GetValidateActions() =>
-        Case.ValidateActions == null ? Array.Empty<string>() :
+        Case.ValidateActions == null ? [] :
             Case.ValidateActions.ToArray();
 
     /// <inheritdoc />
@@ -48,7 +48,7 @@ public class CaseValidateRuntime : CaseChangeRuntimeBase, ICaseValidateRuntime
         {
             throw new ArgumentException($"unknown case field {caseFieldName}");
         }
-        return caseField.ValidateActions == null ? Array.Empty<string>() : caseField.ValidateActions.ToArray();
+        return caseField.ValidateActions == null ? [] : caseField.ValidateActions.ToArray();
     }
 
     /// <inheritdoc />

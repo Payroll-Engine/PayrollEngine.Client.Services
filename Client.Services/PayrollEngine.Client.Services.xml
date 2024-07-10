@@ -732,7 +732,7 @@
             <summary>The tenant id</summary>
         </member>
         <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportParameterParser.RegulationId">
-            <summary>The regulation id id</summary>
+            <summary>The regulation id</summary>
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportParameterParser.#ctor(PayrollEngine.Client.PayrollHttpClient,System.Int32,System.Nullable{System.Int32})">
             <summary>Parser constructor</summary>
@@ -815,7 +815,7 @@
             <summary>The report queries</summary>
         </member>
         <member name="P:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionResult.DataSet">
-            <summary>The queries results</summary>
+            <summary>The query results</summary>
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionResult.ToString">
             <summary>Returns a string that represents this instance</summary>

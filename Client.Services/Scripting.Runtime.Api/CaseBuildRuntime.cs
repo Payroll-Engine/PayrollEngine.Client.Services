@@ -28,7 +28,7 @@ public class CaseBuildRuntime : CaseChangeRuntimeBase, ICaseBuildRuntime
 
     /// <inheritdoc />
     public string[] GetBuildActions() =>
-        Case.BuildActions == null ? Array.Empty<string>() :
+        Case.BuildActions == null ? [] :
             Case.BuildActions.ToArray();
 
     #endregion
@@ -49,7 +49,7 @@ public class CaseBuildRuntime : CaseChangeRuntimeBase, ICaseBuildRuntime
         {
             throw new ArgumentException($"unknown case field {caseFieldName}");
         }
-        return caseField.BuildActions == null ? Array.Empty<string>() : caseField.BuildActions.ToArray();
+        return caseField.BuildActions == null ? [] : caseField.BuildActions.ToArray();
     }
 
     #endregion

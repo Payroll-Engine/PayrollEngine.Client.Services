@@ -16,7 +16,7 @@ namespace PayrollEngine.Client.Scripting.Function.Api
         /// <summary>The tenant id</summary>
         public int TenantId { get; }
 
-        /// <summary>The regulation id id</summary>
+        /// <summary>The regulation id</summary>
         public int? RegulationId { get; }
 
         /// <summary>Parser constructor</summary>

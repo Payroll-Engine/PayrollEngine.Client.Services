@@ -10,7 +10,7 @@ namespace PayrollEngine.Client.Scripting.Runtime.Api;
 public class CaseRelationValidateRuntime : CaseRelationRuntimeBase, ICaseRelationValidateRuntime
 {
     /// <summary>The validation issues</summary>
-    public List<CaseValidationIssue> Issues { get; } = new();
+    public List<CaseValidationIssue> Issues { get; } = [];
 
     /// <summary>Initializes a new instance of the <see cref="CaseRelationValidateRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
@@ -31,7 +31,7 @@ public class CaseRelationValidateRuntime : CaseRelationRuntimeBase, ICaseRelatio
     protected override string LogOwnerType => nameof(CaseRelationValidateFunction);
 
     /// <inheritdoc />
-    public string[] GetValidateActions() => Array.Empty<string>();
+    public string[] GetValidateActions() => [];
 
     /// <inheritdoc />
     public bool HasIssues() => Issues.Any();

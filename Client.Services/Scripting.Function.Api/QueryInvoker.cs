@@ -131,7 +131,7 @@ public class QueryInvoker
 
         // result data set
         Data.DataSet dataSet = new(reportName);
-        dataSet.Tables ??= new();
+        dataSet.Tables ??= [];
 
         // report
         var report = await new ReportSetService(HttpClient).

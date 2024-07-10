@@ -273,7 +273,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
             new(TenantId, PayrollId), caseName, UserId, EmployeeId).Result;
         if (@case == null || @case.Id == default)
         {
-            return new();
+            return [];
         }
 
         // case value slots
@@ -304,7 +304,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     public virtual List<string> GetCaseValueTags(string caseFieldName, DateTime valueDate)
     {
         var caseValue = GetTimeCaseValue(caseFieldName, valueDate).Result;
-        return caseValue == null ? new() : caseValue.Tags;
+        return caseValue == null ? [] : caseValue.Tags;
     }
 
     /// <inheritdoc />

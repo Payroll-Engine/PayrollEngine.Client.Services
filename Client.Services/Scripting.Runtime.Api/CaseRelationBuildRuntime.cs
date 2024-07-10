@@ -1,6 +1,5 @@
 ﻿using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Scripting.Function;
-using System;
 
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
@@ -26,5 +25,5 @@ public class CaseRelationBuildRuntime : CaseRelationRuntimeBase, ICaseRelationBu
     protected override string LogOwnerType => nameof(CaseRelationBuildFunction);
 
     /// <inheritdoc />
-    public string[] GetBuildActions() => Array.Empty<string>();
+    public string[] GetBuildActions() => [];
 }

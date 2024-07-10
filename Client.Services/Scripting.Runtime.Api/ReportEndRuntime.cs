@@ -89,7 +89,7 @@ public class ReportEndRuntime : ReportRuntime, IReportEndRuntime
             {
                 throw new ScriptException($"Unknown merge column {mergeColumn}");
             }
-            resultTable.PrimaryKey = new[] { resultTable.Columns[mergeColumn] };
+            resultTable.PrimaryKey = [resultTable.Columns[mergeColumn]];
         }
         resultTable.AcceptChanges();
 
