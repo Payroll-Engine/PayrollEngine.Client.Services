@@ -28,7 +28,7 @@ public class CaseValidateController<TFunc> : CaseChangeController<TFunc, CaseVal
         var caseSet = GetCaseSet(caseName).Result;
         if (caseSet == null)
         {
-            throw new PayrollException($"Missing payroll case {caseName}");
+            throw new PayrollException($"Missing payroll case {caseName}.");
         }
         return Validate(caseName, caseSet);
     }

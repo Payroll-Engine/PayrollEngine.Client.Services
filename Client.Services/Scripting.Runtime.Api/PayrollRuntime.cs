@@ -101,7 +101,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
             {
                 if (!EmployeeId.HasValue)
                 {
-                    throw new PayrollException("Employee not available");
+                    throw new PayrollException("Employee not available.");
                 }
                 employee = EmployeeService.GetAsync<Employee>(
                     new(TenantId), EmployeeId.Value).Result;
@@ -118,7 +118,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     {
         if (!EmployeeId.HasValue)
         {
-            throw new PayrollException("Employee not available");
+            throw new PayrollException("Employee not available.");
         }
         var jsonValue = EmployeeService.GetAttributeAsync(new(TenantId), TenantId, attributeName).Result;
         if (string.IsNullOrWhiteSpace(jsonValue))
@@ -148,7 +148,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
                 payroll = PayrollService.GetAsync<Payroll>(new(TenantId), PayrollId).Result;
                 if (payroll == null)
                 {
-                    throw new PayrollException($"Unknown payroll with id {PayrollId}");
+                    throw new PayrollException($"Unknown payroll with id {PayrollId}.");
                 }
             }
             return payroll;
@@ -223,7 +223,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
             throw new ArgumentException(nameof(caseFieldName));
         }
         var context = new PayrollServiceContext(TenantId, PayrollId);
-        var caseField = PayrollService.GetCaseFieldsAsync<CaseField>(context, new[] { caseFieldName })
+        var caseField = PayrollService.GetCaseFieldsAsync<CaseField>(context, [caseFieldName])
             .Result.FirstOrDefault();
         return caseField != null ? (int)caseField.ValueType : null;
     }
@@ -236,7 +236,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
             throw new ArgumentException(nameof(caseFieldName));
         }
         var context = new PayrollServiceContext(TenantId, PayrollId);
-        var caseField = PayrollService.GetCaseFieldsAsync<CaseField>(context, new[] { caseFieldName })
+        var caseField = PayrollService.GetCaseFieldsAsync<CaseField>(context, [caseFieldName])
             .Result.FirstOrDefault();
         return caseField?.Attributes?.GetValue<object>(attributeName);
     }
@@ -249,7 +249,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
             throw new ArgumentException(nameof(caseFieldName));
         }
         var context = new PayrollServiceContext(TenantId, PayrollId);
-        var caseField = PayrollService.GetCaseFieldsAsync<CaseField>(context, new[] { caseFieldName })
+        var caseField = PayrollService.GetCaseFieldsAsync<CaseField>(context, [caseFieldName])
             .Result.FirstOrDefault();
         return caseField?.ValueAttributes?.GetValue<object>(attributeName);
     }
@@ -267,11 +267,11 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
             new(TenantId), caseFieldName).Result;
         if (string.IsNullOrWhiteSpace(caseName))
         {
-            throw new ScriptException($"Unknown case field: {caseFieldName}");
+            throw new ScriptException($"Unknown case field: {caseFieldName}.");
         }
         var @case = PayrollService.BuildCaseAsync<CaseSet>(
             new(TenantId, PayrollId), caseName, UserId, EmployeeId).Result;
-        if (@case == null || @case.Id == default)
+        if (@case == null || @case.Id == 0)
         {
             return [];
         }
@@ -330,14 +330,14 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
         var context = new PayrollServiceContext(TenantId, PayrollId);
 
         // case field
-        var caseField = await PayrollService.GetCaseFieldsAsync<CaseField>(context, new[] { caseFieldName });
+        var caseField = await PayrollService.GetCaseFieldsAsync<CaseField>(context, [caseFieldName]);
         if (caseField == null)
         {
-            throw new ArgumentException($"Unknown case field {caseFieldName}");
+            throw new ArgumentException($"Unknown case field {caseFieldName}.");
         }
 
         // case
-        var caseValue = (await PayrollService.GetTimeValuesAsync(context, EmployeeId, new[] { caseFieldName },
+        var caseValue = (await PayrollService.GetTimeValuesAsync(context, EmployeeId, [caseFieldName],
             valueDate, RegulationDate, EvaluationDate)).FirstOrDefault();
         return caseValue;
     }
@@ -354,13 +354,13 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
         endDate ??= Date.MaxValue;
         if (endDate < startDate)
         {
-            throw new ArgumentException($"Invalid period end date: {endDate}", nameof(endDate));
+            throw new ArgumentException($"Invalid period end date: {endDate}.", nameof(endDate));
         }
 
         // case value periods
         var caseRef = new CaseValueReference(caseFieldName);
         var valuePeriods = PayrollService.GetCaseValuesAsync(new(TenantId, PayrollId),
-            startDate.Value, endDate.Value, new[] { caseRef.CaseFieldName }, EmployeeId, caseRef.CaseSlot).Result;
+            startDate.Value, endDate.Value, [caseRef.CaseFieldName], EmployeeId, caseRef.CaseSlot).Result;
 
         // tuple build
         var values = new List<Tuple<string, DateTime, Tuple<DateTime?, DateTime?>, object, DateTime?, List<string>, Dictionary<string, object>>>();

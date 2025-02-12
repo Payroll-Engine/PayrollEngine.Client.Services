@@ -28,7 +28,7 @@ public class CaseAvailableController<TFunc> : CaseController<TFunc, CaseAvailabl
         var @case = GetCase(caseName).Result;
         if (@case == null)
         {
-            throw new PayrollException($"Missing payroll case {caseName}");
+            throw new PayrollException($"Missing payroll case {caseName}.");
         }
         return IsAvailable(caseName, @case);
     }

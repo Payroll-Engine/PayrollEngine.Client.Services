@@ -24,12 +24,12 @@ public class PayrunWageTypeAvailableRuntime : PayrunRuntimeBase, IPayrunWageType
     /// <inheritdoc />
     public decimal WageTypeNumber =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public object GetWageTypeAttribute(string attributeName)
     {
         // implementation
-        return default;
+        return null;
     }
 }

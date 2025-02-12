@@ -37,7 +37,7 @@ public abstract class ReportFunctionController<TFunc, TFuncAttribute, TScriptAtt
                 tenant = new TenantService(HttpClient).GetAsync<Tenant>(new(), Function.TenantIdentifier).Result;
                 if (tenant == null)
                 {
-                    throw new ScriptException($"Unknown tenant {Function.TenantIdentifier}");
+                    throw new ScriptException($"Unknown tenant {Function.TenantIdentifier}.");
                 }
             }
             return tenant;
@@ -55,7 +55,7 @@ public abstract class ReportFunctionController<TFunc, TFuncAttribute, TScriptAtt
                 user = new UserService(HttpClient).GetAsync<User>(new(Tenant.Id), Function.UserIdentifier).Result;
                 if (user == null)
                 {
-                    throw new ScriptException($"Unknown user {Function.UserIdentifier}");
+                    throw new ScriptException($"Unknown user {Function.UserIdentifier}.");
                 }
             }
             return user;
@@ -69,7 +69,7 @@ public abstract class ReportFunctionController<TFunc, TFuncAttribute, TScriptAtt
         var report = GetReport(reportName, new() { UserId = User.Id });
         if (report == null)
         {
-            throw new PayrollException($"Invalid report {reportName}");
+            throw new PayrollException($"Invalid report {reportName}.");
         }
         return report;
     }

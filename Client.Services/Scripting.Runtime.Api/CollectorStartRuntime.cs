@@ -25,7 +25,7 @@ public class CollectorStartRuntime : CollectorRuntimeBase, ICollectorStartRuntim
     public decimal[] GetValues()
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />

@@ -28,7 +28,7 @@ public class CaseBuildController<TFunc> : CaseChangeController<TFunc, CaseBuildF
         var caseSet = GetCaseSet(caseName).Result;
         if (caseSet == null)
         {
-            throw new PayrollException($"Missing payroll case {caseName}");
+            throw new PayrollException($"Missing payroll case {caseName}.");
         }
         return Build(caseSet);
     }
@@ -44,7 +44,7 @@ public class CaseBuildController<TFunc> : CaseChangeController<TFunc, CaseBuildF
         }
         if (string.IsNullOrWhiteSpace(caseSet.Name))
         {
-            throw new ArgumentException("Case set without name", nameof(caseSet));
+            throw new ArgumentException("Case set without name.", nameof(caseSet));
         }
 
         var method = GetScriptMethod(caseSet.Name);

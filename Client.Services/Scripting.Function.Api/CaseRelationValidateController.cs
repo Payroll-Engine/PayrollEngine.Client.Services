@@ -35,14 +35,14 @@ public class CaseRelationValidateController<TFunc> : CaseRelationController<TFun
         var sourceCaseSet = GetCaseSet(sourceCaseName).Result;
         if (sourceCaseSet == null)
         {
-            throw new PayrollException($"Missing validate source case {sourceCaseName}");
+            throw new PayrollException($"Missing validate source case {sourceCaseName}.");
         }
 
         // target
         var targetCaseSet = GetCaseSet(targetCaseName).Result;
         if (targetCaseSet == null)
         {
-            throw new PayrollException($"Missing validate target case {targetCaseName}");
+            throw new PayrollException($"Missing validate target case {targetCaseName}.");
         }
 
         // validate

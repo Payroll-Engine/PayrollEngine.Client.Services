@@ -35,14 +35,14 @@ public class CaseRelationBuildController<TFunc> : CaseRelationController<TFunc, 
         var sourceCaseSet = GetCaseSet(sourceCaseName).Result;
         if (sourceCaseSet == null)
         {
-            throw new PayrollException($"Missing build source case {sourceCaseName}");
+            throw new PayrollException($"Missing build source case {sourceCaseName}.");
         }
 
         // target
         var targetCaseSet = GetCaseSet(targetCaseName).Result;
         if (targetCaseSet == null)
         {
-            throw new PayrollException($"Missing build target case {targetCaseName}");
+            throw new PayrollException($"Missing build target case {targetCaseName}.");
         }
 
         // build

@@ -22,78 +22,78 @@ public abstract class CollectorRuntimeBase : PayrunRuntimeBase, ICollectorRuntim
     /// <inheritdoc />
     public string CollectorName =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public string[] CollectorGroups =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public string CollectMode =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public bool Negated =>
         // implementation
-        default;
+        false;
 
     /// <inheritdoc />
     public decimal? CollectorThreshold =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public decimal? CollectorMinResult =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public decimal? CollectorMaxResult =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public decimal CollectorResult =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public decimal CollectorCount =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public decimal CollectorSummary =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public decimal CollectorMinimum =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public decimal CollectorMaximum =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public decimal CollectorAverage =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public decimal CollectorRange =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public List<string> GetResultTags()
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
@@ -106,7 +106,7 @@ public abstract class CollectorRuntimeBase : PayrunRuntimeBase, ICollectorRuntim
     public object GetCollectorAttribute(string attributeName)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <summary>The log owner type</summary>
@@ -116,7 +116,7 @@ public abstract class CollectorRuntimeBase : PayrunRuntimeBase, ICollectorRuntim
     public decimal GetCollectorValue(string collectorName)
     {
         // implementation
-        return default;
+        return 0;
     }
 
     /// <inheritdoc />
@@ -131,7 +131,7 @@ public abstract class CollectorRuntimeBase : PayrunRuntimeBase, ICollectorRuntim
     public object GetResultAttribute(string name)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />

@@ -27,21 +27,21 @@ public class PayrunEndRuntime : PayrunRuntimeBase, IPayrunEndRuntime
     public Dictionary<string, string> GetPayrunRuntimeValues()
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
     public List<string> GetRuntimeValuesEmployees()
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
     public Dictionary<string, string> GetEmployeeRuntimeValues(string employeeIdentifier)
     {
         // implementation
-        return default;
+        return null;
     }
 
     #endregion

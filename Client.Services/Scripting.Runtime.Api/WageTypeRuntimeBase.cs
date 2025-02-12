@@ -22,38 +22,38 @@ public abstract class WageTypeRuntimeBase : PayrunRuntimeBase, IWageTypeRuntime
     /// <inheritdoc />
     public decimal WageTypeNumber =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public string WageTypeName =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public string WageTypeDescription =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public string WageTypeCalendar =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public string[] Collectors =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public string[] CollectorGroups =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public List<string> GetResultTags()
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
@@ -66,21 +66,21 @@ public abstract class WageTypeRuntimeBase : PayrunRuntimeBase, IWageTypeRuntime
     public object GetWageTypeAttribute(string attributeName)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
     public decimal GetWageTypeValue(decimal wageTypeNumber)
     {
         // implementation
-        return default;
+        return 0;
     }
 
     /// <inheritdoc />
     public decimal GetCollectorValue(string collectorName)
     {
         // implementation
-        return default;
+        return 0;
     }
 
     /// <inheritdoc />
@@ -101,7 +101,7 @@ public abstract class WageTypeRuntimeBase : PayrunRuntimeBase, IWageTypeRuntime
     public object GetResultAttribute(string name)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />

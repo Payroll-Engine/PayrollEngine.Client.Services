@@ -25,7 +25,7 @@ public class CollectorEndRuntime : CollectorRuntimeBase, ICollectorEndRuntime
     public decimal[] GetValues()
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />

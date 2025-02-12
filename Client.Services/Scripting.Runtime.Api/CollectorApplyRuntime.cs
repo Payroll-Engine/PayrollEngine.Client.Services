@@ -24,15 +24,15 @@ public class CollectorApplyRuntime : CollectorRuntimeBase, ICollectorApplyRuntim
     /// <inheritdoc />
     public decimal WageTypeNumber =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public string WageTypeName =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public decimal WageTypeValue =>
         // implementation
-        default;
+        0;
 }

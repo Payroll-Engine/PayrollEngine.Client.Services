@@ -96,7 +96,7 @@ namespace PayrollEngine.Client.Scripting.Function.Api
             var employee = await new EmployeeService(HttpClient).GetAsync<Employee>(new(TenantId), employeeIdentifier);
             if (employee == null)
             {
-                throw new ScriptException($"Unknown employee {employeeIdentifier}");
+                throw new ScriptException($"Unknown employee {employeeIdentifier}.");
             }
             return employee;
         }
@@ -106,7 +106,7 @@ namespace PayrollEngine.Client.Scripting.Function.Api
             var regulation = await new RegulationService(HttpClient).GetAsync<Regulation>(new(TenantId), regulationName);
             if (regulation == null)
             {
-                throw new ScriptException($"Unknown regulation {regulationName}");
+                throw new ScriptException($"Unknown regulation {regulationName}.");
             }
             return regulation;
         }
@@ -116,7 +116,7 @@ namespace PayrollEngine.Client.Scripting.Function.Api
             var payroll = await new PayrollService(HttpClient).GetAsync<Payroll>(new(TenantId), payrollName);
             if (payroll == null)
             {
-                throw new ScriptException($"Unknown payroll {payrollName}");
+                throw new ScriptException($"Unknown payroll {payrollName}.");
             }
             return payroll;
         }
@@ -126,7 +126,7 @@ namespace PayrollEngine.Client.Scripting.Function.Api
             var payrun = await new PayrunService(HttpClient).GetAsync<Payrun>(new(TenantId), payrunName);
             if (payrun == null)
             {
-                throw new ScriptException($"Unknown payrun {payrunName}");
+                throw new ScriptException($"Unknown payrun {payrunName}.");
             }
             return payrun;
         }
@@ -136,7 +136,7 @@ namespace PayrollEngine.Client.Scripting.Function.Api
             var webhook = await new WebhookService(HttpClient).GetAsync<Webhook>(new(TenantId), webhookName);
             if (webhook == null)
             {
-                throw new ScriptException($"Unknown webhook {webhookName}");
+                throw new ScriptException($"Unknown webhook {webhookName}.");
             }
             return webhook;
         }
@@ -152,7 +152,7 @@ namespace PayrollEngine.Client.Scripting.Function.Api
             var report = await new ReportService(HttpClient).GetAsync<Model.Report>(new(TenantId, RegulationId.Value), reportName);
             if (report == null)
             {
-                throw new ScriptException($"Unknown report {reportName}");
+                throw new ScriptException($"Unknown report {reportName}.");
             }
             return report;
         }

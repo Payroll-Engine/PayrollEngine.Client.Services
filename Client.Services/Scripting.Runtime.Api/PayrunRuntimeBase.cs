@@ -27,12 +27,12 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
     /// <inheritdoc />
     public int PayrunId =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public string PayrunName =>
         // implementation
-        default;
+        null;
 
     #endregion
 
@@ -41,33 +41,33 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
     /// <inheritdoc />
     public int ExecutionPhase =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public Tuple<DateTime, DateTime> RetroPeriod =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public string Forecast =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public string CycleName =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public string PeriodName =>
         // implementation
-        default;
+        null;
 
     /// <inheritdoc />
     public object GetPayrunJobAttribute(string attributeName)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
@@ -80,7 +80,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
     public bool RemovePayrunJobAttribute(string attributeName)
     {
         // implementation
-        return default;
+        return false;
     }
 
     #endregion
@@ -91,14 +91,14 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
     public bool HasPayrunRuntimeValue(string key)
     {
         // implementation
-        return default;
+        return false;
     }
 
     /// <inheritdoc />
     public string GetPayrunRuntimeValue(string key)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
@@ -111,14 +111,14 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
     public bool HasEmployeeRuntimeValue(string key)
     {
         // implementation
-        return default;
+        return false;
     }
 
     /// <inheritdoc />
     public string GetEmployeeRuntimeValue(string key)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
@@ -136,7 +136,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
         IList<decimal> wageTypeNumbers, DateTime start, DateTime end, string forecast = null, int? jobStatus = null, IList<string> tags = null)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
@@ -144,7 +144,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
         IList<decimal> wageTypeNumbers, DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
@@ -152,7 +152,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
         int? jobStatus = null, IList<string> tags = null)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
@@ -160,7 +160,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
         DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
@@ -168,7 +168,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
         string forecast = null, int? jobStatus = null, IList<string> tags = null)
     {
         // implementation
-        return default;
+        return null;
     }
 
     #endregion
@@ -180,7 +180,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
         DateTime start, DateTime end, string forecast = null, int? jobStatus = null, IList<string> tags = null)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
@@ -188,7 +188,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
         IList<string> collectorNames, DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
@@ -196,7 +196,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
         int? jobStatus = null, IList<string> tags = null)
     {
         // implementation
-        return default;
+        return null;
     }
 
     /// <inheritdoc />
@@ -204,7 +204,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
         IList<string> collectorNames, DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null)
     {
         // implementation
-        return default;
+        return null;
     }
 
     #endregion

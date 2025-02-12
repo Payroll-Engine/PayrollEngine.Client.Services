@@ -46,7 +46,7 @@ public class CaseValidateRuntime : CaseChangeRuntimeBase, ICaseValidateRuntime
         var caseField = GetCaseFieldSet(caseFieldName);
         if (caseField == null)
         {
-            throw new ArgumentException($"unknown case field {caseFieldName}");
+            throw new ArgumentException($"unknown case field {caseFieldName}.");
         }
         return caseField.ValidateActions == null ? [] : caseField.ValidateActions.ToArray();
     }

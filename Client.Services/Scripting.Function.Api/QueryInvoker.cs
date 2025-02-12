@@ -76,7 +76,7 @@ public class QueryInvoker
             var tenant = await new TenantService(HttpClient).GetAsync<Tenant>(new(), tenantParameter);
             if (tenant == null)
             {
-                throw new ScriptException($"Unknown tenant {tenantParameter}");
+                throw new ScriptException($"Unknown tenant {tenantParameter}.");
             }
             tenantId = tenant.Id;
         }
@@ -91,7 +91,7 @@ public class QueryInvoker
                 GetAsync<Regulation>(new(tenantId), regulationParameter);
             if (regulation == null)
             {
-                throw new ScriptException($"Unknown regulation {regulationParameter}");
+                throw new ScriptException($"Unknown regulation {regulationParameter}.");
             }
             regulationId = regulation.Id;
         }

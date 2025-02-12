@@ -32,14 +32,14 @@ public abstract class FunctionControllerBase<TFunc, TFuncAttribute, TScriptAttri
         Function = functionType.GetCustomAttribute<TFuncAttribute>();
         if (Function == null)
         {
-            throw new ArgumentException($"Type {functionType} without function attribute");
+            throw new ArgumentException($"Type {functionType} without function attribute.");
         }
 
         // methods
         Methods = GetAttributeMethods(functionType);
         if (!Methods.Any())
         {
-            throw new ArgumentException($"Type {functionType} without scripting methods");
+            throw new ArgumentException($"Type {functionType} without scripting methods.");
         }
 
         HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
@@ -58,7 +58,7 @@ public abstract class FunctionControllerBase<TFunc, TFuncAttribute, TScriptAttri
         var method = Methods.FirstOrDefault(x => string.Equals(x.Key.ScriptKey, scriptKey));
         if (method.Key == null)
         {
-            throw new ArgumentException($"Scripting method with key {scriptKey} is not available");
+            throw new ArgumentException($"Scripting method with key {scriptKey} is not available.");
         }
         return method.Value;
     }
@@ -76,7 +76,7 @@ public abstract class FunctionControllerBase<TFunc, TFuncAttribute, TScriptAttri
         var method = Methods.FirstOrDefault(x => string.Equals(x.Key.ScriptKey, scriptKey));
         if (method.Key == null)
         {
-            throw new ArgumentException($"Scripting method with key {scriptKey} is not available");
+            throw new ArgumentException($"Scripting method with key {scriptKey} is not available.");
         }
         return method.Key;
     }

@@ -36,7 +36,7 @@ public abstract class PayrollFunctionController<TFunc, TFuncAttribute, TScriptAt
                 tenant = new TenantService(HttpClient).GetAsync<Tenant>(new(), Function.TenantIdentifier).Result;
                 if (tenant == null)
                 {
-                    throw new ScriptException($"Unknown tenant {Function.TenantIdentifier}");
+                    throw new ScriptException($"Unknown tenant {Function.TenantIdentifier}.");
                 }
             }
             return tenant;
@@ -54,7 +54,7 @@ public abstract class PayrollFunctionController<TFunc, TFuncAttribute, TScriptAt
                 user = new UserService(HttpClient).GetAsync<User>(new(Tenant.Id), Function.UserIdentifier).Result;
                 if (user == null)
                 {
-                    throw new ScriptException($"Unknown user {Function.UserIdentifier}");
+                    throw new ScriptException($"Unknown user {Function.UserIdentifier}.");
                 }
             }
             return user;
@@ -73,7 +73,7 @@ public abstract class PayrollFunctionController<TFunc, TFuncAttribute, TScriptAt
                     new(Tenant.Id), Function.PayrollName).Result;
                 if (payroll == null)
                 {
-                    throw new ScriptException($"Unknown payroll {Function.PayrollName}");
+                    throw new ScriptException($"Unknown payroll {Function.PayrollName}.");
                 }
             }
             return payroll;
@@ -96,7 +96,7 @@ public abstract class PayrollFunctionController<TFunc, TFuncAttribute, TScriptAt
                     new(Tenant.Id), Function.EmployeeIdentifier).Result;
                 if (employee == null)
                 {
-                    throw new ScriptException($"Unknown employee {Function.EmployeeIdentifier}");
+                    throw new ScriptException($"Unknown employee {Function.EmployeeIdentifier}.");
                 }
             }
             return employee;

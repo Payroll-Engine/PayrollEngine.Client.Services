@@ -24,5 +24,5 @@ public class WageTypeResultRuntime : WageTypeRuntimeBase, IWageTypeResultRuntime
     /// <inheritdoc />
     public decimal WageTypeValue =>
         // implementation
-        default;
+        0;
 }

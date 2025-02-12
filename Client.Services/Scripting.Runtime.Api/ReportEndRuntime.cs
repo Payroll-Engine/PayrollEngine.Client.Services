@@ -64,7 +64,7 @@ public class ReportEndRuntime : ReportRuntime, IReportEndRuntime
         // schema change
         if (!Enum.IsDefined((DataMergeSchemaChange)schemaChange))
         {
-            throw new PayrollException($"Invalid schema change: {schemaChange}");
+            throw new PayrollException($"Invalid schema change: {schemaChange}.");
         }
 
         // culture
@@ -87,7 +87,7 @@ public class ReportEndRuntime : ReportRuntime, IReportEndRuntime
         {
             if (!resultTable.Columns.Contains(mergeColumn))
             {
-                throw new ScriptException($"Unknown merge column {mergeColumn}");
+                throw new ScriptException($"Unknown merge column {mergeColumn}.");
             }
             resultTable.PrimaryKey = [resultTable.Columns[mergeColumn]];
         }

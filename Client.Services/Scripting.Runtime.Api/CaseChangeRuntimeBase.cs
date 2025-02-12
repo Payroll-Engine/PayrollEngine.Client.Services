@@ -246,7 +246,7 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
         var caseField = GetCaseFieldSet(caseFieldName);
         if (caseField == null)
         {
-            throw new ArgumentException($"unknown case field {caseFieldName}");
+            throw new ArgumentException($"unknown case field {caseFieldName}.");
         }
         // ensure case field attribute collection
         caseField.Attributes ??= new();
@@ -271,7 +271,7 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
         var caseField = GetCaseFieldSet(caseFieldName);
         if (caseField == null)
         {
-            throw new ArgumentException($"unknown case field {caseFieldName}");
+            throw new ArgumentException($"unknown case field {caseFieldName}.");
         }
         if (caseField.Attributes == null || !caseField.Attributes.ContainsKey(attributeName))
         {
@@ -302,7 +302,7 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
         var caseField = GetCaseFieldSet(caseFieldName);
         if (caseField == null)
         {
-            throw new ArgumentException($"unknown case field {caseFieldName}");
+            throw new ArgumentException($"unknown case field {caseFieldName}.");
         }
         // ensure  case value attribute collection
         caseField.ValueAttributes ??= new();
@@ -327,7 +327,7 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
         var caseField = GetCaseFieldSet(caseFieldName);
         if (caseField == null)
         {
-            throw new ArgumentException($"unknown case field {caseFieldName}");
+            throw new ArgumentException($"unknown case field {caseFieldName}.");
         }
         if (caseField.ValueAttributes == null || !caseField.ValueAttributes.ContainsKey(attributeName))
         {
@@ -350,10 +350,10 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
         if (caseFieldSet == null)
         {
             var caseField = new PayrollService(HttpClient).GetCaseFieldsAsync<CaseField>(
-                new(TenantId, PayrollId), new[] { caseFieldName }).Result.FirstOrDefault();
+                new(TenantId, PayrollId), [caseFieldName]).Result.FirstOrDefault();
             if (caseField == null)
             {
-                throw new ScriptException($"Unknown case field {caseFieldName}");
+                throw new ScriptException($"Unknown case field {caseFieldName}.");
             }
             caseFieldSet = new(caseField);
             if (addField)

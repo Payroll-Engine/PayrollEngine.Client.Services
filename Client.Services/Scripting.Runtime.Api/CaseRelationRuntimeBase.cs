@@ -112,7 +112,7 @@ public abstract class CaseRelationRuntimeBase : PayrollRuntime, ICaseRelationRun
         var caseField = SourceCaseSet.FindCaseField(caseFieldName);
         if (caseField == null)
         {
-            throw new ScriptException($"Unknown source case field {caseFieldName}");
+            throw new ScriptException($"Unknown source case field {caseFieldName}.");
         }
         return caseField;
     }
@@ -244,7 +244,7 @@ public abstract class CaseRelationRuntimeBase : PayrollRuntime, ICaseRelationRun
         var caseField = TargetCaseSet.FindCaseField(caseFieldName);
         if (caseField == null)
         {
-            throw new ScriptException($"Unknown target case field {caseFieldName}");
+            throw new ScriptException($"Unknown target case field {caseFieldName}.");
         }
         return caseField;
     }

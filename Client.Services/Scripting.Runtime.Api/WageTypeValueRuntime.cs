@@ -24,7 +24,7 @@ public class WageTypeValueRuntime : WageTypeRuntimeBase, IWageTypeValueRuntime
     /// <inheritdoc />
     public int ExecutionCount =>
         // implementation
-        default;
+        0;
 
     /// <inheritdoc />
     public void RestartExecution()
