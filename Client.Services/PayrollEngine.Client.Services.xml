@@ -820,6 +820,32 @@
         <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportStartFunctionResult.ToString">
             <summary>Returns a string that represents this instance</summary>
         </member>
+        <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CalendarExtensions">
+            <summary>
+            Extension methods for the <see cref="T:PayrollEngine.Client.Model.Calendar"/>
+            </summary>
+            <remarks>Duplicate of the backend calendar extension (no holiday support)</remarks>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CalendarExtensions.IsWorkDay(PayrollEngine.Client.Model.Calendar,System.DateTime)">
+            <summary>Test for working days</summary>
+            <param name="calendar">The payroll calendar</param>
+            <param name="moment">Test day</param>
+            <returns>Returns true for valid time units</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CalendarExtensions.GetPreviousWorkDays(PayrollEngine.Client.Model.Calendar,System.DateTime,System.Int32)">
+            <summary>Get previous working days</summary>
+            <param name="calendar">The payroll calendar</param>
+            <param name="moment">The start moment (not included in results)</param>
+            <param name="count">The number of days (default: 1)</param>
+            <returns>Returns true for valid time units</returns>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CalendarExtensions.GetNextWorkDays(PayrollEngine.Client.Model.Calendar,System.DateTime,System.Int32)">
+            <summary>Get next working days</summary>
+            <param name="calendar">The payroll calendar</param>
+            <param name="moment">The start moment (not included in results)</param>
+            <param name="count">The number of days (default: 1)</param>
+            <returns>Returns true for valid time units</returns>
+        </member>
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.CaseAvailableRuntime">
             <summary>Runtime for the case available function</summary>
         </member>
@@ -896,6 +922,18 @@
             <param name="caseName">The name of the case</param>
             <returns>The case set matching the name, script exception on missing case</returns>
         </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.GetReason">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.SetReason(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.GetForecast">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.SetForecast(System.String)">
+            <inheritdoc />
+        </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.GetFieldNames">
             <inheritdoc />
         </member>
@@ -929,6 +967,9 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.InitStart(System.String,System.Nullable{System.DateTime})">
             <inheritdoc />
         </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.MandatoryEnd(System.String)">
+            <inheritdoc />
+        </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.HasEnd(System.String)">
             <inheritdoc />
         </member>
@@ -939,6 +980,9 @@
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.InitEnd(System.String,System.Nullable{System.DateTime})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.MandatoryValue(System.String)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CaseChangeRuntimeBase.GetValueType(System.String)">
@@ -1742,9 +1786,6 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportBuildRuntime.SetParameter(System.String,System.String)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportBuildRuntime.SetParameterAttribute(System.String,System.String,System.Object)">
-            <inheritdoc />
-        </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportBuildRuntime.SetParameterHidden(System.String,System.Boolean)">
             <inheritdoc />
         </member>
@@ -1781,6 +1822,9 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ReportRequest">
             <summary>The report request</summary>
         </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.PayrollService">
+            <summary>The payroll service</summary>
+        </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.#ctor(PayrollEngine.Client.PayrollHttpClient,System.Int32,System.Int32,PayrollEngine.Client.Model.ReportSet,PayrollEngine.Client.Model.ReportRequest)">
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
@@ -1801,6 +1845,9 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.GetReportAttribute(System.String)">
             <inheritdoc />
         </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.SetReportAttribute(System.String,System.Object)">
+            <inheritdoc />
+        </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.HasParameter(System.String)">
             <inheritdoc />
         </member>
@@ -1815,6 +1862,9 @@
             <param name="value">The parameter value</param>
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.GetParameterAttribute(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.SetParameterAttribute(System.String,System.String,System.Object)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ParameterHidden(System.String)">
@@ -1906,9 +1956,6 @@
             <param name="tenantId">The tenant id</param>
             <param name="userId">The user id</param>
         </member>
-        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.UserCulture">
-            <inheritdoc />
-        </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.Tenant">
             <summary>The tenant</summary>
         </member>
@@ -1933,8 +1980,39 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.UserIdentifier">
             <inheritdoc />
         </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.UserCulture">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.UserType">
+            <inheritdoc />
+        </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.GetUserAttribute(System.String)">
             <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.GetDerivedCulture(System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.GetDerivedCalendar(System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.IsWorkDay(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.GetPreviousWorkDays(System.String,System.DateTime,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.GetNextWorkDays(System.String,System.DateTime,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.GetCalendarPeriod(System.String,System.DateTime,System.Int32,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.GetCalendar(System.String)">
+            <summary>
+            Get calendar
+            </summary>
+            <param name="calendarName">Calendar name</param>
+            <returns>Default calender on missing calendar</returns>
         </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.LogOwner">
             <summary>The log owner, the source identifier</summary>

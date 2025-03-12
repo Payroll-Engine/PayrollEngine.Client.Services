@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
 using System.Linq;
 using System.Text.Json;
+using System.Globalization;
+using System.Collections.Generic;
 using PayrollEngine.Client.Model;
-using PayrollEngine.Client.QueryExpression;
+using PayrollEngine.Client.Service;
 using PayrollEngine.Client.Service.Api;
+using PayrollEngine.Client.QueryExpression;
 
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
@@ -18,6 +19,9 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
 
     /// <summary>The report request</summary>
     protected ReportRequest ReportRequest { get; }
+
+    /// <summary>The payroll service</summary>
+    protected IPayrollService PayrollService { get; }
 
     /// <summary>Initializes a new instance of the <see cref="PayrollRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
@@ -31,6 +35,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     {
         Report = report ?? throw new ArgumentNullException(nameof(report));
         ReportRequest = reportRequest ?? throw new ArgumentNullException(nameof(reportRequest));
+        PayrollService = new PayrollService(httpClient);
     }
 
     /// <summary>The log owner type</summary>
@@ -47,11 +52,41 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     public object GetReportAttribute(string attributeName) =>
         Report.Attributes?.GetValue<object>(attributeName);
 
+    /// <inheritdoc />
+    public void SetReportAttribute(string attributeName, object value)
+    {
+        if (string.IsNullOrWhiteSpace(attributeName))
+        {
+            throw new ArgumentException(nameof(attributeName));
+        }
+
+        // add/change attribute
+        if (value != null)
+        {
+            // ensure attribute collection
+            Report.Attributes ??= new();
+            Report.Attributes[attributeName] = value;
+        }
+        else
+        {
+            // remove attribute
+            if (Report.Attributes != null && Report.Attributes.ContainsKey(attributeName))
+            {
+                Report.Attributes.Remove(attributeName);
+            }
+        }
+    }
+
     #region Parameter
 
     /// <inheritdoc />
     public bool HasParameter(string parameterName)
     {
+        if (string.IsNullOrWhiteSpace(parameterName))
+        {
+            throw new ArgumentException(nameof(parameterName));
+        }
+
         // request
         if (ReportRequest.Parameters != null && ReportRequest.Parameters.ContainsKey(parameterName))
         {
@@ -60,12 +95,17 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
 
         // report
         var parameter = Report.Parameters.FirstOrDefault(x => string.Equals(x.Name, parameterName));
-        return parameter != null;
+        return parameter?.Value != null;
     }
 
     /// <inheritdoc />
     public string GetParameter(string parameterName)
     {
+        if (string.IsNullOrWhiteSpace(parameterName))
+        {
+            throw new ArgumentException(nameof(parameterName));
+        }
+
         // request
         if (ReportRequest.Parameters != null && ReportRequest.Parameters.TryGetValue(parameterName, out var requestParameter))
         {
@@ -131,6 +171,45 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
         }
 
         return null;
+    }
+
+    /// <inheritdoc />
+    public void SetParameterAttribute(string parameterName, string attributeName, object value)
+    {
+        if (string.IsNullOrWhiteSpace(parameterName))
+        {
+            throw new ArgumentException(nameof(parameterName));
+        }
+        if (string.IsNullOrWhiteSpace(attributeName))
+        {
+            throw new ArgumentException(nameof(attributeName));
+        }
+
+        // report parameter
+        if (Report.Parameters == null)
+        {
+            throw new ArgumentException($"Invalid report parameter {parameterName}.");
+        }
+        var reportParameter = Report.Parameters.FirstOrDefault(x => string.Equals(x.Name, parameterName));
+        if (reportParameter == null)
+        {
+            throw new ArgumentException($"Unknown report parameter {parameterName}.");
+        }
+
+        // add/change attribute
+        if (value != null)
+        {
+            reportParameter.Attributes ??= new();
+            reportParameter.Attributes[attributeName] = value;
+        }
+        else
+        {
+            // remove attribute
+            if (reportParameter.Attributes != null && reportParameter.Attributes.ContainsKey(attributeName))
+            {
+                reportParameter.Attributes.Remove(attributeName);
+            }
+        }
     }
 
     /// <inheritdoc />

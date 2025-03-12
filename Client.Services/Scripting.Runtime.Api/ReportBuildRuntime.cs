@@ -28,45 +28,6 @@ public class ReportBuildRuntime : ReportRuntime, IReportBuildRuntime
         SetParameterInternal(parameterName, value);
 
     /// <inheritdoc />
-    public void SetParameterAttribute(string parameterName, string attributeName, object value)
-    {
-        if (string.IsNullOrWhiteSpace(parameterName))
-        {
-            throw new ArgumentException(nameof(parameterName));
-        }
-        if (string.IsNullOrWhiteSpace(attributeName))
-        {
-            throw new ArgumentException(nameof(attributeName));
-        }
-
-        // report parameter
-        if (Report.Parameters == null)
-        {
-            throw new ArgumentException($"Invalid report parameter {parameterName}.");
-        }
-        var reportParameter = Report.Parameters.FirstOrDefault(x => string.Equals(x.Name, parameterName));
-        if (reportParameter == null)
-        {
-            throw new ArgumentException($"Unknown report parameter {parameterName}.");
-        }
-
-        // add/change attribute
-        if (value != null)
-        {
-            reportParameter.Attributes ??= new();
-            reportParameter.Attributes[attributeName] = value;
-        }
-        else
-        {
-            // remove attribute
-            if (reportParameter.Attributes != null && reportParameter.Attributes.ContainsKey(attributeName))
-            {
-                reportParameter.Attributes.Remove(attributeName);
-            }
-        }
-    }
-
-    /// <inheritdoc />
     public void SetParameterHidden(string parameterName, bool hidden)
     {
         if (string.IsNullOrWhiteSpace(parameterName))

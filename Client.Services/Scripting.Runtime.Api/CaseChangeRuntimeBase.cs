@@ -91,6 +91,22 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
             new(TenantId, PayrollId), caseName, UserId, EmployeeId).Result;
     }
 
+    /// <inheritdoc />
+    public string GetReason() => 
+        Case.Reason;
+
+    /// <inheritdoc />
+    public void SetReason(string reason) => 
+        Case.Reason = reason;
+
+    /// <inheritdoc />
+    public string GetForecast() => 
+        Case.Forecast;
+
+    /// <inheritdoc />
+    public void SetForecast(string forecast) => 
+        Case.Forecast = forecast;
+
     #endregion
 
     #region Case Fields
@@ -144,6 +160,10 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
     }
 
     /// <inheritdoc />
+    public bool MandatoryEnd(string caseFieldName) =>
+        GetCaseFieldSet(caseFieldName).EndMandatory;
+
+    /// <inheritdoc />
     public bool HasEnd(string caseFieldName) =>
         GetCaseFieldSet(caseFieldName).End != null;
 
@@ -161,6 +181,10 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
         CaseFieldSet caseFieldSet = GetCaseFieldSet(caseFieldName, true);
         caseFieldSet.End ??= end;
     }
+
+    /// <inheritdoc />
+    public bool MandatoryValue(string caseFieldName) =>
+        GetCaseFieldSet(caseFieldName).ValueMandatory;
 
     /// <inheritdoc />
     public int GetValueType(string caseFieldName) =>

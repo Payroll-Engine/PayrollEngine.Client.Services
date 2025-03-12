@@ -303,7 +303,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     /// <inheritdoc />
     public virtual List<string> GetCaseValueTags(string caseFieldName, DateTime valueDate)
     {
-        var caseValue = GetTimeCaseValue(caseFieldName, valueDate).Result;
+        var caseValue = GetCaseTimeCaseValue(caseFieldName, valueDate).Result;
         return caseValue == null ? [] : caseValue.Tags;
     }
 
@@ -311,7 +311,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     public virtual Tuple<string, DateTime, Tuple<DateTime?, DateTime?>, object, DateTime?, List<string>, Dictionary<string, object>> GetCaseValue(
         string caseFieldName, DateTime valueDate)
     {
-        var caseValue = GetTimeCaseValue(caseFieldName, valueDate).Result;
+        var caseValue = GetCaseTimeCaseValue(caseFieldName, valueDate).Result;
         if (caseValue == null)
         {
             return null;
@@ -325,7 +325,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
             caseValue.Attributes);
     }
 
-    private async Task<Model.CaseValue> GetTimeCaseValue(string caseFieldName, DateTime valueDate)
+    private async Task<Model.CaseValue> GetCaseTimeCaseValue(string caseFieldName, DateTime valueDate)
     {
         var context = new PayrollServiceContext(TenantId, PayrollId);
 
@@ -337,7 +337,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
         }
 
         // case
-        var caseValue = (await PayrollService.GetTimeValuesAsync(context, EmployeeId, [caseFieldName],
+        var caseValue = (await PayrollService.GetCaseTimeValuesAsync(context, EmployeeId, [caseFieldName],
             valueDate, RegulationDate, EvaluationDate)).FirstOrDefault();
         return caseValue;
     }
@@ -359,8 +359,15 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
 
         // case value periods
         var caseRef = new CaseValueReference(caseFieldName);
-        var valuePeriods = PayrollService.GetCaseValuesAsync(new(TenantId, PayrollId),
-            startDate.Value, endDate.Value, [caseRef.CaseFieldName], EmployeeId, caseRef.CaseSlot).Result;
+        var valuePeriods = PayrollService.GetCaseValuesAsync(
+            context: new(TenantId, PayrollId),
+            startDate: startDate.Value,
+            endDate: endDate.Value,
+            caseFieldNames: [caseRef.CaseFieldName],
+            employeeId: EmployeeId,
+            regulationDate: RegulationDate,
+            evaluationDate: EvaluationDate,
+            caseSlot: caseRef.CaseSlot).Result;
 
         // tuple build
         var values = new List<Tuple<string, DateTime, Tuple<DateTime?, DateTime?>, object, DateTime?, List<string>, Dictionary<string, object>>>();

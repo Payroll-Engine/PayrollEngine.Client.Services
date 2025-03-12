@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
+using System.Collections.Generic;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Service;
 using PayrollEngine.Client.Service.Api;
@@ -43,17 +43,9 @@ public abstract class RuntimeBase : IRuntime
         }
         UserService = new UserService(httpClient);
         User = UserService.GetAsync<User>(new(tenantId), userId).Result;
-
         // user culture by priority: user >  system
         UserCulture = User.Culture ?? CultureInfo.CurrentCulture.Name;
     }
-
-    #region Culture
-
-    /// <inheritdoc />
-    public virtual string UserCulture { get; }
-
-    #endregion
 
     #region Tenant
 
@@ -98,8 +90,144 @@ public abstract class RuntimeBase : IRuntime
     public string UserIdentifier => User.Identifier;
 
     /// <inheritdoc />
+    public virtual string UserCulture { get; }
+
+    /// <inheritdoc />
+    public int UserType => (int)User.UserType;
+
+    /// <inheritdoc />
     public object GetUserAttribute(string attributeName) =>
         User.GetAttribute(attributeName);
+
+    #endregion
+
+    #region Culture and Calendar
+
+    /// <inheritdoc />
+    public string GetDerivedCulture(int divisionId, int employeeId)
+    {
+        if (divisionId <= 0 && employeeId > 0)
+        {
+            throw new ArgumentException(nameof(employeeId));
+        }
+
+        // priority 1: employee culture
+        if (employeeId > 0)
+        {
+            var employee = new EmployeeService(HttpClient).GetAsync<Employee>(
+                new(TenantId), employeeId).Result;
+            if (employee == null)
+            {
+                throw new ScriptException($"Invalid employee id {employeeId}");
+            }
+            if (!string.IsNullOrWhiteSpace(employee.Culture))
+            {
+                return employee.Culture;
+            }
+        }
+
+        // priority 2: division culture
+        if (divisionId > 0)
+        {
+            var division = new DivisionService(HttpClient).GetAsync<Division>(
+                new(TenantId), divisionId).Result;
+            if (division == null)
+            {
+                throw new ScriptException($"Invalid division id {divisionId}");
+            }
+            if (!string.IsNullOrWhiteSpace(division.Culture))
+            {
+                return division.Culture;
+            }
+        }
+
+        // priority 3: tenant culture
+        return Tenant.Culture;
+    }
+
+    /// <inheritdoc />
+    public string GetDerivedCalendar(int divisionId, int employeeId)
+    {
+        if (divisionId <= 0 && employeeId > 0)
+        {
+            throw new ArgumentException(nameof(employeeId));
+        }
+
+        // priority 1: employee calendar
+        if (employeeId > 0)
+        {
+            var employee = new EmployeeService(HttpClient).GetAsync<Employee>(
+                new(TenantId), employeeId).Result;
+            if (employee == null)
+            {
+                throw new ScriptException($"Invalid employee id {employeeId}");
+            }
+            if (!string.IsNullOrWhiteSpace(employee.Calendar))
+            {
+                return employee.Calendar;
+            }
+        }
+
+        // priority 2: division calendar
+        if (divisionId > 0)
+        {
+            var division = new DivisionService(HttpClient).GetAsync<Division>(
+                new(TenantId), divisionId).Result;
+            if (division == null)
+            {
+                throw new ScriptException($"Invalid division id {divisionId}");
+            }
+            if (!string.IsNullOrWhiteSpace(division.Calendar))
+            {
+                return division.Calendar;
+            }
+        }
+
+        // priority 3: tenant calendar
+        return Tenant.Calendar;
+    }
+
+    /// <inheritdoc />
+    public bool IsWorkDay(string calendarName, DateTime moment) =>
+        GetCalendar(calendarName).IsWorkDay(moment);
+
+    /// <inheritdoc />
+    public List<DateTime> GetPreviousWorkDays(string calendarName, DateTime moment, int count) =>
+        GetCalendar(calendarName).GetPreviousWorkDays(moment);
+
+    /// <inheritdoc />
+    public List<DateTime> GetNextWorkDays(string calendarName, DateTime moment, int count) =>
+        GetCalendar(calendarName).GetNextWorkDays(moment);
+
+    /// <inheritdoc />
+    public Tuple<DateTime, DateTime> GetCalendarPeriod(string calendarName, DateTime moment, int offset, string culture)
+    {
+        if (string.IsNullOrWhiteSpace(calendarName))
+        {
+            throw new ArgumentException(nameof(calendarName));
+        }
+        var period = new CalendarService(HttpClient).GetPeriodAsync(
+            tenantId: TenantId,
+            cultureName: culture,
+            periodMoment: moment,
+            offset: offset).Result ?? new();
+        return new(period.Start, period.End);
+    }
+
+    /// <summary>
+    /// Get calendar
+    /// </summary>
+    /// <param name="calendarName">Calendar name</param>
+    /// <returns>Default calender on missing calendar</returns>
+    private Model.Calendar GetCalendar(string calendarName)
+    {
+        var calendar = new CalendarService(HttpClient).GetAsync<Model.Calendar>(new(TenantId), calendarName).Result;
+        if (calendar == null)
+        {
+            throw new ScriptException($"Unknown calendar {calendarName}");
+        }
+        return calendar;
+    }
 
     #endregion
 
