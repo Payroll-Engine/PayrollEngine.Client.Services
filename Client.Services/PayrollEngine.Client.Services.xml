@@ -1523,6 +1523,9 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Payroll">
             <summary>The payroll</summary>
         </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.DivisionId">
+            <inheritdoc />
+        </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.Cycle">
             <summary>The payroll cycle</summary>
         </member>
@@ -1560,6 +1563,9 @@
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCaseValue(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCaseValues(System.Collections.Generic.IList{System.String},System.DateTime)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCaseValues(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
@@ -1995,7 +2001,7 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.GetDerivedCalendar(System.Int32,System.Int32)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.IsWorkDay(System.String,System.DateTime)">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.IsCalendarWorkDay(System.String,System.DateTime)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.RuntimeBase.GetPreviousWorkDays(System.String,System.DateTime,System.Int32)">

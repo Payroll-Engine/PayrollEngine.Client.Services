@@ -157,6 +157,13 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
 
     #endregion
 
+    #region Division
+
+    /// <inheritdoc />
+    public int DivisionId => Payroll.DivisionId;
+
+    #endregion
+
     #region Calendar
 
     /// <summary>The payroll cycle</summary>
@@ -303,7 +310,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     /// <inheritdoc />
     public virtual List<string> GetCaseValueTags(string caseFieldName, DateTime valueDate)
     {
-        var caseValue = GetCaseTimeCaseValue(caseFieldName, valueDate).Result;
+        var caseValue = GetTimeCaseValue(caseFieldName, valueDate).Result;
         return caseValue == null ? [] : caseValue.Tags;
     }
 
@@ -311,7 +318,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     public virtual Tuple<string, DateTime, Tuple<DateTime?, DateTime?>, object, DateTime?, List<string>, Dictionary<string, object>> GetCaseValue(
         string caseFieldName, DateTime valueDate)
     {
-        var caseValue = GetCaseTimeCaseValue(caseFieldName, valueDate).Result;
+        var caseValue = GetTimeCaseValue(caseFieldName, valueDate).Result;
         if (caseValue == null)
         {
             return null;
@@ -325,8 +332,47 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
             caseValue.Attributes);
     }
 
-    private async Task<Model.CaseValue> GetCaseTimeCaseValue(string caseFieldName, DateTime valueDate)
+    /// <inheritdoc />
+    public virtual List<Tuple<string, DateTime, Tuple<DateTime?, DateTime?>, object, DateTime?, List<string>, Dictionary<string, object>>> GetCaseValues(
+        IList<string> caseFieldNames, DateTime valueDate)
     {
+        if (caseFieldNames == null)
+        {
+            throw new ArgumentNullException(nameof(caseFieldNames));
+        }
+
+
+        var caseValues = GetTimeCaseValues(caseFieldNames, valueDate).Result;
+        var values =
+            new List<Tuple<string, DateTime, Tuple<DateTime?, DateTime?>, object, DateTime?, List<string>,
+                Dictionary<string, object>>>();
+
+        foreach (var caseValue in caseValues)
+        {
+            var value = new Tuple<string, DateTime, Tuple<DateTime?, DateTime?>, object, DateTime?, List<string>,
+                Dictionary<string, object>>(caseValue.CaseFieldName,
+                caseValue.Created,
+                new(caseValue.Start, caseValue.End),
+                ValueConvert.ToValue(caseValue.Value, caseValue.ValueType, TenantCulture),
+                caseValue.CancellationDate,
+                caseValue.Tags,
+                caseValue.Attributes);
+            values.Add(value);
+        }
+        return values;
+    }
+
+    private async Task<Model.CaseValue> GetTimeCaseValue(string caseFieldName, DateTime valueDate) =>
+        (await GetTimeCaseValues([caseFieldName], valueDate)).FirstOrDefault();
+
+    private async Task<List<Model.CaseValue>> GetTimeCaseValues(IList<string> caseFieldNames, DateTime valueDate)
+    {
+        var caseFieldName = caseFieldNames.FirstOrDefault();
+        if (string.IsNullOrWhiteSpace(caseFieldName))
+        {
+            throw new ArgumentException(nameof(caseFieldName));
+        }
+
         var context = new PayrollServiceContext(TenantId, PayrollId);
 
         // case field
@@ -337,9 +383,29 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
         }
 
         // case
-        var caseValue = (await PayrollService.GetCaseTimeValuesAsync(context, EmployeeId, [caseFieldName],
-            valueDate, RegulationDate, EvaluationDate)).FirstOrDefault();
-        return caseValue;
+        var caseName = new RegulationService(HttpClient).GetCaseOfCaseFieldAsync(
+            new(TenantId), caseFieldName).Result;
+        if (string.IsNullOrWhiteSpace(caseName))
+        {
+            throw new ScriptException($"Unknown case field: {caseFieldName}.");
+        }
+        var @case = PayrollService.BuildCaseAsync<CaseSet>(
+            new(TenantId, PayrollId), caseName, UserId, EmployeeId).Result;
+        if (@case == null || @case.Id == 0)
+        {
+            throw new ScriptException($"Unknown case: {caseName}.");
+        }
+
+        // case value
+        var caseValues = await PayrollService.GetCaseTimeValuesAsync(
+            context: context,
+            caseType: @case.CaseType,
+            employeeId: EmployeeId,
+            caseFieldNames: caseFieldNames,
+            valueDate: valueDate,
+            regulationDate: RegulationDate,
+            evaluationDate: EvaluationDate);
+        return caseValues;
     }
 
     /// <inheritdoc />
