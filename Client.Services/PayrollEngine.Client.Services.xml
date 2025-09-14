@@ -1445,10 +1445,10 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.SetResultAttribute(System.String,System.Object)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.AddPayrunResult(System.String,System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.AddPayrunResult(System.String,System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.AddCustomResult(System.String,System.Decimal,System.DateTime,System.DateTime,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.AddCustomResult(System.String,System.Decimal,System.DateTime,System.DateTime,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.Nullable{System.Int32},System.String)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.ScheduleRetroPayrun(System.DateTime,System.Collections.Generic.List{System.String})">
@@ -2110,10 +2110,10 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase.SetResultAttribute(System.String,System.Object)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase.AddPayrunResult(System.String,System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase.AddPayrunResult(System.String,System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase.AddCustomResult(System.String,System.Decimal,System.DateTime,System.DateTime,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.Nullable{System.Int32})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase.AddCustomResult(System.String,System.Decimal,System.DateTime,System.DateTime,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.Nullable{System.Int32},System.String)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase.ScheduleRetroPayrun(System.DateTime,System.Collections.Generic.List{System.String})">

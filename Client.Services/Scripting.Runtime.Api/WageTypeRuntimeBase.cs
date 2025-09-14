@@ -112,14 +112,16 @@ public abstract class WageTypeRuntimeBase : PayrunRuntimeBase, IWageTypeRuntime
 
     /// <inheritdoc />
     public void AddPayrunResult(string source, string name, string value, int valueType,
-        DateTime startDate, DateTime endDate, string slot, List<string> tags, Dictionary<string, object> attributes)
+        DateTime startDate, DateTime endDate, string slot, List<string> tags, 
+        Dictionary<string, object> attributes, string culture)
     {
         // implementation
     }
 
     /// <inheritdoc />
     public void AddCustomResult(string source, decimal value, DateTime startDate,
-        DateTime endDate, List<string> tags, Dictionary<string, object> attributes, int? valueType)
+        DateTime endDate, List<string> tags, Dictionary<string, object> attributes,
+        int? valueType, string culture)
     {
         // implementation
     }

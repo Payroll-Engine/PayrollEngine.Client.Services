@@ -70,10 +70,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
         else
         {
             // remove attribute
-            if (Report.Attributes != null && Report.Attributes.ContainsKey(attributeName))
-            {
-                Report.Attributes.Remove(attributeName);
-            }
+            Report.Attributes?.Remove(attributeName);
         }
     }
 
@@ -205,10 +202,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
         else
         {
             // remove attribute
-            if (reportParameter.Attributes != null && reportParameter.Attributes.ContainsKey(attributeName))
-            {
-                reportParameter.Attributes.Remove(attributeName);
-            }
+            reportParameter.Attributes?.Remove(attributeName);
         }
     }
 
