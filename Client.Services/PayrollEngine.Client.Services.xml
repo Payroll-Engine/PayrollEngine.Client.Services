@@ -1445,9 +1445,6 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.SetResultAttribute(System.String,System.Object)">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.AddPayrunResult(System.String,System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
-            <inheritdoc />
-        </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.CollectorRuntimeBase.AddCustomResult(System.String,System.Decimal,System.DateTime,System.DateTime,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.Nullable{System.Int32},System.String)">
             <inheritdoc />
         </member>
@@ -1572,6 +1569,9 @@
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCasePeriodValues(System.DateTime,System.DateTime,System.String[])">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.HasLookup(System.String)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetLookup(System.String,System.String,System.String)">
@@ -1710,6 +1710,9 @@
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.SetEmployeeRuntimeValue(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.AddPayrunResult(System.String,System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetWageTypeResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
@@ -2108,9 +2111,6 @@
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase.SetResultAttribute(System.String,System.Object)">
-            <inheritdoc />
-        </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase.AddPayrunResult(System.String,System.String,System.String,System.Int32,System.DateTime,System.DateTime,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.String)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeRuntimeBase.AddCustomResult(System.String,System.Decimal,System.DateTime,System.DateTime,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Object},System.Nullable{System.Int32},System.String)">

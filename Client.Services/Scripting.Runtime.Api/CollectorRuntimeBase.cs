@@ -125,7 +125,7 @@ public abstract class CollectorRuntimeBase : PayrunRuntimeBase, ICollectorRuntim
         // implementation
     }
 
-    #region Results
+    #region Result Attributes
 
     /// <inheritdoc />
     public object GetResultAttribute(string name)
@@ -140,13 +140,9 @@ public abstract class CollectorRuntimeBase : PayrunRuntimeBase, ICollectorRuntim
         // implementation
     }
 
-    /// <inheritdoc />
-    public void AddPayrunResult(string source, string name, string value, int valueType,
-        DateTime startDate, DateTime endDate, string slot, List<string> tags, 
-        Dictionary<string, object> attributes, string culture)
-    {
-        // implementation
-    }
+    #endregion
+
+    #region Custom Results
 
     /// <inheritdoc />
     public void AddCustomResult(string source, decimal value, DateTime startDate, DateTime endDate,
@@ -157,7 +153,7 @@ public abstract class CollectorRuntimeBase : PayrunRuntimeBase, ICollectorRuntim
 
     #endregion
 
-    #region Retro
+    #region Retro Payrun
 
     /// <inheritdoc />
     public void ScheduleRetroPayrun(DateTime scheduleDate, List<string> resultTags)

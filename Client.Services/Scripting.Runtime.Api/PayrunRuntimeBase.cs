@@ -129,6 +129,18 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
 
     #endregion
 
+    #region Payrun Results
+
+    /// <inheritdoc />
+    public void AddPayrunResult(string source, string name, string value, int valueType,
+        DateTime startDate, DateTime endDate, string slot, List<string> tags,
+        Dictionary<string, object> attributes, string culture)
+    {
+        // implementation
+    }
+
+    #endregion
+
     #region Wage Type Results
 
     /// <inheritdoc />
