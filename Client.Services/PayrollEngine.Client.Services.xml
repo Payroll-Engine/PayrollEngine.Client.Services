@@ -1580,6 +1580,9 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetRangeLookup(System.String,System.Decimal,System.String,System.String)">
             <inheritdoc />
         </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.ApplyRangeValue(System.String,System.Decimal,System.String)">
+            <inheritdoc />
+        </member>
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunEmployeeAvailableRuntime">
             <summary>Runtime for the payrun employee available function</summary>
         </member>

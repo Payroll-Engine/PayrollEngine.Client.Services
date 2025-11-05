@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Service;
 using PayrollEngine.Client.Service.Api;
@@ -517,6 +517,34 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
             evaluationDate: EvaluationDate,
             culture: culture).Result;
         return value?.Value;
+    }
+
+    /// <inheritdoc />
+    public decimal ApplyRangeValue(string lookupName, decimal rangeValue, string valueFieldName = null)
+    {
+        // lookup
+        var lookups = PayrollService.GetLookupsAsync<LookupSet>(new(TenantId, PayrollId),
+            lookupNames: [lookupName],
+            regulationDate: RegulationDate,
+            evaluationDate: EvaluationDate).Result;
+        var lookup = lookups.FirstOrDefault();
+        if (lookup == null)
+        {
+            return 0;
+        }
+
+        // lookup values
+        var values = PayrollService.GetLookupValuesAsync<LookupValue>(new(TenantId, PayrollId),
+            lookupNames: [lookupName],
+            regulationDate: RegulationDate,
+            evaluationDate: EvaluationDate).Result;
+        if (!values.Any())
+        {
+            return 0;
+        }
+        lookup.Values.AddRange(values);
+
+        return lookup.ApplyRangeValue(rangeValue, valueFieldName);
     }
 
     #endregion
