@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<NDepend AppName="PayrollEngine.Client.Services" Platform="DotNet" FileWrittenByProductVersion="2023.1.0.9670">
+<NDepend AppName="PayrollEngine.Client.Services" Platform="DotNet" FileWrittenByProductVersion="2026.1.2.9787">
   <OutputDir KeepXmlFiles="False">.\NDependOut</OutputDir>
   <IDEFiles>
     <IDEFile FilePath=".\PayrollEngine.Client.Services.sln" Filters="-test" Configuration="DEBUG|AnyCPU">
@@ -12,14 +12,17 @@
   <Assemblies />
   <Dirs />
   <MergeCodeGeneratedByCompiler>True</MergeCodeGeneratedByCompiler>
+  <CompressNDar>True</CompressNDar>
   <ZipSourceFiles>True</ZipSourceFiles>
-  <Report Kind="0" SectionsEnabled="110591" XslPath="" Flags="261120" NbItemsToUnfold="5" />
+  <ForceReturnZeroExitCode>False</ForceReturnZeroExitCode>
+  <Report Kind="0" SectionsEnabled="110591" XslPath="" DefaultTheme="dark" Flags="261120" NbItemsToUnfold="5" NbItemsPerRule="20" MaxNbSourceFiles="2000" />
   <BuildComparisonSetting ProjectMode="DontCompare" BuildMode="NDaysAgoAnalysisResult" ProjectFileToCompareWith="" BuildFileToCompareWith="" NDaysAgo="30" />
   <BaselineInUISetting ProjectMode="DontCompare" BuildMode="NDaysAgoAnalysisResult" ProjectFileToCompareWith="" BuildFileToCompareWith="" NDaysAgo="30" />
   <CoverageFiles CoverageDir="" CoverageDirFilter="" UncoverableAttribute="" CoverageExclusionFile="" />
   <TrendMetrics UseCustomLog="False" LogRecurrence="3" LogLabel="2" UseCustomDir="False" CustomDir="" />
   <GitHub Account="" Repo="" />
-  <HistoricAnalysisResult PersistRecurrence="3" UseCustomDir="False" CustomDir="" />
+  <IssueImport ResolveSarifInSolutionDirectories="True" />
+  <HistoricAnalysisResult PersistRecurrence="3" UseCustomDir="False" CustomDir="" RetentionNDays="0" />
   <SourceFileRebasing FromPath="" ToPath="" />
   <PathVariables />
   <RuleFiles />

@@ -20,45 +20,42 @@ public abstract class ReportFunctionController<TFunc, TFuncAttribute, TScriptAtt
     {
     }
 
-    private IRegulation regulation;
     /// <summary>The regulation</summary>
     protected IRegulation Regulation =>
-        regulation ??= new RegulationService(HttpClient).GetAsync<Regulation>(new(Tenant.Id),
+        field ??= new RegulationService(HttpClient).GetAsync<Regulation>(new(Tenant.Id),
             Function.RegulationName).Result;
 
-    private ITenant tenant;
     /// <summary>The tenant</summary>
     protected ITenant Tenant
     {
         get
         {
-            if (tenant == null)
+            if (field == null)
             {
-                tenant = new TenantService(HttpClient).GetAsync<Tenant>(new(), Function.TenantIdentifier).Result;
-                if (tenant == null)
+                field = new TenantService(HttpClient).GetAsync<Tenant>(new(), Function.TenantIdentifier).Result;
+                if (field == null)
                 {
                     throw new ScriptException($"Unknown tenant {Function.TenantIdentifier}.");
                 }
             }
-            return tenant;
+            return field;
         }
     }
 
-    private IUser user;
     /// <summary>The user</summary>
     protected IUser User
     {
         get
         {
-            if (user == null)
+            if (field == null)
             {
-                user = new UserService(HttpClient).GetAsync<User>(new(Tenant.Id), Function.UserIdentifier).Result;
-                if (user == null)
+                field = new UserService(HttpClient).GetAsync<User>(new(Tenant.Id), Function.UserIdentifier).Result;
+                if (field == null)
                 {
                     throw new ScriptException($"Unknown user {Function.UserIdentifier}.");
                 }
             }
-            return user;
+            return field;
         }
     }
 

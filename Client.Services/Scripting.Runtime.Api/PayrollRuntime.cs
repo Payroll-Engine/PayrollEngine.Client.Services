@@ -25,7 +25,10 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     /// <summary>The calendar service</summary>
     protected ICalendarService CalendarService { get; }
 
-    /// <summary>The calendar</summary>
+    /// <summary>The script context</summary>
+    public ScriptContext ScriptContext { get; }
+
+    /// <summary>The script calendar</summary>
     public ScriptCalendar ScriptCalendar { get; }
 
     /// <summary>The payroll culture by priority: script > tenant > system</summary>
@@ -33,16 +36,17 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
 
     /// <summary>Initializes a new instance of the <see cref="PayrollRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
-    /// <param name="scriptCalendar">The calendar</param>
+    /// <param name="scriptContext">The calendar</param>
     /// <param name="tenantId">The tenant id</param>
     /// <param name="userId">The user id</param>
     /// <param name="payrollId">The payroll id</param>
     /// <param name="employeeId">The employee id</param>
-    protected PayrollRuntime(PayrollHttpClient httpClient, ScriptCalendar scriptCalendar,
+    protected PayrollRuntime(PayrollHttpClient httpClient, ScriptContext scriptContext,
         int tenantId, int userId, int payrollId, int? employeeId = null) :
         base(httpClient, tenantId, userId)
     {
-        ScriptCalendar = scriptCalendar ?? throw new ArgumentNullException(nameof(scriptCalendar));
+        ScriptContext = scriptContext ?? throw new ArgumentNullException(nameof(scriptContext));
+        ScriptCalendar = scriptContext.Calendar;
 
         // employee
         if (employeeId <= 0)
@@ -64,7 +68,8 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
         RegulationService = new RegulationService(httpClient);
 
         // user culture by priority: script > user > system
-        PayrollCulture = ScriptCalendar.Culture ??
+        var scriptCalendar = ScriptContext.Calendar;
+        PayrollCulture = scriptCalendar.Culture ??
                          User.Culture ??
                          CultureInfo.CurrentCulture.Name;
 
@@ -90,23 +95,21 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     /// <inheritdoc />
     public int? EmployeeId { get; }
 
-    private Employee employee;
-
     /// <summary>The employee</summary>
     protected Employee Employee
     {
         get
         {
-            if (employee == null)
+            if (field == null)
             {
                 if (!EmployeeId.HasValue)
                 {
                     throw new PayrollException("Employee not available.");
                 }
-                employee = EmployeeService.GetAsync<Employee>(
+                field = EmployeeService.GetAsync<Employee>(
                     new(TenantId), EmployeeId.Value).Result;
             }
-            return employee;
+            return field;
         }
     }
 
@@ -135,23 +138,21 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     /// <summary>The payroll id</summary>
     public int PayrollId { get; }
 
-    private Payroll payroll;
-
     /// <summary>The payroll</summary>
     public Payroll Payroll
     {
         get
         {
-            if (payroll == null)
+            if (field == null)
             {
                 // load country from payroll
-                payroll = PayrollService.GetAsync<Payroll>(new(TenantId), PayrollId).Result;
-                if (payroll == null)
+                field = PayrollService.GetAsync<Payroll>(new(TenantId), PayrollId).Result;
+                if (field == null)
                 {
                     throw new PayrollException($"Unknown payroll with id {PayrollId}.");
                 }
             }
-            return payroll;
+            return field;
         }
     }
 
@@ -161,6 +162,13 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
 
     /// <inheritdoc />
     public int DivisionId => Payroll.DivisionId;
+
+    #endregion
+
+    #region Namespace
+
+    /// <inheritdoc />
+    public string Namespace => null;
 
     #endregion
 

@@ -8,14 +8,14 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
 {
     /// <summary>Initializes a new instance of the <see cref="PayrunRuntimeBase"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
-    /// <param name="calendar">The calendar</param>
+    /// <param name="scriptContext">The script context</param>
     /// <param name="tenantId">The tenant id</param>
     /// <param name="userId">The user id</param>
     /// <param name="employeeId">The employee id</param>
     /// <param name="payrollId">The payroll id</param>
-    protected PayrunRuntimeBase(PayrollHttpClient httpClient, ScriptCalendar calendar, int tenantId,
+    protected PayrunRuntimeBase(PayrollHttpClient httpClient, ScriptContext scriptContext, int tenantId,
         int userId, int payrollId, int? employeeId = null) :
-        base(httpClient, calendar, tenantId, userId, payrollId, employeeId)
+        base(httpClient, scriptContext, tenantId, userId, payrollId, employeeId)
     {
     }
 
@@ -132,7 +132,14 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
     #region Payrun Results
 
     /// <inheritdoc />
-    public void AddPayrunResult(string source, string name, string value, int valueType,
+    public object GetPayrunResult(string source, string name)
+    {
+        // implementation
+        return null;
+    }
+
+    /// <inheritdoc />
+    public void SetPayrunResult(string source, string name, object value, int valueType,
         DateTime startDate, DateTime endDate, string slot, List<string> tags,
         Dictionary<string, object> attributes, string culture)
     {
@@ -141,7 +148,21 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
 
     #endregion
 
-    #region Wage Type Results
+    #region Wage Type
+
+    /// <inheritdoc />
+    public decimal GetWageTypeNumber(string wageTypeName)
+    {
+        // implementation
+        return 0;
+    }
+
+    /// <inheritdoc />
+    public string GetWageTypeName(decimal wageTypeNumber)
+    {
+        // implementation
+        return null;
+    }
 
     /// <inheritdoc />
     public IList<Tuple<decimal, string, Tuple<DateTime, DateTime>, decimal, List<string>, Dictionary<string, object>>> GetWageTypeResults(
@@ -185,7 +206,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
 
     #endregion
 
-    #region Collector Results
+    #region Collector
 
     /// <inheritdoc />
     public IList<Tuple<string, Tuple<DateTime, DateTime>, decimal, List<string>, Dictionary<string, object>>> GetCollectorResults(IList<string> collectorNames,

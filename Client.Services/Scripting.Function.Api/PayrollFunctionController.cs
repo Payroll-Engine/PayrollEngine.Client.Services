@@ -25,62 +25,58 @@ public abstract class PayrollFunctionController<TFunc, TFuncAttribute, TScriptAt
         Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
     }
 
-    private ITenant tenant;
     /// <summary>The tenant</summary>
     protected ITenant Tenant
     {
         get
         {
-            if (tenant == null)
+            if (field == null)
             {
-                tenant = new TenantService(HttpClient).GetAsync<Tenant>(new(), Function.TenantIdentifier).Result;
-                if (tenant == null)
+                field = new TenantService(HttpClient).GetAsync<Tenant>(new(), Function.TenantIdentifier).Result;
+                if (field == null)
                 {
                     throw new ScriptException($"Unknown tenant {Function.TenantIdentifier}.");
                 }
             }
-            return tenant;
+            return field;
         }
     }
 
-    private IUser user;
     /// <summary>The user</summary>
     protected IUser User
     {
         get
         {
-            if (user == null)
+            if (field == null)
             {
-                user = new UserService(HttpClient).GetAsync<User>(new(Tenant.Id), Function.UserIdentifier).Result;
-                if (user == null)
+                field = new UserService(HttpClient).GetAsync<User>(new(Tenant.Id), Function.UserIdentifier).Result;
+                if (field == null)
                 {
                     throw new ScriptException($"Unknown user {Function.UserIdentifier}.");
                 }
             }
-            return user;
+            return field;
         }
     }
 
-    private IPayroll payroll;
     /// <summary>The payroll</summary>
     protected IPayroll Payroll
     {
         get
         {
-            if (payroll == null)
+            if (field == null)
             {
-                payroll = new PayrollService(HttpClient).GetAsync<Payroll>(
+                field = new PayrollService(HttpClient).GetAsync<Payroll>(
                     new(Tenant.Id), Function.PayrollName).Result;
-                if (payroll == null)
+                if (field == null)
                 {
                     throw new ScriptException($"Unknown payroll {Function.PayrollName}.");
                 }
             }
-            return payroll;
+            return field;
         }
     }
 
-    private IEmployee employee;
     /// <summary>The employee</summary>
     protected IEmployee Employee
     {
@@ -90,18 +86,25 @@ public abstract class PayrollFunctionController<TFunc, TFuncAttribute, TScriptAt
             {
                 return null;
             }
-            if (employee == null)
+            if (field == null)
             {
-                employee = new EmployeeService(HttpClient).GetAsync<Employee>(
+                field = new EmployeeService(HttpClient).GetAsync<Employee>(
                     new(Tenant.Id), Function.EmployeeIdentifier).Result;
-                if (employee == null)
+                if (field == null)
                 {
                     throw new ScriptException($"Unknown employee {Function.EmployeeIdentifier}.");
                 }
             }
-            return employee;
+            return field;
         }
     }
+
+    /// <summary>New scripting context</summary>
+    protected ScriptContext NewScriptingContext() =>
+        new()
+        {
+            Calendar = NewScriptingCalendar()
+        };
 
     /// <summary>New scripting calendar using the tenant calendar</summary>
     protected ScriptCalendar NewScriptingCalendar()

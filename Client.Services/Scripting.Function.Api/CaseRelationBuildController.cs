@@ -66,10 +66,10 @@ public class CaseRelationBuildController<TFunc> : CaseRelationController<TFunc, 
 
         var scriptKey = sourceCaseSet.Name.ToCaseRelationKey(targetCaseSet.Name);
         var method = GetScriptMethod(scriptKey);
-        var calendar = NewScriptingCalendar();
+        var context = NewScriptingContext();
 
         // runtime and function
-        var runtime = new CaseRelationBuildRuntime(HttpClient, calendar, Tenant.Id, User.Id, Payroll.Id,
+        var runtime = new CaseRelationBuildRuntime(HttpClient, context, Tenant.Id, User.Id, Payroll.Id,
             sourceCaseSet, targetCaseSet, Employee?.Id);
         var function = Activator.CreateInstance(typeof(TFunc), runtime);
         var build = method.Invoke(function, null) as bool?;
@@ -78,7 +78,7 @@ public class CaseRelationBuildController<TFunc> : CaseRelationController<TFunc, 
         var result = new CaseRelationBuildFunctionResult
         {
             Build = build,
-            Calendar = calendar,
+            Calendar = context.Calendar,
             Tenant = Tenant,
             Employee = Employee,
             Payroll = Payroll,

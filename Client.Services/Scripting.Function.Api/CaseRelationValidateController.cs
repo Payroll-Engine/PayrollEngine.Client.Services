@@ -66,10 +66,10 @@ public class CaseRelationValidateController<TFunc> : CaseRelationController<TFun
 
         var scriptKey = sourceCaseSet.Name.ToCaseRelationKey(targetCaseSet.Name);
         var method = GetScriptMethod(scriptKey);
-        var calendar = NewScriptingCalendar();
+        var context = NewScriptingContext();
 
         // runtime and function
-        var runtime = new CaseRelationValidateRuntime(HttpClient, calendar, Tenant.Id, User.Id, Payroll.Id,
+        var runtime = new CaseRelationValidateRuntime(HttpClient, context, Tenant.Id, User.Id, Payroll.Id,
             sourceCaseSet, targetCaseSet, Employee?.Id);
         var function = Activator.CreateInstance(typeof(TFunc), runtime);
         var validate = method.Invoke(function, null) as bool?;
@@ -78,7 +78,7 @@ public class CaseRelationValidateController<TFunc> : CaseRelationController<TFun
         var result = new CaseRelationValidateFunctionResult
         {
             Valid = validate,
-            Calendar = calendar,
+            Calendar = context.Calendar,
             Tenant = Tenant,
             Employee = Employee,
             Payroll = Payroll,

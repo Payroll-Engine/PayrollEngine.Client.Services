@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Scripting.Function;
 
@@ -14,16 +14,16 @@ public class CaseRelationValidateRuntime : CaseRelationRuntimeBase, ICaseRelatio
 
     /// <summary>Initializes a new instance of the <see cref="CaseRelationValidateRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
-    /// <param name="calendar">The calendar</param>
+    /// <param name="scriptContext">The script context</param>
     /// <param name="tenantId">The tenant id</param>
     /// <param name="userId">The user id</param>
     /// <param name="payrollId">The payroll id</param>
     /// <param name="sourceCaseSet">The source case set</param>
     /// <param name="targetCaseSet">The target case set</param>
     /// <param name="employeeId">The employee id</param>
-    public CaseRelationValidateRuntime(PayrollHttpClient httpClient, ScriptCalendar calendar, int tenantId,
+    public CaseRelationValidateRuntime(PayrollHttpClient httpClient, ScriptContext scriptContext, int tenantId,
         int payrollId, int userId, CaseSet sourceCaseSet, CaseSet targetCaseSet, int? employeeId = null) :
-        base(httpClient, calendar, tenantId, userId, payrollId, sourceCaseSet, targetCaseSet, employeeId)
+        base(httpClient, scriptContext, tenantId, userId, payrollId, sourceCaseSet, targetCaseSet, employeeId)
     {
     }
 
@@ -31,13 +31,10 @@ public class CaseRelationValidateRuntime : CaseRelationRuntimeBase, ICaseRelatio
     protected override string LogOwnerType => nameof(CaseRelationValidateFunction);
 
     /// <inheritdoc />
-    public string[] GetValidateActions() => [];
-
-    /// <inheritdoc />
     public bool HasIssues() => Issues.Any();
 
     /// <inheritdoc />
-    public void AddIssue(string message, int number)
+    public void AddCaseIssue(string message, int number)
     {
         if (string.IsNullOrWhiteSpace(message))
         {
@@ -57,7 +54,7 @@ public class CaseRelationValidateRuntime : CaseRelationRuntimeBase, ICaseRelatio
     }
 
     /// <inheritdoc />
-    public void AddIssue(string caseFieldName, string message, int number)
+    public void AddCaseFieldIssue(string caseFieldName, string message, int number)
     {
         if (string.IsNullOrWhiteSpace(caseFieldName))
         {

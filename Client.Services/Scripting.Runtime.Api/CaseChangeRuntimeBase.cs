@@ -13,15 +13,15 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
 
     /// <summary>Initializes a new instance of the <see cref="CaseChangeRuntimeBase"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
-    /// <param name="calendar">The calendar</param>
+    /// <param name="scriptContext">The scrip context</param>
     /// <param name="tenantId">The tenant id</param>
     /// <param name="userId">The user id</param>
     /// <param name="payrollId">The payroll id</param>
     /// <param name="caseSet">The runtime case set</param>
     /// <param name="employeeId">The employee id</param>
-    protected CaseChangeRuntimeBase(PayrollHttpClient httpClient, ScriptCalendar calendar, int tenantId,
+    protected CaseChangeRuntimeBase(PayrollHttpClient httpClient, ScriptContext scriptContext, int tenantId,
         int userId, int payrollId, CaseSet caseSet, int? employeeId = null) :
-        base(httpClient, calendar, tenantId, userId, payrollId, caseSet, employeeId)
+        base(httpClient, scriptContext, tenantId, userId, payrollId, caseSet, employeeId)
     {
     }
 
@@ -46,11 +46,14 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
             throw new ArgumentException(nameof(attributeName));
         }
 
+        // case
+        var @case = GetCaseSet(caseName);
+
         // ensure attribute collection
-        Case.Attributes ??= new();
+        @case.Attributes ??= new();
 
         // set or update attribute value
-        Case.Attributes[attributeName] = value ?? throw new ArgumentNullException(nameof(value));
+        @case.Attributes[attributeName] = value ?? throw new ArgumentNullException(nameof(value));
     }
 
     /// <inheritdoc />
@@ -64,15 +67,18 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
         {
             throw new ArgumentException(nameof(attributeName));
         }
+        
+        // case
+        var @case = GetCaseSet(caseName);
 
         // missing attribute
-        if (Case.Attributes == null || !Case.Attributes.ContainsKey(attributeName))
+        if (@case.Attributes == null || !@case.Attributes.ContainsKey(attributeName))
         {
             return false;
         }
 
         // remove attribute
-        return Case.Attributes.Remove(attributeName);
+        return @case.Attributes.Remove(attributeName);
     }
 
     /// <summary>

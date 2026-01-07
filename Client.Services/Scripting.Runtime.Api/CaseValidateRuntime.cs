@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Scripting.Function;
 
@@ -14,15 +14,15 @@ public class CaseValidateRuntime : CaseChangeRuntimeBase, ICaseValidateRuntime
 
     /// <summary>Initializes a new instance of the <see cref="CaseValidateRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
-    /// <param name="calendar">The calendar</param>
+    /// <param name="scriptContext">The script context</param>
     /// <param name="tenantId">The tenant id</param>
     /// <param name="userId">The user id</param>
     /// <param name="payrollId">The payroll id</param>
     /// <param name="caseSet">The runtime case set</param>
     /// <param name="employeeId">The employee id</param>
-    public CaseValidateRuntime(PayrollHttpClient httpClient, ScriptCalendar calendar, int tenantId,
+    public CaseValidateRuntime(PayrollHttpClient httpClient, ScriptContext scriptContext, int tenantId,
         int userId, int payrollId, CaseSet caseSet, int? employeeId = null) :
-        base(httpClient, calendar, tenantId, userId, payrollId, caseSet, employeeId)
+        base(httpClient, scriptContext, tenantId, userId, payrollId, caseSet, employeeId)
     {
     }
 
@@ -30,32 +30,10 @@ public class CaseValidateRuntime : CaseChangeRuntimeBase, ICaseValidateRuntime
     protected override string LogOwnerType => nameof(CaseValidateFunction);
 
     /// <inheritdoc />
-    public string[] GetValidateActions() =>
-        Case.ValidateActions == null ? [] :
-            Case.ValidateActions.ToArray();
-
-    /// <inheritdoc />
-    public string[] GetFieldValidateActions(string caseFieldName)
-    {
-        if (string.IsNullOrWhiteSpace(caseFieldName))
-        {
-            throw new ArgumentException(nameof(caseFieldName));
-        }
-
-        // case field
-        var caseField = GetCaseFieldSet(caseFieldName);
-        if (caseField == null)
-        {
-            throw new ArgumentException($"unknown case field {caseFieldName}.");
-        }
-        return caseField.ValidateActions == null ? [] : caseField.ValidateActions.ToArray();
-    }
-
-    /// <inheritdoc />
     public bool HasIssues() => Issues.Any();
 
     /// <inheritdoc />
-    public void AddIssue(string message)
+    public void AddCaseIssue(string message)
     {
         if (string.IsNullOrWhiteSpace(message))
         {
@@ -72,7 +50,7 @@ public class CaseValidateRuntime : CaseChangeRuntimeBase, ICaseValidateRuntime
     }
 
     /// <inheritdoc />
-    public void AddIssue(string caseFieldName, string message)
+    public void AddCaseFieldIssue(string caseFieldName, string message)
     {
         if (string.IsNullOrWhiteSpace(caseFieldName))
         {

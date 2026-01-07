@@ -15,16 +15,16 @@ public abstract class CaseRelationRuntimeBase : PayrollRuntime, ICaseRelationRun
 
     /// <summary>Initializes a new instance of the <see cref="CaseRelationRuntimeBase"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
-    /// <param name="calendar">The calendar</param>
+    /// <param name="scriptContext">The script context</param>
     /// <param name="tenantId">The tenant id</param>
     /// <param name="userId">The user id</param>
     /// <param name="payrollId">The payroll id</param>
     /// <param name="sourceCaseSet">The source case set</param>
     /// <param name="targetCaseSet">The target case set</param>
     /// <param name="employeeId">The employee id</param>
-    protected CaseRelationRuntimeBase(PayrollHttpClient httpClient, ScriptCalendar calendar,
+    protected CaseRelationRuntimeBase(PayrollHttpClient httpClient, ScriptContext scriptContext,
         int tenantId, int userId, int payrollId, CaseSet sourceCaseSet, CaseSet targetCaseSet, int? employeeId = null) :
-        base(httpClient, calendar, tenantId, userId, payrollId, employeeId)
+        base(httpClient, scriptContext, tenantId, userId, payrollId, employeeId)
     {
         SourceCaseSet = sourceCaseSet ?? throw new ArgumentNullException(nameof(sourceCaseSet));
         TargetCaseSet = targetCaseSet ?? throw new ArgumentNullException(nameof(targetCaseSet));

@@ -48,10 +48,10 @@ public class CaseBuildController<TFunc> : CaseChangeController<TFunc, CaseBuildF
         }
 
         var method = GetScriptMethod(caseSet.Name);
-        var calendar = NewScriptingCalendar();
+        var context = NewScriptingContext();
 
         // runtime and function
-        var runtime = new CaseBuildRuntime(HttpClient, calendar, Tenant.Id, User.Id, Payroll.Id, caseSet, Employee?.Id);
+        var runtime = new CaseBuildRuntime(HttpClient, context, Tenant.Id, User.Id, Payroll.Id, caseSet, Employee?.Id);
         var function = Activator.CreateInstance(typeof(TFunc), runtime);
         var build = method.Invoke(function, null) as bool?;
 
@@ -59,7 +59,7 @@ public class CaseBuildController<TFunc> : CaseChangeController<TFunc, CaseBuildF
         var result = new CaseBuildFunctionResult
         {
             Build = build,
-            Calendar = calendar,
+            Calendar = context.Calendar,
             Tenant = Tenant,
             Employee = Employee,
             Payroll = Payroll,

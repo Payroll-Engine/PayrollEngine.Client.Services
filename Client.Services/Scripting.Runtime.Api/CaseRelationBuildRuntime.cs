@@ -8,22 +8,19 @@ public class CaseRelationBuildRuntime : CaseRelationRuntimeBase, ICaseRelationBu
 {
     /// <summary>Initializes a new instance of the <see cref="CaseRelationBuildRuntime"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
-    /// <param name="calendar">The calendar</param>
+    /// <param name="scriptContext">The script context</param>
     /// <param name="tenantId">The tenant id</param>
     /// <param name="userId">The user id</param>
     /// <param name="payrollId">The payroll id</param>
     /// <param name="sourceCaseSet">The source case set</param>
     /// <param name="targetCaseSet">The target case set</param>
     /// <param name="employeeId">The employee id</param>
-    public CaseRelationBuildRuntime(PayrollHttpClient httpClient, ScriptCalendar calendar, int tenantId,
+    public CaseRelationBuildRuntime(PayrollHttpClient httpClient, ScriptContext scriptContext, int tenantId,
         int payrollId, int userId, CaseSet sourceCaseSet, CaseSet targetCaseSet, int? employeeId = null) :
-        base(httpClient, calendar, tenantId, userId, payrollId, sourceCaseSet, targetCaseSet, employeeId)
+        base(httpClient, scriptContext, tenantId, userId, payrollId, sourceCaseSet, targetCaseSet, employeeId)
     {
     }
 
     /// <summary>The log owner type</summary>
     protected override string LogOwnerType => nameof(CaseRelationBuildFunction);
-
-    /// <inheritdoc />
-    public string[] GetBuildActions() => [];
 }

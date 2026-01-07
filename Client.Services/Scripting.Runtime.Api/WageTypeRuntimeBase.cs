@@ -8,14 +8,14 @@ public abstract class WageTypeRuntimeBase : PayrunRuntimeBase, IWageTypeRuntime
 {
     /// <summary>Initializes a new instance of the <see cref="WageTypeRuntimeBase"/> class</summary>
     /// <param name="httpClient">The Payroll http client</param>
-    /// <param name="calendar">The calendar</param>
+    /// <param name="scriptContext">The script context</param>
     /// <param name="tenantId">The tenant id</param>
     /// <param name="userId">The user id</param>
     /// <param name="payrollId">The payroll id</param>
     /// <param name="employeeId">The employee id</param>
-    protected WageTypeRuntimeBase(PayrollHttpClient httpClient, ScriptCalendar calendar, int tenantId,
+    protected WageTypeRuntimeBase(PayrollHttpClient httpClient, ScriptContext scriptContext, int tenantId,
         int userId, int payrollId, int? employeeId = null) :
-        base(httpClient, calendar, tenantId, userId, payrollId, employeeId)
+        base(httpClient, scriptContext, tenantId, userId, payrollId, employeeId)
     {
     }
 
@@ -70,14 +70,21 @@ public abstract class WageTypeRuntimeBase : PayrunRuntimeBase, IWageTypeRuntime
     }
 
     /// <inheritdoc />
-    public decimal GetWageTypeValue(decimal wageTypeNumber)
+    public decimal GetWageType(decimal wageTypeNumber)
     {
         // implementation
         return 0;
     }
 
     /// <inheritdoc />
-    public decimal GetCollectorValue(string collectorName)
+    public decimal GetWageType(string wageTypeName)
+    {
+        // implementation
+        return 0;
+    }
+
+    /// <inheritdoc />
+    public decimal GetCollector(string collectorName)
     {
         // implementation
         return 0;

@@ -49,10 +49,10 @@ public class CaseAvailableController<TFunc> : CaseController<TFunc, CaseAvailabl
         }
 
         var method = GetScriptMethod(caseName);
-        var calendar = NewScriptingCalendar();
+        var context = NewScriptingContext();
 
         // runtime and function
-        var runtime = new CaseAvailableRuntime(HttpClient, calendar, Tenant.Id, User.Id, Payroll.Id, @case, Employee?.Id);
+        var runtime = new CaseAvailableRuntime(HttpClient, context, Tenant.Id, User.Id, Payroll.Id, @case, Employee?.Id);
         var function = Activator.CreateInstance(typeof(TFunc), runtime);
         var available = method.Invoke(function, null) as bool?;
 
@@ -60,7 +60,7 @@ public class CaseAvailableController<TFunc> : CaseController<TFunc, CaseAvailabl
         var result = new CaseAvailableFunctionResult
         {
             Available = available,
-            Calendar = calendar,
+            Calendar = context.Calendar,
             Tenant = Tenant,
             Employee = Employee,
             Payroll = Payroll,

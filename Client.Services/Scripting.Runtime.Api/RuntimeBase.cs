@@ -188,15 +188,19 @@ public abstract class RuntimeBase : IRuntime
     }
 
     /// <inheritdoc />
+    public int GetCalendarDayCount(string calendarName, DateTime start, DateTime end, string culture) =>
+        throw new NotSupportedException();
+
+    /// <inheritdoc />
     public bool IsCalendarWorkDay(string calendarName, DateTime moment) =>
         GetCalendar(calendarName).IsWorkDay(moment);
 
     /// <inheritdoc />
-    public List<DateTime> GetPreviousWorkDays(string calendarName, DateTime moment, int count) =>
+    public List<DateTime> GetPreviousWorkDays(string calendarName, DateTime moment) =>
         GetCalendar(calendarName).GetPreviousWorkDays(moment);
 
     /// <inheritdoc />
-    public List<DateTime> GetNextWorkDays(string calendarName, DateTime moment, int count) =>
+    public List<DateTime> GetNextWorkDays(string calendarName, DateTime moment) =>
         GetCalendar(calendarName).GetNextWorkDays(moment);
 
     /// <inheritdoc />
