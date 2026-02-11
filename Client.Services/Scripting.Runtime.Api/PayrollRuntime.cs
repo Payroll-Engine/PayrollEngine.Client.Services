@@ -3,10 +3,10 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using CultureInfo = System.Globalization.CultureInfo;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Service;
 using PayrollEngine.Client.Service.Api;
-using CultureInfo = System.Globalization.CultureInfo;
 
 namespace PayrollEngine.Client.Scripting.Runtime.Api;
 
@@ -511,6 +511,28 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
             culture: culture).Result;
         var result = value?.Value;
         return result;
+    }
+
+    /// <inheritdoc />
+    public List<Tuple<string, string, decimal, decimal, decimal?>> GetLookupRanges(string lookupName,
+        decimal? rangeValue = null)
+    {
+        var brackets = new List<Tuple<string, string, decimal, decimal, decimal?>>();
+        var lookups = PayrollService.GetLookupRangesAsync(new(TenantId, PayrollId),
+            lookupNames: [lookupName],
+            rangeValue: rangeValue).Result;
+        foreach (var lookup in lookups)
+        {
+            if (lookup.Brackets == null)
+            {
+                continue;
+            }
+            foreach (var bracket in lookup.Brackets)
+            {
+                brackets.Add(new(bracket.Key, bracket.Value, bracket.RangeStart, bracket.RangeEnd, bracket.RangeValue));
+            }
+        }
+        return brackets;
     }
 
     /// <inheritdoc />

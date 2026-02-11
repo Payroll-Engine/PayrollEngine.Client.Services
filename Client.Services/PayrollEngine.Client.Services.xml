@@ -1592,6 +1592,9 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetLookup(System.String,System.String,System.String)">
             <inheritdoc />
         </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetLookupRanges(System.String,System.Nullable{System.Decimal})">
+            <inheritdoc />
+        </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetRangeLookup(System.String,System.Decimal,System.String,System.String)">
             <inheritdoc />
         </member>
