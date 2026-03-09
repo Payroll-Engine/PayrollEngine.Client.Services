@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -45,7 +45,8 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
         int tenantId, int userId, int payrollId, int? employeeId = null) :
         base(httpClient, tenantId, userId)
     {
-        ScriptContext = scriptContext ?? throw new ArgumentNullException(nameof(scriptContext));
+        ArgumentNullException.ThrowIfNull(scriptContext);
+        ScriptContext = scriptContext;
         ScriptCalendar = scriptContext.Calendar;
 
         // employee
@@ -233,10 +234,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     /// <inheritdoc />
     public virtual int? GetCaseValueType(string caseFieldName)
     {
-        if (string.IsNullOrWhiteSpace(caseFieldName))
-        {
-            throw new ArgumentException(nameof(caseFieldName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseFieldName);
         var context = new PayrollServiceContext(TenantId, PayrollId);
         var caseField = PayrollService.GetCaseFieldsAsync<CaseField>(context, [caseFieldName])
             .Result.FirstOrDefault();
@@ -246,10 +244,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     /// <inheritdoc />
     public virtual object GetCaseFieldAttribute(string caseFieldName, string attributeName)
     {
-        if (string.IsNullOrWhiteSpace(caseFieldName))
-        {
-            throw new ArgumentException(nameof(caseFieldName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseFieldName);
         var context = new PayrollServiceContext(TenantId, PayrollId);
         var caseField = PayrollService.GetCaseFieldsAsync<CaseField>(context, [caseFieldName])
             .Result.FirstOrDefault();
@@ -259,10 +254,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     /// <inheritdoc />
     public virtual object GetCaseValueAttribute(string caseFieldName, string attributeName)
     {
-        if (string.IsNullOrWhiteSpace(caseFieldName))
-        {
-            throw new ArgumentException(nameof(caseFieldName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseFieldName);
         var context = new PayrollServiceContext(TenantId, PayrollId);
         var caseField = PayrollService.GetCaseFieldsAsync<CaseField>(context, [caseFieldName])
             .Result.FirstOrDefault();
@@ -272,10 +264,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     /// <inheritdoc />
     public virtual List<string> GetCaseValueSlots(string caseFieldName)
     {
-        if (string.IsNullOrWhiteSpace(caseFieldName))
-        {
-            throw new ArgumentException(nameof(caseFieldName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseFieldName);
 
         // case
         var caseName = new RegulationService(HttpClient).GetCaseOfCaseFieldAsync(
@@ -344,10 +333,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     public virtual List<Tuple<string, DateTime, Tuple<DateTime?, DateTime?>, object, DateTime?, List<string>, Dictionary<string, object>>> GetCaseValues(
         IList<string> caseFieldNames, DateTime valueDate)
     {
-        if (caseFieldNames == null)
-        {
-            throw new ArgumentNullException(nameof(caseFieldNames));
-        }
+        ArgumentNullException.ThrowIfNull(caseFieldNames);
 
 
         var caseValues = GetTimeCaseValues(caseFieldNames, valueDate).Result;
@@ -376,10 +362,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     private async Task<List<Model.CaseValue>> GetTimeCaseValues(IList<string> caseFieldNames, DateTime valueDate)
     {
         var caseFieldName = caseFieldNames.FirstOrDefault();
-        if (string.IsNullOrWhiteSpace(caseFieldName))
-        {
-            throw new ArgumentException(nameof(caseFieldName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseFieldName);
 
         var context = new PayrollServiceContext(TenantId, PayrollId);
 
@@ -420,10 +403,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     public virtual List<Tuple<string, DateTime, Tuple<DateTime?, DateTime?>, object, DateTime?, List<string>, Dictionary<string, object>>> GetCaseValues(
         string caseFieldName, DateTime? startDate = null, DateTime? endDate = null)
     {
-        if (string.IsNullOrWhiteSpace(caseFieldName))
-        {
-            throw new ArgumentException(nameof(caseFieldName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseFieldName);
         startDate ??= Date.MinValue;
         endDate ??= Date.MaxValue;
         if (endDate < startDate)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Scripting.Runtime.Api;
 
@@ -21,10 +21,7 @@ public class CaseValidateController<TFunc> : CaseChangeController<TFunc, CaseVal
     /// <returns>True if the specified case is valid</returns>
     public CaseValidateFunctionResult Validate(string caseName)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
         var caseSet = GetCaseSet(caseName).Result;
         if (caseSet == null)
         {
@@ -39,14 +36,8 @@ public class CaseValidateController<TFunc> : CaseChangeController<TFunc, CaseVal
     /// <returns>True if the specified case is valid</returns>
     public CaseValidateFunctionResult Validate(string caseName, CaseSet caseSet)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
-        if (caseSet == null)
-        {
-            throw new ArgumentNullException(nameof(caseSet));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
+        ArgumentNullException.ThrowIfNull(caseSet);
 
         var method = GetScriptMethod(caseName);
         var context = NewScriptingContext();

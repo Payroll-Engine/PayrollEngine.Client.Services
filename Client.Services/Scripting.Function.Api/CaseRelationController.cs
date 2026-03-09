@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Service.Api;
@@ -30,10 +30,7 @@ public abstract class CaseRelationController<TFunc, TFuncAttribute, TScriptAttri
     /// <returns>The case</returns>
     public async Task<T> GetCaseSet<T>(string caseName) where T : CaseSet
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
         return await new PayrollService(HttpClient).BuildCaseAsync<T>(new(Tenant.Id, Payroll.Id), caseName, Employee.Id);
     }
 }

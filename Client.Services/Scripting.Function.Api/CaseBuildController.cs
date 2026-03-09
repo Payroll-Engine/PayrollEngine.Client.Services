@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Scripting.Runtime.Api;
 
@@ -21,10 +21,7 @@ public class CaseBuildController<TFunc> : CaseChangeController<TFunc, CaseBuildF
     /// <returns>True if the specified case is valid</returns>
     public CaseBuildFunctionResult Build(string caseName)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
         var caseSet = GetCaseSet(caseName).Result;
         if (caseSet == null)
         {
@@ -38,10 +35,7 @@ public class CaseBuildController<TFunc> : CaseChangeController<TFunc, CaseBuildF
     /// <returns>True if the specified case is valid</returns>
     public CaseBuildFunctionResult Build(CaseSet caseSet)
     {
-        if (caseSet == null)
-        {
-            throw new ArgumentNullException(nameof(caseSet));
-        }
+        ArgumentNullException.ThrowIfNull(caseSet);
         if (string.IsNullOrWhiteSpace(caseSet.Name))
         {
             throw new ArgumentException("Case set without name.", nameof(caseSet));

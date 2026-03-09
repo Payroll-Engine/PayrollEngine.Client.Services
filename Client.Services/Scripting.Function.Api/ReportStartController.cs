@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Globalization;
 using PayrollEngine.Client.Model;
@@ -41,14 +41,8 @@ public class ReportStartController<TFunc> : ReportFunctionController<TFunc, Repo
     /// <param name="reportRequest">The report request</param>
     public ReportStartFunctionResult Execute(ReportSet report, ReportRequest reportRequest)
     {
-        if (report == null)
-        {
-            throw new ArgumentNullException(nameof(report));
-        }
-        if (reportRequest == null)
-        {
-            throw new ArgumentNullException(nameof(reportRequest));
-        }
+        ArgumentNullException.ThrowIfNull(report);
+        ArgumentNullException.ThrowIfNull(reportRequest);
 
         var method = GetScriptMethod(report.Name);
 

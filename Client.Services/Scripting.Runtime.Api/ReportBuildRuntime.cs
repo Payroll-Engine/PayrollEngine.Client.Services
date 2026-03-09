@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Scripting.Function;
@@ -30,10 +30,7 @@ public class ReportBuildRuntime : ReportRuntime, IReportBuildRuntime
     /// <inheritdoc />
     public void SetParameterHidden(string parameterName, bool hidden)
     {
-        if (string.IsNullOrWhiteSpace(parameterName))
-        {
-            throw new ArgumentException(nameof(parameterName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(parameterName);
 
         // report parameter
         if (Report.Parameters == null)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Service.Api;
 
@@ -75,10 +75,7 @@ public abstract class ReportFunctionController<TFunc, TFuncAttribute, TScriptAtt
     /// <param name="reportName">Name of the report</param>
     public ReportRequest BuildReportRequest(string reportName)
     {
-        if (string.IsNullOrWhiteSpace(reportName))
-        {
-            throw new ArgumentException(nameof(reportName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(reportName);
 
         // script attribute (method)
         var scriptAttribute = GetScriptAttribute(reportName);

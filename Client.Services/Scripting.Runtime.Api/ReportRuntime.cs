@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Linq;
 using System.Text.Json;
@@ -33,8 +33,10 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
         int userId, ReportSet report, ReportRequest reportRequest) :
         base(httpClient, tenantId, userId)
     {
-        Report = report ?? throw new ArgumentNullException(nameof(report));
-        ReportRequest = reportRequest ?? throw new ArgumentNullException(nameof(reportRequest));
+        ArgumentNullException.ThrowIfNull(report);
+        Report = report;
+        ArgumentNullException.ThrowIfNull(reportRequest);
+        ReportRequest = reportRequest;
         PayrollService = new PayrollService(httpClient);
     }
 
@@ -55,10 +57,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     /// <inheritdoc />
     public void SetReportAttribute(string attributeName, object value)
     {
-        if (string.IsNullOrWhiteSpace(attributeName))
-        {
-            throw new ArgumentException(nameof(attributeName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(attributeName);
 
         // add/change attribute
         if (value != null)
@@ -79,10 +78,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     /// <inheritdoc />
     public bool HasParameter(string parameterName)
     {
-        if (string.IsNullOrWhiteSpace(parameterName))
-        {
-            throw new ArgumentException(nameof(parameterName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(parameterName);
 
         // request
         if (ReportRequest.Parameters != null && ReportRequest.Parameters.ContainsKey(parameterName))
@@ -98,10 +94,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     /// <inheritdoc />
     public string GetParameter(string parameterName)
     {
-        if (string.IsNullOrWhiteSpace(parameterName))
-        {
-            throw new ArgumentException(nameof(parameterName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(parameterName);
 
         // request
         if (ReportRequest.Parameters != null && ReportRequest.Parameters.TryGetValue(parameterName, out var requestParameter))
@@ -121,10 +114,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     /// <param name="value">The parameter value</param>
     protected void SetParameterInternal(string parameterName, string value)
     {
-        if (string.IsNullOrWhiteSpace(parameterName))
-        {
-            throw new ArgumentException(nameof(parameterName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(parameterName);
 
         // request parameter
         ReportRequest.Parameters ??= new();
@@ -141,14 +131,8 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     /// <inheritdoc />
     public object GetParameterAttribute(string parameterName, string attributeName)
     {
-        if (string.IsNullOrWhiteSpace(parameterName))
-        {
-            throw new ArgumentException(nameof(parameterName));
-        }
-        if (string.IsNullOrWhiteSpace(attributeName))
-        {
-            throw new ArgumentException(nameof(attributeName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(parameterName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(attributeName);
 
         // report parameter
         if (Report.Parameters == null)
@@ -173,14 +157,8 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     /// <inheritdoc />
     public void SetParameterAttribute(string parameterName, string attributeName, object value)
     {
-        if (string.IsNullOrWhiteSpace(parameterName))
-        {
-            throw new ArgumentException(nameof(parameterName));
-        }
-        if (string.IsNullOrWhiteSpace(attributeName))
-        {
-            throw new ArgumentException(nameof(attributeName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(parameterName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(attributeName);
 
         // report parameter
         if (Report.Parameters == null)
@@ -209,10 +187,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     /// <inheritdoc />
     public bool ParameterHidden(string parameterName)
     {
-        if (string.IsNullOrWhiteSpace(parameterName))
-        {
-            throw new ArgumentException(nameof(parameterName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(parameterName);
         // report parameter
         if (Report.Parameters == null)
         {
@@ -233,14 +208,8 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     /// <inheritdoc />
     public virtual DataTable ExecuteQuery(string tableName, string methodName, string culture, Dictionary<string, string> parameters)
     {
-        if (string.IsNullOrWhiteSpace(tableName))
-        {
-            throw new ArgumentException(nameof(tableName));
-        }
-        if (string.IsNullOrWhiteSpace(methodName))
-        {
-            throw new ArgumentException(nameof(methodName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(methodName);
 
         // culture
         culture ??= CultureInfo.CurrentCulture.Name;
@@ -269,18 +238,9 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     public Dictionary<string, string> ExecuteLookupValueQuery(int regulationId, string lookupName,
         string keyAttribute, string valueAttribute)
     {
-        if (string.IsNullOrWhiteSpace(lookupName))
-        {
-            throw new ArgumentException(nameof(lookupName));
-        }
-        if (string.IsNullOrWhiteSpace(keyAttribute))
-        {
-            throw new ArgumentException(nameof(keyAttribute));
-        }
-        if (string.IsNullOrWhiteSpace(valueAttribute))
-        {
-            throw new ArgumentException(nameof(valueAttribute));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(lookupName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(keyAttribute);
+        ArgumentException.ThrowIfNullOrWhiteSpace(valueAttribute);
 
         // lookup
         var query = new Query
@@ -362,10 +322,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     private static DataTable BuildCaseValueTable(string tableName, IEnumerable<Model.CaseValue> caseValues)
     {
         // argument check
-        if (string.IsNullOrWhiteSpace(tableName))
-        {
-            throw new ArgumentException(nameof(tableName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
 
         var dataTable = new DataTable(tableName);
 
@@ -446,10 +403,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     /// <inheritdoc />
     public DataTable ExecuteWageTypeQuery(string tableName, int regulationId, Tuple<int?, string, string, string, long?, long?> queryValues)
     {
-        if (string.IsNullOrWhiteSpace(tableName))
-        {
-            throw new ArgumentException(nameof(tableName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
 
         // query
         var query = QueryValuesToQuery(queryValues);
@@ -501,10 +455,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     public DataTable ExecutePayrollResultQuery(string tableName, Tuple<int?, string, string, string, long?, long?> queryValues)
     {
         // argument check
-        if (string.IsNullOrWhiteSpace(tableName))
-        {
-            throw new ArgumentException(nameof(tableName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
 
         // query
         var results = new PayrollResultService(HttpClient).
@@ -559,10 +510,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     public DataTable ExecuteWageTypeResultQuery(string tableName, int payrollResultId, Tuple<int?, string, string, string, long?, long?> queryValues)
     {
         // argument check
-        if (string.IsNullOrWhiteSpace(tableName))
-        {
-            throw new ArgumentException(nameof(tableName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
         // query
         var results = new PayrollResultService(HttpClient).
             QueryWageTypeResultsAsync<Model.WageTypeResult>(new(TenantId, payrollResultId), QueryValuesToQuery(queryValues)).Result;
@@ -599,7 +547,10 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
             row[nameof(Model.WageTypeResult.WageTypeName)] = result.WageTypeName;
             row[nameof(Model.WageTypeResult.WageTypeNameLocalizations)] = JsonSerializer.Serialize(result.WageTypeNameLocalizations);
             row[nameof(Model.WageTypeResult.ValueType)] = (int)result.ValueType;
-            row[nameof(Model.WageTypeResult.Value)] = result.Value;
+            if (result.Value != null)
+            {
+                row[nameof(Model.WageTypeResult.Value)] = result.Value;
+            }
             row[nameof(Model.WageTypeResult.Start)] = result.Start;
             row[nameof(Model.WageTypeResult.End)] = result.End;
             row[nameof(Model.WageTypeResult.Tags)] = JsonSerializer.Serialize(result.Tags);
@@ -617,10 +568,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
         Tuple<int?, string, string, string, long?, long?> queryValues)
     {
         // argument check
-        if (string.IsNullOrWhiteSpace(tableName))
-        {
-            throw new ArgumentException(nameof(tableName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
 
         // query
         var results = new PayrollResultService(HttpClient).QueryWageTypeCustomResultsAsync<Model.WageTypeCustomResult>(
@@ -658,7 +606,10 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
             row[nameof(Model.WageTypeCustomResult.WageTypeNameLocalizations)] = JsonSerializer.Serialize(result.WageTypeNameLocalizations);
             row[nameof(Model.WageTypeCustomResult.Source)] = result.Source;
             row[nameof(Model.WageTypeCustomResult.ValueType)] = (int)result.ValueType;
-            row[nameof(Model.WageTypeCustomResult.Value)] = result.Value;
+            if (result.Value != null)
+            {
+                row[nameof(Model.WageTypeCustomResult.Value)] = result.Value;
+            }
             row[nameof(Model.WageTypeCustomResult.Start)] = result.Start;
             row[nameof(Model.WageTypeCustomResult.End)] = result.End;
             row[nameof(Model.WageTypeCustomResult.Tags)] = JsonSerializer.Serialize(result.Tags);
@@ -675,10 +626,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     public DataTable ExecuteCollectorResultQuery(string tableName, int payrollResultId, Tuple<int?, string, string, string, long?, long?> queryValues)
     {
         // argument check
-        if (string.IsNullOrWhiteSpace(tableName))
-        {
-            throw new ArgumentException(nameof(tableName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
 
         // query
         var results = new PayrollResultService(HttpClient).QueryCollectorResultsAsync<Model.CollectorResult>(
@@ -718,7 +666,10 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
             row[nameof(Model.CollectorResult.CollectMode)] = (int)result.CollectMode;
             row[nameof(Model.CollectorResult.Negated)] = result.Negated;
             row[nameof(Model.CollectorResult.ValueType)] = (int)result.ValueType;
-            row[nameof(Model.CollectorResult.Value)] = result.Value;
+            if (result.Value != null)
+            {
+                row[nameof(Model.CollectorResult.Value)] = result.Value;
+            }
             row[nameof(Model.CollectorResult.Start)] = result.Start;
             row[nameof(Model.CollectorResult.End)] = result.End;
             row[nameof(Model.CollectorResult.Tags)] = JsonSerializer.Serialize(result.Tags);
@@ -736,10 +687,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
         Tuple<int?, string, string, string, long?, long?> queryValues)
     {
         // argument check
-        if (string.IsNullOrWhiteSpace(tableName))
-        {
-            throw new ArgumentException(nameof(tableName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
 
         // query
         var results = new PayrollResultService(HttpClient).QueryCollectorCustomResultsAsync<Model.CollectorCustomResult>(
@@ -773,7 +721,10 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
             row[nameof(Model.CollectorCustomResult.CollectorName)] = result.CollectorName;
             row[nameof(Model.CollectorCustomResult.CollectorNameLocalizations)] = JsonSerializer.Serialize(result.CollectorNameLocalizations);
             row[nameof(Model.CollectorCustomResult.ValueType)] = (int)result.ValueType;
-            row[nameof(Model.CollectorCustomResult.Value)] = result.Value;
+            if (result.Value != null)
+            {
+                row[nameof(Model.CollectorCustomResult.Value)] = result.Value;
+            }
             row[nameof(Model.CollectorCustomResult.Start)] = result.Start;
             row[nameof(Model.CollectorCustomResult.End)] = result.End;
             row[nameof(Model.CollectorCustomResult.Tags)] = JsonSerializer.Serialize(result.Tags);
@@ -790,10 +741,7 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
     public DataTable ExecutePayrunResultQuery(string tableName, int payrollResultId, Tuple<int?, string, string, string, long?, long?> queryValues)
     {
         // argument check
-        if (string.IsNullOrWhiteSpace(tableName))
-        {
-            throw new ArgumentException(nameof(tableName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
 
         // query
         var results = new PayrollResultService(HttpClient).QueryPayrunResultsAsync<PayrunResult>(

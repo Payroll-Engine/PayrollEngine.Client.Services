@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 
 namespace PayrollEngine.Client.Scripting.Function.Api;
@@ -25,10 +25,7 @@ public class ReportBuildFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <returns>The function result</returns>
     public ReportBuildFunctionResult Build(string reportName)
     {
-        if (string.IsNullOrWhiteSpace(reportName))
-        {
-            throw new ArgumentException(nameof(reportName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(reportName);
         var controller = new ReportBuildController<TFunction>(HttpClient);
         return controller.Execute(reportName);
     }
@@ -39,14 +36,8 @@ public class ReportBuildFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <returns>The function result</returns>
     public ReportBuildFunctionResult Build(string reportName, ReportRequest reportRequest)
     {
-        if (reportRequest == null)
-        {
-            throw new ArgumentNullException(nameof(reportRequest));
-        }
-        if (string.IsNullOrWhiteSpace(reportName))
-        {
-            throw new ArgumentException(nameof(reportName));
-        }
+        ArgumentNullException.ThrowIfNull(reportRequest);
+        ArgumentException.ThrowIfNullOrWhiteSpace(reportName);
         var controller = new ReportBuildController<TFunction>(HttpClient);
         return controller.Execute(reportName, reportRequest);
     }
@@ -55,10 +46,7 @@ public class ReportBuildFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <param name="report">The report</param>
     public ReportBuildFunctionResult Build(ReportSet report)
     {
-        if (report == null)
-        {
-            throw new ArgumentNullException(nameof(report));
-        }
+        ArgumentNullException.ThrowIfNull(report);
         var controller = new ReportBuildController<TFunction>(HttpClient);
         return controller.Execute(report);
     }
@@ -68,14 +56,8 @@ public class ReportBuildFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <param name="reportRequest">The report request</param>
     public ReportBuildFunctionResult Build(ReportSet report, ReportRequest reportRequest)
     {
-        if (report == null)
-        {
-            throw new ArgumentNullException(nameof(report));
-        }
-        if (reportRequest == null)
-        {
-            throw new ArgumentNullException(nameof(reportRequest));
-        }
+        ArgumentNullException.ThrowIfNull(report);
+        ArgumentNullException.ThrowIfNull(reportRequest);
         var controller = new ReportBuildController<TFunction>(HttpClient);
         return controller.Execute(report, reportRequest);
     }

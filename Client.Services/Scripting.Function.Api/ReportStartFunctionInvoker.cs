@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.IO;
 using System.Text.Json;
@@ -34,10 +34,7 @@ public class ReportStartFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <returns>The function result</returns>
     public ReportStartFunctionResult Start(string reportName = null)
     {
-        if (string.IsNullOrWhiteSpace(reportName))
-        {
-            throw new ArgumentException(nameof(reportName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(reportName);
         var result = NewReportStartController(QueryFileName).Execute(reportName);
         WriteQueryDataSet(result.DataSet, QueryFileName);
         return result;
@@ -49,14 +46,8 @@ public class ReportStartFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <returns>The function result</returns>
     public ReportStartFunctionResult Start(string reportName, ReportRequest reportRequest)
     {
-        if (string.IsNullOrWhiteSpace(reportName))
-        {
-            throw new ArgumentException(nameof(reportName));
-        }
-        if (reportRequest == null)
-        {
-            throw new ArgumentNullException(nameof(reportRequest));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(reportName);
+        ArgumentNullException.ThrowIfNull(reportRequest);
         var result = NewReportStartController(QueryFileName).Execute(reportName, reportRequest);
         WriteQueryDataSet(result.DataSet, QueryFileName);
         return result;
@@ -66,10 +57,7 @@ public class ReportStartFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <param name="report">The report</param>
     public ReportStartFunctionResult Start(ReportSet report)
     {
-        if (report == null)
-        {
-            throw new ArgumentNullException(nameof(report));
-        }
+        ArgumentNullException.ThrowIfNull(report);
         var result = NewReportStartController(QueryFileName).Execute(report);
         WriteQueryDataSet(result.DataSet, QueryFileName);
         return result;
@@ -80,14 +68,8 @@ public class ReportStartFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <param name="reportRequest">The report request</param>
     public ReportStartFunctionResult Start(ReportSet report, ReportRequest reportRequest)
     {
-        if (report == null)
-        {
-            throw new ArgumentNullException(nameof(report));
-        }
-        if (reportRequest == null)
-        {
-            throw new ArgumentNullException(nameof(reportRequest));
-        }
+        ArgumentNullException.ThrowIfNull(report);
+        ArgumentNullException.ThrowIfNull(reportRequest);
         var result = NewReportStartController(QueryFileName).Execute(report, reportRequest);
         WriteQueryDataSet(result.DataSet, QueryFileName);
         return result;

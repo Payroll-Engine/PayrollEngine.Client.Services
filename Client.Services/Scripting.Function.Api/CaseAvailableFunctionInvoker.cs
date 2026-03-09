@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 
 namespace PayrollEngine.Client.Scripting.Function.Api;
@@ -34,14 +34,8 @@ public class CaseAvailableFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <returns>The function result</returns>
     public CaseAvailableFunctionResult Available(string caseName, ScriptConfiguration configuration)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
-        if (configuration == null)
-        {
-            throw new ArgumentNullException(nameof(configuration));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
+        ArgumentNullException.ThrowIfNull(configuration);
         var controller = new CaseAvailableController<TFunction>(HttpClient, configuration);
         return controller.IsAvailable(caseName);
     }
@@ -53,18 +47,12 @@ public class CaseAvailableFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <returns>The function result</returns>
     public CaseAvailableFunctionResult Available(string caseName, Case @case, ScriptConfiguration configuration)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
         if (@case == null)
         {
             throw new ArgumentNullException(nameof(@case));
         }
-        if (configuration == null)
-        {
-            throw new ArgumentNullException(nameof(configuration));
-        }
+        ArgumentNullException.ThrowIfNull(configuration);
         var controller = new CaseAvailableController<TFunction>(HttpClient, configuration);
         return controller.IsAvailable(caseName, @case);
     }

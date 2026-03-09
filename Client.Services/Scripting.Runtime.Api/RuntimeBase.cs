@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Collections.Generic;
 using PayrollEngine.Client.Model;
@@ -25,7 +25,8 @@ public abstract class RuntimeBase : IRuntime
     /// <param name="userId">The user id</param>
     protected RuntimeBase(PayrollHttpClient httpClient, int tenantId, int userId)
     {
-        HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        ArgumentNullException.ThrowIfNull(httpClient);
+        HttpClient = httpClient;
 
         // tenant
         if (tenantId <= 0)
@@ -206,10 +207,7 @@ public abstract class RuntimeBase : IRuntime
     /// <inheritdoc />
     public Tuple<DateTime, DateTime> GetCalendarPeriod(string calendarName, DateTime moment, int offset, string culture)
     {
-        if (string.IsNullOrWhiteSpace(calendarName))
-        {
-            throw new ArgumentException(nameof(calendarName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(calendarName);
         var period = new CalendarService(HttpClient).GetPeriodAsync(
             tenantId: TenantId,
             cultureName: culture,

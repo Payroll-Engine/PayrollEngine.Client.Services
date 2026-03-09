@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 
 namespace PayrollEngine.Client.Scripting.Function.Api;
@@ -34,14 +34,8 @@ public class CaseValidateFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <returns>The function result</returns>
     public CaseValidateFunctionResult Validate(string caseName, ScriptConfiguration configuration)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
-        if (configuration == null)
-        {
-            throw new ArgumentNullException(nameof(configuration));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
+        ArgumentNullException.ThrowIfNull(configuration);
         var controller = new CaseValidateController<TFunction>(HttpClient, configuration);
         return controller.Validate(caseName);
     }
@@ -53,18 +47,9 @@ public class CaseValidateFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <returns>The function result</returns>
     public CaseValidateFunctionResult Validate(string caseName, CaseSet caseSet, ScriptConfiguration configuration)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
-        if (caseSet == null)
-        {
-            throw new ArgumentNullException(nameof(caseSet));
-        }
-        if (configuration == null)
-        {
-            throw new ArgumentNullException(nameof(configuration));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
+        ArgumentNullException.ThrowIfNull(caseSet);
+        ArgumentNullException.ThrowIfNull(configuration);
         var controller = new CaseValidateController<TFunction>(HttpClient, configuration);
         return controller.Validate(caseName, caseSet);
     }

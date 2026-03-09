@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Service.Api;
@@ -37,14 +37,8 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
     /// <inheritdoc />
     public void SetCaseAttribute(string caseName, string attributeName, object value)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
-        if (string.IsNullOrWhiteSpace(attributeName))
-        {
-            throw new ArgumentException(nameof(attributeName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(attributeName);
 
         // case
         var @case = GetCaseSet(caseName);
@@ -53,20 +47,15 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
         @case.Attributes ??= new();
 
         // set or update attribute value
-        @case.Attributes[attributeName] = value ?? throw new ArgumentNullException(nameof(value));
+        ArgumentNullException.ThrowIfNull(value);
+        @case.Attributes[attributeName] = value;
     }
 
     /// <inheritdoc />
     public bool RemoveCaseAttribute(string caseName, string attributeName)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
-        if (string.IsNullOrWhiteSpace(attributeName))
-        {
-            throw new ArgumentException(nameof(attributeName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(attributeName);
         
         // case
         var @case = GetCaseSet(caseName);
@@ -88,10 +77,7 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
     /// <returns>The case set matching the name, script exception on missing case</returns>
     protected CaseSet GetCaseSet(string caseName)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
         // cache or search
         return Case.FindCase(caseName) ?? PayrollService.BuildCaseAsync<CaseSet>(
             new(TenantId, PayrollId), caseName, UserId, EmployeeId).Result;
@@ -221,10 +207,7 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
     /// <inheritdoc />
     public bool AddCaseValueTag(string caseFieldName, string tag)
     {
-        if (string.IsNullOrWhiteSpace(tag))
-        {
-            throw new ArgumentException(nameof(tag));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tag);
 
         CaseFieldSet caseFieldSet = GetCaseFieldSet(caseFieldName);
         if (caseFieldSet == null)
@@ -242,10 +225,7 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
     /// <inheritdoc />
     public bool RemoveCaseValueTag(string caseFieldName, string tag)
     {
-        if (string.IsNullOrWhiteSpace(tag))
-        {
-            throw new ArgumentException(nameof(tag));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tag);
 
         CaseFieldSet caseFieldSet = GetCaseFieldSet(caseFieldName);
         if (caseFieldSet?.Tags == null || !caseFieldSet.Tags.Contains(tag))
@@ -263,14 +243,8 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
     /// <inheritdoc />
     public void SetCaseFieldAttribute(string caseFieldName, string attributeName, object value)
     {
-        if (string.IsNullOrWhiteSpace(caseFieldName))
-        {
-            throw new ArgumentException(nameof(caseFieldName));
-        }
-        if (string.IsNullOrWhiteSpace(attributeName))
-        {
-            throw new ArgumentException(nameof(attributeName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseFieldName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(attributeName);
 
         // case field
         var caseField = GetCaseFieldSet(caseFieldName);
@@ -282,20 +256,15 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
         caseField.Attributes ??= new();
 
         // set or update case field attribute value
-        caseField.Attributes[attributeName] = value ?? throw new ArgumentNullException(nameof(value));
+        ArgumentNullException.ThrowIfNull(value);
+        caseField.Attributes[attributeName] = value;
     }
 
     /// <inheritdoc />
     public bool RemoveCaseFieldAttribute(string caseFieldName, string attributeName)
     {
-        if (string.IsNullOrWhiteSpace(caseFieldName))
-        {
-            throw new ArgumentException(nameof(caseFieldName));
-        }
-        if (string.IsNullOrWhiteSpace(attributeName))
-        {
-            throw new ArgumentException(nameof(attributeName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseFieldName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(attributeName);
 
         // case field
         var caseField = GetCaseFieldSet(caseFieldName);
@@ -319,14 +288,8 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
     /// <inheritdoc />
     public void SetCaseValueAttribute(string caseFieldName, string attributeName, object value)
     {
-        if (string.IsNullOrWhiteSpace(caseFieldName))
-        {
-            throw new ArgumentException(nameof(caseFieldName));
-        }
-        if (string.IsNullOrWhiteSpace(attributeName))
-        {
-            throw new ArgumentException(nameof(attributeName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseFieldName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(attributeName);
 
         // case field
         var caseField = GetCaseFieldSet(caseFieldName);
@@ -338,20 +301,15 @@ public abstract class CaseChangeRuntimeBase : CaseRuntimeBase, ICaseChangeRuntim
         caseField.ValueAttributes ??= new();
 
         // set or update case value attribute value
-        caseField.ValueAttributes[attributeName] = value ?? throw new ArgumentNullException(nameof(value));
+        ArgumentNullException.ThrowIfNull(value);
+        caseField.ValueAttributes[attributeName] = value;
     }
 
     /// <inheritdoc />
     public bool RemoveCaseValueAttribute(string caseFieldName, string attributeName)
     {
-        if (string.IsNullOrWhiteSpace(caseFieldName))
-        {
-            throw new ArgumentException(nameof(caseFieldName));
-        }
-        if (string.IsNullOrWhiteSpace(attributeName))
-        {
-            throw new ArgumentException(nameof(attributeName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseFieldName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(attributeName);
 
         // case field
         var caseField = GetCaseFieldSet(caseFieldName);

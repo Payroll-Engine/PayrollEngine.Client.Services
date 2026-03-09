@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 using CultureInfo = System.Globalization.CultureInfo;
 
@@ -34,8 +34,10 @@ public class WeekPayrollPeriod : IPayrollPeriod
     /// <param name="moment">The moment</param>
     public WeekPayrollPeriod(CultureInfo culture, Calendar calendar, DateTime moment)
     {
-        Culture = culture ?? throw new ArgumentNullException(nameof(culture));
-        Calendar = calendar ?? throw new ArgumentNullException(nameof(calendar));
+        ArgumentNullException.ThrowIfNull(culture);
+        Culture = culture;
+        ArgumentNullException.ThrowIfNull(calendar);
+        Calendar = calendar;
         var firstDayOfWeek = calendar.FirstDayOfWeek ?? (DayOfWeek)culture.DateTimeFormat.FirstDayOfWeek;
         var startOfWeek = moment.GetPreviousWeekDay(firstDayOfWeek);
         Period = new(

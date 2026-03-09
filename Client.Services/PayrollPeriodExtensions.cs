@@ -20,9 +20,9 @@ public static class PayrollPeriodExtensions
         public DatePeriod GetOffsetDatePeriod(int offset) =>
             payrollPeriod.GetPayrollPeriod(payrollPeriod.Start, offset).GetDatePeriod();
 
-        /// <summary>/// Get all periods between this period and the period containing the target moment<br />
-        /// The starting payrun period is not included<br />
-        /// The payrun period containing the target moment is included</summary>
+        /// <summary>Get all periods between this period and the period containing the target moment.<br />
+        /// The starting payrun period is not included.<br />
+        /// The payrun period containing the target moment is included.</summary>
         /// <param name="targetMoment">Target moment</param>
         /// <param name="maxCount">Maximum result count</param>
         /// <returns>Payrun periods between this and the target moment, sorted from the oldest to the newest one</returns>
@@ -52,7 +52,7 @@ public static class PayrollPeriodExtensions
                 periods.Add(period);
 
                 // target period
-                if (datePeriod.IsWithin(targetMoment))
+                if (period.GetDatePeriod().IsWithin(targetMoment))
                 {
                     break;
                 }

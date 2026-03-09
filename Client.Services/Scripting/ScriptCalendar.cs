@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Globalization;
 
@@ -35,7 +35,8 @@ public class ScriptCalendar
     public ScriptCalendar(ScriptConfiguration configuration, string tenantCalendar,
         string culture = null)
     {
-        Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(configuration);
+        Configuration = configuration;
         // fallback to tenant calendar
         CalendarName = Configuration.CalendarName ?? tenantCalendar;
         Culture = culture ?? CultureInfo.CurrentCulture.Name;

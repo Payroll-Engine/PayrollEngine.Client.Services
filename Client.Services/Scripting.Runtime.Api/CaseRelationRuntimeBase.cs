@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using PayrollEngine.Client.Model;
 
@@ -26,8 +26,10 @@ public abstract class CaseRelationRuntimeBase : PayrollRuntime, ICaseRelationRun
         int tenantId, int userId, int payrollId, CaseSet sourceCaseSet, CaseSet targetCaseSet, int? employeeId = null) :
         base(httpClient, scriptContext, tenantId, userId, payrollId, employeeId)
     {
-        SourceCaseSet = sourceCaseSet ?? throw new ArgumentNullException(nameof(sourceCaseSet));
-        TargetCaseSet = targetCaseSet ?? throw new ArgumentNullException(nameof(targetCaseSet));
+        ArgumentNullException.ThrowIfNull(sourceCaseSet);
+        SourceCaseSet = sourceCaseSet;
+        ArgumentNullException.ThrowIfNull(targetCaseSet);
+        TargetCaseSet = targetCaseSet;
     }
 
     /// <summary>The log owner type</summary>

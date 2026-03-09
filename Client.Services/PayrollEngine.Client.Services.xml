@@ -29,9 +29,9 @@
             <returns>Offset period</returns>
         </member>
         <member name="M:PayrollEngine.Client.PayrollPeriodExtensions.&lt;G&gt;$5F6E58118A1A3CA89A90BC5666951369.GetContinuePeriods(System.DateTime,System.Int32)">
-            <summary>/// Get all periods between this period and the period containing the target moment<br />
-            The starting payrun period is not included<br />
-            The payrun period containing the target moment is included</summary>
+            <summary>Get all periods between this period and the period containing the target moment.<br />
+            The starting payrun period is not included.<br />
+            The payrun period containing the target moment is included.</summary>
             <param name="targetMoment">Target moment</param>
             <param name="maxCount">Maximum result count</param>
             <returns>Payrun periods between this and the target moment, sorted from the oldest to the newest one</returns>
@@ -195,11 +195,6 @@
             <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.Function.Api.CaseController`3"/> class</summary>
             <param name="httpClient">The Payroll http client</param>
             <param name="configuration">The scripting configuration</param>
-        </member>
-        <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseController`3.GetCase(System.String)">
-            <summary>Load the payroll case</summary>
-            <param name="caseName">Name of the case</param>
-            <returns>The case</returns>
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Function.Api.CaseController`3.GetCaseSet(System.String)">
             <summary>Load the payroll case</summary>
@@ -753,8 +748,8 @@
             <param name="regulationId">The regulation id</param>
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Function.Api.ReportParameterParser.ParseParametersAsync(System.Collections.Generic.Dictionary{System.String,System.String})">
-            <summary>Get report</summary>
-            <param name="parameters">The report parameters</param>
+            <summary>Parse and resolve report parameters by replacing identifier values with their corresponding ids</summary>
+            <param name="parameters">The report parameters to resolve</param>
         </member>
         <member name="T:PayrollEngine.Client.Scripting.Function.Api.ReportStartController`1">
             <summary>Report start function controller</summary>
@@ -1691,6 +1686,9 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.PayrunName">
             <inheritdoc />
         </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.PreviewJob">
+            <inheritdoc />
+        </member>
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.ExecutionPhase">
             <inheritdoc />
         </member>
@@ -1748,13 +1746,13 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetWageTypeResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetConsolidatedWageTypeResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetConsolidatedWageTypeResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String},System.Boolean)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetWageTypeCustomResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetConsolidatedWageTypeCustomResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetConsolidatedWageTypeCustomResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String},System.Boolean)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetRetroWageTypeResults(System.Decimal,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
@@ -1763,13 +1761,13 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetCollectorResults(System.Collections.Generic.IList{System.String},System.DateTime,System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetConsolidatedCollectorResults(System.Collections.Generic.IList{System.String},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetConsolidatedCollectorResults(System.Collections.Generic.IList{System.String},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String},System.Boolean)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetCollectorCustomResults(System.Collections.Generic.IList{System.String},System.DateTime,System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
             <inheritdoc />
         </member>
-        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetConsolidatedCollectorCustomResults(System.Collections.Generic.IList{System.String},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetConsolidatedCollectorCustomResults(System.Collections.Generic.IList{System.String},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String},System.Boolean)">
             <inheritdoc />
         </member>
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.PayrunStartRuntime">

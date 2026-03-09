@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace PayrollEngine.Client.Scripting.Function.Api;
 
@@ -16,7 +16,9 @@ public class FunctionInvokerBase
     /// <param name="configuration">The scripting configuration</param>
     protected FunctionInvokerBase(PayrollHttpClient httpClient, ScriptConfiguration configuration)
     {
-        HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-        Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(httpClient);
+        HttpClient = httpClient;
+        ArgumentNullException.ThrowIfNull(configuration);
+        Configuration = configuration;
     }
 }

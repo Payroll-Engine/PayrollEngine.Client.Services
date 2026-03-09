@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Scripting.Runtime.Api;
 
@@ -21,11 +21,8 @@ public class CaseAvailableController<TFunc> : CaseController<TFunc, CaseAvailabl
     /// <returns>True if the specified case is available</returns>
     public CaseAvailableFunctionResult IsAvailable(string caseName)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
-        var @case = GetCase(caseName).Result;
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
+        var @case = GetCaseSet(caseName).Result;
         if (@case == null)
         {
             throw new PayrollException($"Missing payroll case {caseName}.");
@@ -39,10 +36,7 @@ public class CaseAvailableController<TFunc> : CaseController<TFunc, CaseAvailabl
     /// <returns>True if the specified case is available</returns>
     public CaseAvailableFunctionResult IsAvailable(string caseName, Case @case)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
         if (@case == null)
         {
             throw new ArgumentNullException(nameof(@case));

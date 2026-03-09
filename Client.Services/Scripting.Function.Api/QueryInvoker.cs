@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Service.Api;
@@ -16,7 +16,8 @@ public class QueryInvoker
     /// <param name="httpClient">The Payroll http configuration</param>
     public QueryInvoker(PayrollHttpClient httpClient)
     {
-        HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        ArgumentNullException.ThrowIfNull(httpClient);
+        HttpClient = httpClient;
     }
 
     /// <summary>Get report</summary>
@@ -27,14 +28,8 @@ public class QueryInvoker
     public async Tasks.Task<DataSet> InvokeQueriesAsync(string tenantIdentifier,
         string regulationName, string reportName, ReportRequest reportRequest)
     {
-        if (string.IsNullOrWhiteSpace(tenantIdentifier))
-        {
-            throw new ArgumentException(nameof(tenantIdentifier));
-        }
-        if (string.IsNullOrWhiteSpace(regulationName))
-        {
-            throw new ArgumentException(nameof(regulationName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tenantIdentifier);
+        ArgumentException.ThrowIfNullOrWhiteSpace(regulationName);
 
         // tenant
         var tenant = await new TenantService(HttpClient).GetAsync<Tenant>(new(), tenantIdentifier);
@@ -59,10 +54,7 @@ public class QueryInvoker
     /// <param name="reportRequest">The report request, including the tenant and regulation parameters</param>
     public async Tasks.Task<DataSet> InvokeQueriesAsync(string reportName, ReportRequest reportRequest)
     {
-        if (reportRequest == null)
-        {
-            throw new ArgumentNullException(nameof(reportRequest));
-        }
+        ArgumentNullException.ThrowIfNull(reportRequest);
         if (reportRequest.Parameters == null)
         {
             throw new ArgumentNullException(nameof(reportRequest.Parameters));
@@ -116,14 +108,8 @@ public class QueryInvoker
         {
             throw new ArgumentOutOfRangeException(nameof(regulationId));
         }
-        if (string.IsNullOrWhiteSpace(reportName))
-        {
-            throw new ArgumentException(nameof(reportName));
-        }
-        if (reportRequest == null)
-        {
-            throw new ArgumentNullException(nameof(reportRequest));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(reportName);
+        ArgumentNullException.ThrowIfNull(reportRequest);
         if (reportRequest.UserId <= 0)
         {
             throw new ArgumentOutOfRangeException(nameof(reportRequest));

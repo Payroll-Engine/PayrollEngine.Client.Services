@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<NDepend AppName="PayrollEngine.Client.Services" Platform="DotNet" FileWrittenByProductVersion="2026.1.2.9787">
+<NDepend AppName="PayrollEngine.Client.Services" Platform="DotNet" FileWrittenByProductVersion="2026.1.3.9791">
   <OutputDir KeepXmlFiles="False">.\NDependOut</OutputDir>
-  <IDEFiles>
-    <IDEFile FilePath=".\PayrollEngine.Client.Services.sln" Filters="-test" Configuration="DEBUG|AnyCPU">
-      <RootDirResolvingInfo Enabled="False" Hints="Debug|bin|.bin|b|AnyCPU|x64|x86|v*.*|net*" TimeOut="10">
-        <RootDir>.</RootDir>
-      </RootDirResolvingInfo>
-    </IDEFile>
-  </IDEFiles>
-  <RuntimeProfileDesc>.NET 7.0</RuntimeProfileDesc>
-  <Assemblies />
-  <Dirs />
+  <IDEFiles />
+  <RuntimeProfileDesc>.NET 10.0</RuntimeProfileDesc>
+  <Assemblies>
+    <Name>PayrollEngine.Client.Services</Name>
+  </Assemblies>
+  <Dirs>
+    <Dir>.\Client.Services\bin\Debug\net10.0</Dir>
+  </Dirs>
   <MergeCodeGeneratedByCompiler>True</MergeCodeGeneratedByCompiler>
   <CompressNDar>True</CompressNDar>
   <ZipSourceFiles>True</ZipSourceFiles>
@@ -24,7 +22,9 @@
   <IssueImport ResolveSarifInSolutionDirectories="True" />
   <HistoricAnalysisResult PersistRecurrence="3" UseCustomDir="False" CustomDir="" RetentionNDays="0" />
   <SourceFileRebasing FromPath="" ToPath="" />
-  <PathVariables />
+  <PathVariables>
+    <PathVariable Name="Variable1" Value="C:\Program Files\dotnet\shared\Microsoft.NETCore.App\10.0.3" />
+  </PathVariables>
   <RuleFiles />
   <GraphFiles />
   <ProjectRules AreActive="True" QueryPersistenceKind="PersistOnlyQueryIdForUntouchedQueries" />

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 
 namespace PayrollEngine.Client.Scripting;
@@ -27,8 +27,10 @@ public class YearPayrollCycle : IPayrollPeriod
     /// <param name="month">The month</param>
     public YearPayrollCycle(System.Globalization.CultureInfo culture, Calendar calendar, int year, int month)
     {
-        Culture = culture ?? throw new ArgumentNullException(nameof(culture));
-        Calendar = calendar ?? throw new ArgumentNullException(nameof(calendar));
+        ArgumentNullException.ThrowIfNull(culture);
+        Culture = culture;
+        ArgumentNullException.ThrowIfNull(calendar);
+        Calendar = calendar;
 
         // period
         var periodStart = new DateTime(year, month, 1, 0, 0, 0, 0, culture.Calendar, DateTimeKind.Utc);

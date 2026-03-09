@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Service.Api;
 
@@ -22,7 +22,8 @@ public abstract class PayrollFunctionController<TFunc, TFuncAttribute, TScriptAt
     protected PayrollFunctionController(PayrollHttpClient httpClient, ScriptConfiguration configuration) :
         base(httpClient)
     {
-        Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+        ArgumentNullException.ThrowIfNull(configuration);
+        Configuration = configuration;
     }
 
     /// <summary>The tenant</summary>

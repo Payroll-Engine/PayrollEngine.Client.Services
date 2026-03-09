@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace PayrollEngine.Client.Scripting;
 
@@ -25,7 +25,8 @@ public class WeekPayrollCycle : IPayrollPeriod
     /// <param name="moment">The moment</param>
     public WeekPayrollCycle(IPayrollCalendar calendar, DateTime moment)
     {
-        Calendar = calendar ?? throw new ArgumentNullException(nameof(calendar));
+        ArgumentNullException.ThrowIfNull(calendar);
+        Calendar = calendar;
         var startOfWeek = moment.GetPreviousWeekDay(calendar.Configuration.FirstDayOfWeek);
 
         // TODO: calculate start cycle for week periods
@@ -49,7 +50,7 @@ public class WeekPayrollCycle : IPayrollPeriod
     /// <inheritdoc />
     public virtual IPayrollPeriod GetPayrollPeriod(DateTime moment, int offset = 0) =>
         offset == 0 ? new(Calendar, moment) :
-            new WeekPayrollCycle(Calendar, moment.AddYears(offset));
+            new WeekPayrollCycle(Calendar, moment.AddDays(offset * PayrollEngine.Date.DaysInWeek));
 
     #endregion
 

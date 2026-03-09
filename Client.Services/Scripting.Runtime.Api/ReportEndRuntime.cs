@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
@@ -53,14 +53,8 @@ public class ReportEndRuntime : ReportRuntime, IReportEndRuntime
     public DataTable ExecuteMergeQuery(string tableName, string methodName, string culture, string mergeColumn,
         Dictionary<string, string> parameters, int schemaChange)
     {
-        if (string.IsNullOrWhiteSpace(tableName))
-        {
-            throw new ArgumentException(nameof(tableName));
-        }
-        if (string.IsNullOrWhiteSpace(methodName))
-        {
-            throw new ArgumentException(nameof(methodName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(methodName);
         // schema change
         if (!Enum.IsDefined((DataMergeSchemaChange)schemaChange))
         {

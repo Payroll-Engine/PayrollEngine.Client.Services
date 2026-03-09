@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 using PayrollEngine.Client.Scripting.Runtime.Api;
 
@@ -22,14 +22,8 @@ public class CaseRelationValidateController<TFunc> : CaseRelationController<TFun
     /// <returns>True if the specified case is valid</returns>
     public CaseRelationValidateFunctionResult Validate(string sourceCaseName, string targetCaseName)
     {
-        if (string.IsNullOrWhiteSpace(sourceCaseName))
-        {
-            throw new ArgumentException(nameof(sourceCaseName));
-        }
-        if (string.IsNullOrWhiteSpace(targetCaseName))
-        {
-            throw new ArgumentException(nameof(targetCaseName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(sourceCaseName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(targetCaseName);
 
         // source
         var sourceCaseSet = GetCaseSet(sourceCaseName).Result;
@@ -55,14 +49,8 @@ public class CaseRelationValidateController<TFunc> : CaseRelationController<TFun
     /// <returns>True if the specified case is valid</returns>
     public CaseRelationValidateFunctionResult Validate(CaseSet sourceCaseSet, CaseSet targetCaseSet)
     {
-        if (sourceCaseSet == null)
-        {
-            throw new ArgumentNullException(nameof(sourceCaseSet));
-        }
-        if (targetCaseSet == null)
-        {
-            throw new ArgumentNullException(nameof(targetCaseSet));
-        }
+        ArgumentNullException.ThrowIfNull(sourceCaseSet);
+        ArgumentNullException.ThrowIfNull(targetCaseSet);
 
         var scriptKey = sourceCaseSet.Name.ToCaseRelationKey(targetCaseSet.Name);
         var method = GetScriptMethod(scriptKey);

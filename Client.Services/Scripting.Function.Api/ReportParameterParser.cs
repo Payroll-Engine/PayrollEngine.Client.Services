@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,21 +26,19 @@ namespace PayrollEngine.Client.Scripting.Function.Api
         public ReportParameterParser(PayrollHttpClient httpClient, int tenantId,
             int? regulationId = null)
         {
-            HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            ArgumentNullException.ThrowIfNull(httpClient);
+            HttpClient = httpClient;
             TenantId = tenantId;
             RegulationId = regulationId;
         }
 
-        /// <summary>Get report</summary>
-        /// <param name="parameters">The report parameters</param>
+        /// <summary>Parse and resolve report parameters by replacing identifier values with their corresponding ids</summary>
+        /// <param name="parameters">The report parameters to resolve</param>
         public async System.Threading.Tasks.Task ParseParametersAsync(Dictionary<string, string> parameters)
         {
-            if (parameters == null)
-            {
-                throw new ArgumentNullException(nameof(parameters));
-            }
+            ArgumentNullException.ThrowIfNull(parameters);
 
-            if (parameters.Any())
+            if (!parameters.Any())
             {
                 return;
             }

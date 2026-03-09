@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.IO;
 using System.Text.Json;
@@ -40,10 +40,7 @@ public class ReportEndFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <returns>The function result</returns>
     public ReportEndFunctionResult End(string reportName, DataSet dataSet = null)
     {
-        if (string.IsNullOrWhiteSpace(reportName))
-        {
-            throw new ArgumentException(nameof(reportName));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(reportName);
         dataSet ??= ReadQueryDataSet(QueryFileName);
         var controller = new ReportEndController<TFunction>(HttpClient);
         var result = controller.Execute(reportName, dataSet);
@@ -59,14 +56,8 @@ public class ReportEndFunctionInvoker<TFunction> : FunctionInvokerBase
     public ReportEndFunctionResult End(string reportName, ReportRequest reportRequest,
         DataSet dataSet = null)
     {
-        if (string.IsNullOrWhiteSpace(reportName))
-        {
-            throw new ArgumentException(nameof(reportName));
-        }
-        if (reportRequest == null)
-        {
-            throw new ArgumentNullException(nameof(reportRequest));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(reportName);
+        ArgumentNullException.ThrowIfNull(reportRequest);
         dataSet ??= ReadQueryDataSet(QueryFileName);
         var controller = new ReportEndController<TFunction>(HttpClient);
         var result = controller.Execute(reportName, reportRequest, dataSet);
@@ -80,10 +71,7 @@ public class ReportEndFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <returns>The function result</returns>
     public ReportEndFunctionResult End(ReportSet report, DataSet dataSet = null)
     {
-        if (report == null)
-        {
-            throw new ArgumentNullException(nameof(report));
-        }
+        ArgumentNullException.ThrowIfNull(report);
         dataSet ??= ReadQueryDataSet(QueryFileName);
         var controller = new ReportEndController<TFunction>(HttpClient);
         var result = controller.Execute(report, dataSet);
@@ -99,14 +87,8 @@ public class ReportEndFunctionInvoker<TFunction> : FunctionInvokerBase
     public ReportEndFunctionResult End(ReportSet report, ReportRequest reportRequest,
         DataSet dataSet = null)
     {
-        if (report == null)
-        {
-            throw new ArgumentNullException(nameof(report));
-        }
-        if (reportRequest == null)
-        {
-            throw new ArgumentNullException(nameof(reportRequest));
-        }
+        ArgumentNullException.ThrowIfNull(report);
+        ArgumentNullException.ThrowIfNull(reportRequest);
         dataSet ??= ReadQueryDataSet(QueryFileName);
         var controller = new ReportEndController<TFunction>(HttpClient);
         var result = controller.Execute(report, reportRequest, dataSet);

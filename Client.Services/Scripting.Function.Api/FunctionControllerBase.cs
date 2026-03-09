@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -42,7 +42,8 @@ public abstract class FunctionControllerBase<TFunc, TFuncAttribute, TScriptAttri
             throw new ArgumentException($"Type {functionType} without scripting methods.");
         }
 
-        HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        ArgumentNullException.ThrowIfNull(httpClient);
+        HttpClient = httpClient;
     }
 
     /// <summary>Gets the script method by script key</summary>
@@ -50,10 +51,7 @@ public abstract class FunctionControllerBase<TFunc, TFuncAttribute, TScriptAttri
     /// <returns>The scripting method</returns>
     public MethodInfo GetScriptMethod(string scriptKey)
     {
-        if (string.IsNullOrWhiteSpace(scriptKey))
-        {
-            throw new ArgumentException(nameof(scriptKey));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(scriptKey);
 
         var method = Methods.FirstOrDefault(x => string.Equals(x.Key.ScriptKey, scriptKey));
         if (method.Key == null)
@@ -68,10 +66,7 @@ public abstract class FunctionControllerBase<TFunc, TFuncAttribute, TScriptAttri
     /// <returns>The scripting method</returns>
     public TScriptAttribute GetScriptAttribute(string scriptKey)
     {
-        if (string.IsNullOrWhiteSpace(scriptKey))
-        {
-            throw new ArgumentException(nameof(scriptKey));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(scriptKey);
 
         var method = Methods.FirstOrDefault(x => string.Equals(x.Key.ScriptKey, scriptKey));
         if (method.Key == null)

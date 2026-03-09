@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 
 namespace PayrollEngine.Client.Scripting.Function.Api;
@@ -33,14 +33,8 @@ public class CaseBuildFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <returns>The function result</returns>
     public CaseBuildFunctionResult Build(string caseName, ScriptConfiguration configuration)
     {
-        if (string.IsNullOrWhiteSpace(caseName))
-        {
-            throw new ArgumentException(nameof(caseName));
-        }
-        if (configuration == null)
-        {
-            throw new ArgumentNullException(nameof(configuration));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseName);
+        ArgumentNullException.ThrowIfNull(configuration);
         var controller = new CaseBuildController<TFunction>(HttpClient, configuration);
         return controller.Build(caseName);
     }
@@ -51,14 +45,8 @@ public class CaseBuildFunctionInvoker<TFunction> : FunctionInvokerBase
     /// <returns>The function result</returns>
     public CaseBuildFunctionResult Build(CaseSet caseSet, ScriptConfiguration configuration)
     {
-        if (caseSet == null)
-        {
-            throw new ArgumentNullException(nameof(caseSet));
-        }
-        if (configuration == null)
-        {
-            throw new ArgumentNullException(nameof(configuration));
-        }
+        ArgumentNullException.ThrowIfNull(caseSet);
+        ArgumentNullException.ThrowIfNull(configuration);
         var controller = new CaseBuildController<TFunction>(HttpClient, configuration);
         return controller.Build(caseSet);
     }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using Calendar = PayrollEngine.Client.Model.Calendar;
 
@@ -33,8 +33,10 @@ public class MonthPayrollPeriod : IPayrollPeriod
     /// <param name="month">The month</param>
     public MonthPayrollPeriod(CultureInfo culture, Calendar calendar, int year, int month)
     {
-        Culture = culture ?? throw new ArgumentNullException(nameof(culture));
-        Calendar = calendar ?? throw new ArgumentNullException(nameof(calendar));
+        ArgumentNullException.ThrowIfNull(culture);
+        Culture = culture;
+        ArgumentNullException.ThrowIfNull(calendar);
+        Calendar = calendar;
 
         // period
         Period = new(

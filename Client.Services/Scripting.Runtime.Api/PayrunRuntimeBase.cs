@@ -39,6 +39,11 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
     #region PayrunJob
 
     /// <inheritdoc />
+    public bool PreviewJob =>
+        // implementation
+        false;
+
+    /// <inheritdoc />
     public int ExecutionPhase =>
         // implementation
         0;
@@ -174,7 +179,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
 
     /// <inheritdoc />
     public IList<Tuple<decimal, string, Tuple<DateTime, DateTime>, decimal, List<string>, Dictionary<string, object>>> GetConsolidatedWageTypeResults(
-        IList<decimal> wageTypeNumbers, DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null)
+        IList<decimal> wageTypeNumbers, DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null, bool noRetro = false)
     {
         // implementation
         return null;
@@ -190,7 +195,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
 
     /// <inheritdoc />
     public IList<Tuple<decimal, string, string, Tuple<DateTime, DateTime>, decimal, List<string>, Dictionary<string, object>>> GetConsolidatedWageTypeCustomResults(IList<decimal> wageTypeNumbers,
-        DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null)
+        DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null, bool noRetro = false)
     {
         // implementation
         return null;
@@ -218,7 +223,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
 
     /// <inheritdoc />
     public IList<Tuple<string, Tuple<DateTime, DateTime>, decimal, List<string>, Dictionary<string, object>>> GetConsolidatedCollectorResults(
-        IList<string> collectorNames, DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null)
+        IList<string> collectorNames, DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null, bool noRetro = false)
     {
         // implementation
         return null;
@@ -234,7 +239,7 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
 
     /// <inheritdoc />
     public IList<Tuple<string, string, Tuple<DateTime, DateTime>, decimal, List<string>, Dictionary<string, object>>> GetConsolidatedCollectorCustomResults(
-        IList<string> collectorNames, DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null)
+        IList<string> collectorNames, DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null, bool noRetro = false)
     {
         // implementation
         return null;

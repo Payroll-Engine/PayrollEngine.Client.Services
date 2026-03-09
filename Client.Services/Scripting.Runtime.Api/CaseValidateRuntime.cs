@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using PayrollEngine.Client.Model;
@@ -35,10 +35,7 @@ public class CaseValidateRuntime : CaseChangeRuntimeBase, ICaseValidateRuntime
     /// <inheritdoc />
     public void AddCaseIssue(string message)
     {
-        if (string.IsNullOrWhiteSpace(message))
-        {
-            throw new ArgumentException(nameof(message));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(message);
 
         Issues.Add(new()
         {
@@ -52,14 +49,8 @@ public class CaseValidateRuntime : CaseChangeRuntimeBase, ICaseValidateRuntime
     /// <inheritdoc />
     public void AddCaseFieldIssue(string caseFieldName, string message)
     {
-        if (string.IsNullOrWhiteSpace(caseFieldName))
-        {
-            throw new ArgumentException(nameof(caseFieldName));
-        }
-        if (string.IsNullOrWhiteSpace(message))
-        {
-            throw new ArgumentException(nameof(message));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(caseFieldName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(message);
 
         Issues.Add(new()
         {

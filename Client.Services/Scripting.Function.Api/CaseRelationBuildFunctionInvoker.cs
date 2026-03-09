@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using PayrollEngine.Client.Model;
 
 namespace PayrollEngine.Client.Scripting.Function.Api;
@@ -37,18 +37,9 @@ public class CaseRelationBuildFunctionInvoker<TFunction> : FunctionInvokerBase
     public CaseRelationBuildFunctionResult Build(string sourceCaseName, string targetCaseName,
         ScriptConfiguration configuration)
     {
-        if (string.IsNullOrWhiteSpace(sourceCaseName))
-        {
-            throw new ArgumentException(nameof(sourceCaseName));
-        }
-        if (string.IsNullOrWhiteSpace(targetCaseName))
-        {
-            throw new ArgumentException(nameof(targetCaseName));
-        }
-        if (configuration == null)
-        {
-            throw new ArgumentNullException(nameof(configuration));
-        }
+        ArgumentException.ThrowIfNullOrWhiteSpace(sourceCaseName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(targetCaseName);
+        ArgumentNullException.ThrowIfNull(configuration);
         var controller = new CaseRelationBuildController<TFunction>(HttpClient, configuration);
         return controller.Build(sourceCaseName, targetCaseName);
     }
@@ -61,19 +52,10 @@ public class CaseRelationBuildFunctionInvoker<TFunction> : FunctionInvokerBase
     public CaseRelationBuildFunctionResult Build(CaseSet sourceCaseSet, CaseSet targetCaseSet,
         ScriptConfiguration configuration)
     {
-        if (sourceCaseSet == null)
-        {
-            throw new ArgumentNullException(nameof(sourceCaseSet));
-        }
-        if (targetCaseSet == null)
-        {
-            throw new ArgumentNullException(nameof(targetCaseSet));
-        }
+        ArgumentNullException.ThrowIfNull(sourceCaseSet);
+        ArgumentNullException.ThrowIfNull(targetCaseSet);
 
-        if (configuration == null)
-        {
-            throw new ArgumentNullException(nameof(configuration));
-        }
+        ArgumentNullException.ThrowIfNull(configuration);
         var controller = new CaseRelationBuildController<TFunction>(HttpClient, configuration);
         return controller.Build(sourceCaseSet, targetCaseSet);
     }
