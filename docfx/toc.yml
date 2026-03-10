@@ -1,3 +1,4 @@
-- name: Api Documentation
+- name: Overview
+  href: index.md
+- name: Api Reference
   href: api/
-  homepage: index.md
