@@ -70,8 +70,12 @@ jobs:
       - name: Install DocFX
         run: dotnet tool install -g docfx
 
+      - name: Restore NuGet packages
+        run: |
+          dotnet restore PayrollEngine.Client.Services/Client.Services/
+
       - name: Build DocFX
-        run: cd PayrollEngine.Client.Services/docfx && docfx docfx.json --outputFolder _site
+        run: cd PayrollEngine.Client.Services/docfx && docfx docfx.json
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

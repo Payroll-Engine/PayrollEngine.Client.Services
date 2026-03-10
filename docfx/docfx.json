@@ -3,19 +3,19 @@
     {
       "src": [
         {
-          "files": [ "/**.csproj" ],
+          "files": [ "**.csproj" ],
           "src": "../../PayrollEngine.Core/Core/"
         },
         {
-          "files": [ "/**.csproj" ],
+          "files": [ "**.csproj" ],
           "src": "../../PayrollEngine.Client.Core/Client.Core/"
         },
         {
-          "files": [ "/**.csproj" ],
+          "files": [ "**.csproj" ],
           "src": "../../PayrollEngine.Client.Scripting/Client.Scripting/"
         },
         {
-          "files": [ "/**.csproj" ],
+          "files": [ "**.csproj" ],
           "src": "../../PayrollEngine.Client.Test/Client.Test/"
         }
       ],
