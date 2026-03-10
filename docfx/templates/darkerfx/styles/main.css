@@ -449,9 +449,11 @@ body.theme-light .hljs-strong {
   font-weight: bold; }
 
 /* ── Navbar logo: square icon size ────────────────────────── */
-.navbar-brand img {
+.navbar-brand img,
+.navbar-brand svg {
   height: 28px !important;
   width: 28px !important;
+  flex-shrink: 0 !important;
 }
 
 /*# sourceMappingURL=main.css.map */
