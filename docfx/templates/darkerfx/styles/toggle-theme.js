@@ -1,3 +1,14 @@
+// Inject app name next to logo
+document.addEventListener("DOMContentLoaded", function () {
+    var brand = document.querySelector(".navbar-brand");
+    if (brand) {
+        var span = document.createElement("span");
+        span.textContent = "Client Services";
+        span.style.cssText = "margin-left:10px;font-size:.95rem;font-weight:700;color:#f97316;vertical-align:middle;letter-spacing:.02em;";
+        brand.appendChild(span);
+    }
+});
+
 // Collapse inherited members section
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(function (heading) {
