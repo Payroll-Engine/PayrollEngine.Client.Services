@@ -1,11 +1,11 @@
 // Inject app name next to logo
 document.addEventListener("DOMContentLoaded", function () {
-    var brand = document.querySelector(".navbar-brand");
-    if (brand) {
+    var header = document.querySelector(".navbar-header");
+    if (header) {
         var span = document.createElement("span");
         span.textContent = "Client Services";
-        span.style.cssText = "margin-left:10px;font-size:.95rem;font-weight:700;color:#f97316;vertical-align:middle;letter-spacing:.02em;";
-        brand.appendChild(span);
+        span.style.cssText = "display:inline-block;font-size:.95rem;font-weight:700;color:#f97316;letter-spacing:.02em;line-height:50px;padding-left:4px;";
+        header.appendChild(span);
     }
 });
 
