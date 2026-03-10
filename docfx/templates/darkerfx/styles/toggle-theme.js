@@ -1,12 +1,28 @@
-// Inject app name next to logo
+// Inject role badge next to logo
 document.addEventListener("DOMContentLoaded", function () {
     var brand = document.querySelector(".navbar-brand");
     if (brand) {
         brand.style.cssText = "display:inline-flex;align-items:center;gap:10px;";
-        var span = document.createElement("span");
-        span.textContent = "Client Services";
-        span.style.cssText = "font-size:.9rem;font-weight:700;color:#f97316;letter-spacing:.02em;white-space:nowrap;";
-        brand.appendChild(span);
+        var title = document.createElement("span");
+        title.textContent = "Payroll Engine";
+        title.style.cssText = "font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;";
+        brand.appendChild(title);
+        var badge = document.createElement("span");
+        badge.textContent = "Client Services";
+        badge.style.cssText = [
+            "font-size:.7rem",
+            "font-weight:700",
+            "letter-spacing:.05em",
+            "text-transform:uppercase",
+            "padding:.15rem .55rem",
+            "border-radius:4px",
+            "border-left:3px solid #f97316",
+            "background:rgba(249,115,22,.1)",
+            "color:#f97316",
+            "white-space:nowrap",
+            "line-height:1.6"
+        ].join(";");
+        brand.appendChild(badge);
     }
 });
 
