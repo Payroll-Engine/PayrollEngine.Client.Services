@@ -4,7 +4,7 @@
       "src": [
         {
           "files": [ "**/bin/Release/net9.0/PayrollEngine.Client.Services.dll" ],
-          "src": "../../"
+          "src": "../"
         }
       ],
       "dest": "api",
