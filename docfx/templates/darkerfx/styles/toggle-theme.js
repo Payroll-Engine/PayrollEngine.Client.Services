@@ -11,14 +11,17 @@ document.addEventListener("DOMContentLoaded", function () {
         title.style.cssText = "font-size:1rem;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;";
         brand.appendChild(title);
     }
-    // Badge: right-aligned in navbar container
-    var container = document.querySelector(".navbar .container, .navbar .container-fluid, .navbar > div");
-    if (container) {
-        container.style.cssText = "display:flex;align-items:center;width:100%;";
+    // Badge: absolutely positioned top-right in navbar
+    var navbar = document.querySelector(".navbar");
+    if (navbar) {
+        navbar.style.position = "relative";
         var badge = document.createElement("span");
         badge.textContent = "Automator";
         badge.style.cssText = [
-            "margin-left:auto",
+            "position:absolute",
+            "top:50%",
+            "right:1rem",
+            "transform:translateY(-50%)",
             "font-size:.7rem",
             "font-weight:700",
             "letter-spacing:.05em",
@@ -29,41 +32,30 @@ document.addEventListener("DOMContentLoaded", function () {
             "background:rgba(249,115,22,.1)",
             "color:#f97316",
             "white-space:nowrap",
-            "line-height:1.6"
+            "line-height:1.6",
+            "z-index:10"
         ].join(";");
-        container.appendChild(badge);
+        navbar.appendChild(badge);
     }
 });
 
-// Collapse inherited members section
+// Hide inherited members section completely
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(function (heading) {
         if (!heading.textContent.trim().replace(/\s+/g, ' ').includes("Inherited Members")) return;
 
-        // find the next sibling that is a list or div (skip hr etc.)
-        var list = heading.nextElementSibling;
-        while (list && list.tagName === "HR") {
-            list = list.nextElementSibling;
+        heading.style.display = "none";
+
+        // hide siblings until next heading of same or higher level
+        var level = parseInt(heading.tagName[1]);
+        var sibling = heading.nextElementSibling;
+        while (sibling) {
+            var sibLevel = sibling.tagName.match(/^H([1-6])$/);
+            if (sibLevel && parseInt(sibLevel[1]) <= level) break;
+            var next = sibling.nextElementSibling;
+            sibling.style.display = "none";
+            sibling = next;
         }
-        if (!list) return;
-
-        heading.style.cursor = "pointer";
-        heading.style.userSelect = "none";
-
-        var indicator = document.createElement("span");
-        indicator.className = "inherited-toggle";
-        indicator.style.marginLeft = "6px";
-        indicator.style.fontSize = ".8em";
-        indicator.textContent = "▶";
-        heading.appendChild(indicator);
-
-        list.style.display = "none";
-
-        heading.addEventListener("click", function () {
-            var collapsed = list.style.display === "none";
-            list.style.display = collapsed ? "" : "none";
-            indicator.textContent = collapsed ? "▼" : "▶";
-        });
     });
 });
 
