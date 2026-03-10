@@ -40,7 +40,8 @@
     ],
     "output": "_site",
     "globalMetadata": {
-      "_appTitle": "PE Client Reference"
+      "_appTitle": "PE Client Reference",
+      "_appName": "Client Services"
     },
     "template": [
       "default",

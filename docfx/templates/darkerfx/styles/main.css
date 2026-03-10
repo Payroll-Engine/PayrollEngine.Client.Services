@@ -448,4 +448,9 @@ body.theme-light .hljs-emphasis {
 body.theme-light .hljs-strong {
   font-weight: bold; }
 
+/* ── Automator role colour on app name ───────────────────── */
+.navbar-brand {
+  color: #f97316 !important;
+}
+
 /*# sourceMappingURL=main.css.map */
