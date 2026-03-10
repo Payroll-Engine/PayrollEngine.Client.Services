@@ -102,7 +102,10 @@ await parser.ParseParametersAsync(parameters); // resolves names → IDs
 
 ## Developer Reference
 
-The HTML API reference is generated with [docfx](https://github.com/dotnet/docfx). Commands in the `docfx` folder:
+The client API reference is published at:
+👉 [payroll-engine.github.io/PayrollEngine.Client.Services](https://payroll-engine.github.io/PayrollEngine.Client.Services/)
+
+The HTML reference is generated with [docfx](https://github.com/dotnet/docfx). Commands in the `docfx` folder:
 
 | Command | Description |
 |:--|:--|
