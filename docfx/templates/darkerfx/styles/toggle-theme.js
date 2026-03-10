@@ -1,15 +1,24 @@
-// Inject role badge next to logo
+// Inject title + right-aligned role badge
 document.addEventListener("DOMContentLoaded", function () {
+    // Brand: icon + title text
     var brand = document.querySelector(".navbar-brand");
     if (brand) {
         brand.style.cssText = "display:inline-flex;align-items:center;gap:10px;";
+        // Remove any appName span injected by template
+        brand.querySelectorAll("span").forEach(function(s) { s.remove(); });
         var title = document.createElement("span");
-        title.textContent = "Payroll Engine";
-        title.style.cssText = "font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;";
+        title.textContent = "Client Services";
+        title.style.cssText = "font-size:1rem;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;";
         brand.appendChild(title);
+    }
+    // Badge: right-aligned in navbar container
+    var container = document.querySelector(".navbar .container, .navbar .container-fluid, .navbar > div");
+    if (container) {
+        container.style.cssText = "display:flex;align-items:center;width:100%;";
         var badge = document.createElement("span");
-        badge.textContent = "Client Services";
+        badge.textContent = "Automator";
         badge.style.cssText = [
+            "margin-left:auto",
             "font-size:.7rem",
             "font-weight:700",
             "letter-spacing:.05em",
@@ -22,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "white-space:nowrap",
             "line-height:1.6"
         ].join(";");
-        brand.appendChild(badge);
+        container.appendChild(badge);
     }
 });
 
