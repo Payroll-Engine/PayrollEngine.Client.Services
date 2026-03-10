@@ -1,15 +1,5 @@
 # Payroll Engine Client Reference
 
-## Core
-- [Date](xref:PayrollEngine.Date)
-- [DatePeriod](xref:PayrollEngine.DatePeriod)
-
-## Data
-- [Data Set](xref:PayrollEngine.Data.DataSet)
-- [Data Table](xref:PayrollEngine.Data.DataTable)
-- [Data Row](xref:PayrollEngine.Data.DataRow)
-- [Data Column](xref:PayrollEngine.Data.DataColumn)
-
 ## Model
 - [Tenant](xref:PayrollEngine.Client.Model.Tenant)
 - [User](xref:PayrollEngine.Client.Model.User)
