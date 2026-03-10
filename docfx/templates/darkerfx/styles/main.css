@@ -449,6 +449,9 @@ body.theme-light .hljs-strong {
   font-weight: bold; }
 
 /* ── Navbar logo: square icon size ────────────────────────── */
+.navbar-brand {
+  margin-right: 1.5rem !important;
+}
 .navbar-brand img,
 .navbar-brand svg {
   height: 28px !important;

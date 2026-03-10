@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         badge.style.cssText = [
             "position:absolute",
             "top:50%",
-            "right:15px",
+            "right:71px",
             "transform:translateY(-50%)",
             "font-size:.7rem",
             "font-weight:700",
