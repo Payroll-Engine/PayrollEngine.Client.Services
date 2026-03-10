@@ -3,33 +3,16 @@
     {
       "src": [
         {
-          "files": [ "**.csproj" ],
-          "src": "../../PayrollEngine.Core/Core/"
-        },
-        {
-          "files": [ "**.csproj" ],
-          "src": "../../PayrollEngine.Client.Core/Client.Core/"
-        },
-        {
-          "files": [ "**.csproj" ],
-          "src": "../../PayrollEngine.Client.Scripting/Client.Scripting/"
-        },
-        {
-          "files": [ "**.csproj" ],
-          "src": "../../PayrollEngine.Client.Test/Client.Test/"
+          "files": [ "**/bin/Release/net9.0/PayrollEngine.Client.Services.dll" ],
+          "src": "../../"
         }
       ],
       "dest": "api",
       "includePrivateMembers": false,
       "disableGitFeatures": false,
       "disableDefaultFilter": false,
-      "noRestore": false,
       "namespaceLayout": "nested",
-      "memberLayout": "samePage",
-      "allowCompilationErrors": false,
-      "properties": {
-        "TargetFramework": "net9.0"
-      }
+      "memberLayout": "samePage"
     }
   ],
   "build": {

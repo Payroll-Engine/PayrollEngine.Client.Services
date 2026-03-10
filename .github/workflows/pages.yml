@@ -21,43 +21,13 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout Client.Services
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          path: PayrollEngine.Client.Services
-
-      - name: Checkout Core
-        uses: actions/checkout@v4
-        with:
-          repository: Payroll-Engine/PayrollEngine.Core
-          token: ${{ secrets.PAT_DISPATCH }}
-          path: PayrollEngine.Core
-
-      - name: Checkout Client.Core
-        uses: actions/checkout@v4
-        with:
-          repository: Payroll-Engine/PayrollEngine.Client.Core
-          token: ${{ secrets.PAT_DISPATCH }}
-          path: PayrollEngine.Client.Core
-
-      - name: Checkout Client.Scripting
-        uses: actions/checkout@v4
-        with:
-          repository: Payroll-Engine/PayrollEngine.Client.Scripting
-          token: ${{ secrets.PAT_DISPATCH }}
-          path: PayrollEngine.Client.Scripting
-
-      - name: Checkout Client.Test
-        uses: actions/checkout@v4
-        with:
-          repository: Payroll-Engine/PayrollEngine.Client.Test
-          token: ${{ secrets.PAT_DISPATCH }}
-          path: PayrollEngine.Client.Test
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: '9.0.x'
 
       - name: Configure GitHub Packages source
         run: |
@@ -67,20 +37,19 @@ jobs:
             --password ${{ secrets.PAT_DISPATCH }} \
             --store-password-in-clear-text
 
+      - name: Build
+        run: dotnet build Client.Services/PayrollEngine.Client.Services.csproj -c Release
+
       - name: Install DocFX
         run: dotnet tool install -g docfx
 
-      - name: Restore NuGet packages
-        run: |
-          dotnet restore PayrollEngine.Client.Services/Client.Services/
-
       - name: Build DocFX
-        run: cd PayrollEngine.Client.Services/docfx && docfx docfx.json
+        run: cd docfx && docfx docfx.json
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: PayrollEngine.Client.Services/docfx/_site
+          path: docfx/_site
 
       - name: Deploy to GitHub Pages
         id: deployment
