@@ -3,24 +3,29 @@ document.addEventListener("DOMContentLoaded", function () {
     // Brand: icon + title text
     var brand = document.querySelector(".navbar-brand");
     if (brand) {
-        brand.style.cssText = "display:inline-flex;align-items:center;gap:10px;";
-        // Remove any appName span injected by template
-        brand.querySelectorAll("span").forEach(function(s) { s.remove(); });
+        brand.style.cssText = "display:inline-flex;align-items:center;gap:10px;padding:4px 0;";
+        // Remove only text nodes / empty spans injected by template, keep img
+        brand.childNodes.forEach(function(n) {
+            if (n.nodeType === 3 || (n.nodeType === 1 && n.tagName !== "IMG")) n.remove ? n.remove() : n.parentNode.removeChild(n);
+        });
+        // Ensure icon is visible
+        var img = brand.querySelector("img");
+        if (img) { img.style.cssText = "height:28px;width:28px;flex-shrink:0;"; }
         var title = document.createElement("span");
         title.textContent = "Client Services";
-        title.style.cssText = "font-size:1rem;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;";
+        title.style.cssText = "font-size:1.05rem;font-weight:700;color:#fff;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;";
         brand.appendChild(title);
     }
-    // Badge: absolutely positioned top-right in navbar
-    var navbar = document.querySelector(".navbar");
-    if (navbar) {
-        navbar.style.position = "relative";
+    // Badge: absolutely positioned top-right within content container
+    var navContainer = document.querySelector(".navbar .container");
+    if (navContainer) {
+        navContainer.style.position = "relative";
         var badge = document.createElement("span");
         badge.textContent = "Automator";
         badge.style.cssText = [
             "position:absolute",
             "top:50%",
-            "right:1rem",
+            "right:0",
             "transform:translateY(-50%)",
             "font-size:.7rem",
             "font-weight:700",
