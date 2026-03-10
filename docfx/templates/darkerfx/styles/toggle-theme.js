@@ -1,7 +1,7 @@
 // Collapse inherited members section
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(function (heading) {
-        if (heading.textContent.trim().replace(/\s+/g, ' ') !== "Inherited Members") return;
+        if (!heading.textContent.trim().replace(/\s+/g, ' ').includes("Inherited Members")) return;
 
         // find the next sibling that is a list or div (skip hr etc.)
         var list = heading.nextElementSibling;
