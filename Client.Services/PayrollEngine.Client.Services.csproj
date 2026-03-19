@@ -19,4 +19,17 @@
 		<PackageReference Include="PayrollEngine.Client.Test" Version="0.10.0-beta.2" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<!-- publish package -->
+	<Target Name="PublishPackage" AfterTargets="Pack" Condition="exists('$(PayrollEnginePackageDir)')">
+		<Message Importance="High" Text="Publish package..." />
+		<Copy SourceFiles="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(PayrollEnginePackageDir)" />
+	</Target>
+
 </Project>
