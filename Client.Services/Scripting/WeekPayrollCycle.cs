@@ -1,4 +1,6 @@
 using System;
+using PayrollEngine.Client.Model;
+using CultureInfo = System.Globalization.CultureInfo;
 
 namespace PayrollEngine.Client.Scripting;
 
@@ -7,27 +9,34 @@ public class WeekPayrollCycle : IPayrollPeriod
 {
     private DatePeriod Period { get; }
 
-    /// <summary>The payroll calendar</summary>
-    public IPayrollCalendar Calendar { get; }
+    /// <summary>The culture</summary>
+    public CultureInfo Culture { get; }
+
+    /// <summary>The date calendar</summary>
+    public Calendar Calendar { get; }
 
     /// <summary>Gets the week of year</summary>
     public int WeekOfYear =>
-        Calendar.GetWeekOfYear(Period.Start);
+        Calendar.GetWeekOfYear(Culture, Period.Start);
 
     /// <inheritdoc />
-    public WeekPayrollCycle(IPayrollCalendar calendar, int year, int month, int day) :
-        this(calendar, new(year, month, day, 0, 0, 0, DateTimeKind.Utc))
+    public WeekPayrollCycle(CultureInfo culture, Calendar calendar, int year, int month, int day) :
+        this(culture, calendar, new(year, month, day, 0, 0, 0, DateTimeKind.Utc))
     {
     }
 
     /// <summary>Initializes a new instance of the <see cref="WeekPayrollCycle"/> class</summary>
+    /// <param name="culture">The culture</param>
     /// <param name="calendar">The calendar</param>
     /// <param name="moment">The moment</param>
-    public WeekPayrollCycle(IPayrollCalendar calendar, DateTime moment)
+    public WeekPayrollCycle(CultureInfo culture, Calendar calendar, DateTime moment)
     {
+        ArgumentNullException.ThrowIfNull(culture);
+        Culture = culture;
         ArgumentNullException.ThrowIfNull(calendar);
         Calendar = calendar;
-        var startOfWeek = moment.GetPreviousWeekDay(calendar.Configuration.FirstDayOfWeek);
+        var firstDayOfWeek = calendar.FirstDayOfWeek ?? (DayOfWeek)culture.DateTimeFormat.FirstDayOfWeek;
+        var startOfWeek = moment.GetPreviousWeekDay(firstDayOfWeek);
 
         // TODO: calculate start cycle for week periods
         Period = new(
@@ -45,12 +54,12 @@ public class WeekPayrollCycle : IPayrollPeriod
 
     /// <inheritdoc />
     public virtual string Name =>
-        Period.Start.ToString("yyyy", Calendar.Culture);
+        Period.Start.ToString("yyyy", Culture);
 
     /// <inheritdoc />
     public virtual IPayrollPeriod GetPayrollPeriod(DateTime moment, int offset = 0) =>
-        offset == 0 ? new(Calendar, moment) :
-            new WeekPayrollCycle(Calendar, moment.AddDays(offset * PayrollEngine.Date.DaysInWeek));
+        offset == 0 ? new(Culture, Calendar, moment) :
+            new WeekPayrollCycle(Culture, Calendar, moment.AddDays(offset * PayrollEngine.Date.DaysInWeek));
 
     #endregion
 
