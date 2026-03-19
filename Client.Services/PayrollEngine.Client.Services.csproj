@@ -19,3 +19,4 @@
 		<PackageReference Include="PayrollEngine.Client.Test" Version="0.10.0-beta.2" />
 	</ItemGroup>
 
+</Project>
