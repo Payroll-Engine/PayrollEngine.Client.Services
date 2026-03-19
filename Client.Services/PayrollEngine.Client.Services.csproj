@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<AssemblyName>PayrollEngine.Client.Services</AssemblyName>
@@ -15,36 +15,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.5" />
-		<PackageReference Include="PayrollEngine.Client.Scripting" Version="0.10.0-beta.dev" />
-		<PackageReference Include="PayrollEngine.Client.Test" Version="0.10.0-beta.dev" />
+		<PackageReference Include="PayrollEngine.Client.Scripting" Version="0.10.0-beta.2" />
+		<PackageReference Include="PayrollEngine.Client.Test" Version="0.10.0-beta.2" />
 	</ItemGroup>
 
-	<!-- include xml documention files and json schemas to the nuget package -->
-	<ItemGroup>
-		<None Include="$(OutputDir)*.xml" Pack="true">
-			<PackageCopyToOutput>true</PackageCopyToOutput>
-		</None>
-		<None Include="$(OutputDir)*.schema.json" Pack="true">
-			<PackageCopyToOutput>true</PackageCopyToOutput>
-		</None>
-	</ItemGroup>
-	<ItemGroup>
-	  <Compile Remove="Scripting\WeekPayrollCycle.cs" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Include="..\README.md">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
-	  <None Include="Scripting\WeekPayrollCycle.cs" />
-	</ItemGroup>
-
-	<!-- additional package files -->
-
-	<!-- publish package -->
-	<Target Name="PublishPackage" AfterTargets="Pack" Condition="exists('$(PayrollEnginePackageDir)')">
-		<Message Importance="High" Text="Publish package..." />
-		<Copy SourceFiles="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(PayrollEnginePackageDir)" />
-	</Target>
-
-</Project>
