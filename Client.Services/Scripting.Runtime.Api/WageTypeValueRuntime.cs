@@ -30,6 +30,12 @@ public class WageTypeValueRuntime : WageTypeRuntimeBase, IWageTypeValueRuntime
     public string[] GetValueActions() => null;
 
     /// <inheritdoc />
+    public  void AbortExecution(string reason = null)
+    {
+        // implementation
+    }
+
+    /// <inheritdoc />
     public void RestartExecution()
     {
         // implementation

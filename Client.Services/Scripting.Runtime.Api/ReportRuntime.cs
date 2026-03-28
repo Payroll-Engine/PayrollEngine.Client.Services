@@ -830,4 +830,77 @@ public abstract class ReportRuntime : RuntimeBase, IReportRuntime
 
     #endregion
 
+    #region Consolidation
+
+    /// <inheritdoc />
+    public DataTable ExecuteConsolidatedQuery(string tableName, string methodName, string culture,
+        string mergeColumn, Dictionary<string, string> parameters)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(tableName);
+        ArgumentException.ThrowIfNullOrWhiteSpace(methodName);
+
+        // query Consolidation shares for the current tenant via the regulation share REST endpoint
+        var sharesQuery = new Query
+        {
+            Filter = $"consumerTenantId eq {TenantId} and permission ge 1"
+        };
+        var shares = new RegulationShareService(HttpClient)
+            .QueryAsync<RegulationShare>(new RootServiceContext(), sharesQuery).Result
+            .ToList();
+
+        if (shares.Count == 0)
+        {
+            return new DataTable(tableName);
+        }
+
+        DataTable merged = null;
+        var tempName = $"{tableName}_share";
+
+        foreach (var share in shares)
+        {
+            // override TenantId with provider tenant — authorized by Consolidation share
+            var shareParams = parameters != null
+                ? new Dictionary<string, string>(parameters)
+                : new Dictionary<string, string>();
+            shareParams["TenantId"] = share.ProviderTenantId.ToString();
+
+            DataTable shareTable;
+            try
+            {
+                shareTable = ExecuteQuery(tempName, methodName, culture ?? UserCulture, shareParams);
+            }
+            catch
+            {
+                continue;
+            }
+
+            if (shareTable == null || shareTable.Rows.Count == 0)
+            {
+                continue;
+            }
+
+            if (merged == null)
+            {
+                merged = shareTable.Copy();
+                merged.TableName = tableName;
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(mergeColumn) && merged.Columns.Contains(mergeColumn))
+                {
+                    merged.PrimaryKey = [merged.Columns[mergeColumn]];
+                }
+                merged.Merge(shareTable, preserveChanges: false, MissingSchemaAction.Add);
+                merged.PrimaryKey = [];
+            }
+        }
+
+        var result = merged ?? new DataTable(tableName);
+        result.TableName = tableName;
+        result.AcceptChanges();
+        return result;
+    }
+
+    #endregion
+
 }

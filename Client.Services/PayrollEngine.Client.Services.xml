@@ -1949,6 +1949,9 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.AddReportLog(System.String,System.String,System.Nullable{System.DateTime})">
             <inheritdoc />
         </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.ReportRuntime.ExecuteConsolidatedQuery(System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <inheritdoc />
+        </member>
         <member name="T:PayrollEngine.Client.Scripting.Runtime.Api.ReportStartRuntime">
             <summary>Runtime for the report start function</summary>
         </member>
@@ -2177,6 +2180,9 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime.GetValueActions">
             <inheritdoc />
         </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime.AbortExecution(System.String)">
+            <inheritdoc />
+        </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.WageTypeValueRuntime.RestartExecution">
             <inheritdoc />
         </member>
@@ -2266,6 +2272,43 @@
             <summary>
             Script namespace
             </summary>
+        </member>
+        <member name="T:PayrollEngine.Client.Scripting.WeekPayrollCycle">
+            <summary>Payroll cycle for week periods, implements the <see cref="T:PayrollEngine.IPayrollPeriod" /></summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.Culture">
+            <summary>The culture</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.Calendar">
+            <summary>The date calendar</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.WeekOfYear">
+            <summary>Gets the week of year</summary>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollCycle.#ctor(System.Globalization.CultureInfo,PayrollEngine.Client.Model.Calendar,System.Int32,System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollCycle.#ctor(System.Globalization.CultureInfo,PayrollEngine.Client.Model.Calendar,System.DateTime)">
+            <summary>Initializes a new instance of the <see cref="T:PayrollEngine.Client.Scripting.WeekPayrollCycle"/> class</summary>
+            <param name="culture">The culture</param>
+            <param name="calendar">The calendar</param>
+            <param name="moment">The moment</param>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.Start">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.End">
+            <inheritdoc />
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.WeekPayrollCycle.Name">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollCycle.GetPayrollPeriod(System.DateTime,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.WeekPayrollCycle.ToString">
+            <summary>Returns a <see cref="T:System.String" /> that represents this instance</summary>
+            <returns>A <see cref="T:System.String" /> that represents this instance</returns>
         </member>
         <member name="T:PayrollEngine.Client.Scripting.WeekPayrollPeriod">
             <summary>Payroll week period, implements the <see cref="T:PayrollEngine.IPayrollPeriod" /></summary>
