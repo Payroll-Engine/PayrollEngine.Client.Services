@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<AssemblyName>PayrollEngine.Client.Services</AssemblyName>
@@ -15,8 +15,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.5" />
-		<PackageReference Include="PayrollEngine.Client.Scripting" Version="0.10.0-beta.dev" />
-		<PackageReference Include="PayrollEngine.Client.Test" Version="0.10.0-beta.dev" />
+		<PackageReference Include="PayrollEngine.Client.Scripting" Version="$(Version)" />
+		<PackageReference Include="PayrollEngine.Client.Test" Version="$(Version)" />
 	</ItemGroup>
 
 	<ItemGroup>
