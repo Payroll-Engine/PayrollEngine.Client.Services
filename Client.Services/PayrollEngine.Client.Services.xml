@@ -1548,6 +1548,15 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetEvaluationPeriod">
             <inheritdoc />
         </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.PayrollCalendar">
+            <summary>The payroll calendar</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.PayDate">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetPayDate(System.DateTime)">
+            <inheritdoc />
+        </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetPeriod(System.DateTime,System.Int32)">
             <inheritdoc />
         </member>

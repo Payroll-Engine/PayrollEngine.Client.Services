@@ -86,6 +86,7 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
                 GetAsync<Calendar>(new(tenantId), scriptCalendar.CalendarName).Result;
         }
         calendar ??= new();
+        PayrollCalendar = calendar;
 
         Cycle = new YearPayrollCycle(payrollCulture, calendar, scriptCalendar.PeriodDate);
         Period = new MonthPayrollPeriod(payrollCulture, calendar, scriptCalendar.PeriodDate);
@@ -199,6 +200,22 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
             calendarName: ScriptCalendar.CalendarName,
             periodMoment: EvaluationDate).Result;
         return new(period.Start, period.End);
+    }
+
+    /// <summary>The payroll calendar</summary>
+    private Calendar PayrollCalendar { get; }
+
+    /// <inheritdoc />
+    public virtual DateTime PayDate => GetPayDate(EvaluationDate);
+
+    /// <inheritdoc />
+    public DateTime GetPayDate(DateTime periodMoment)
+    {
+        var period = CalendarService.GetPeriodAsync(TenantId,
+            cultureName: ScriptCalendar.CultureName,
+            calendarName: ScriptCalendar.CalendarName,
+            periodMoment: periodMoment).Result;
+        return DateTime.SpecifyKind(period.End.Date.AddDays(PayrollCalendar.PayDateOffset ?? 0), DateTimeKind.Utc);
     }
 
     /// <inheritdoc />
