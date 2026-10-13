@@ -219,6 +219,12 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
     }
 
     /// <inheritdoc />
+    public int CycleTimeUnit => (int)(PayrollCalendar?.CycleTimeUnit ?? PayrollEngine.CalendarTimeUnit.Year);
+
+    /// <inheritdoc />
+    public int PeriodTimeUnit => (int)(PayrollCalendar?.PeriodTimeUnit ?? PayrollEngine.CalendarTimeUnit.CalendarMonth);
+
+    /// <inheritdoc />
     public virtual Tuple<DateTime, DateTime> GetPeriod(DateTime periodMoment, int offset)
     {
         var period = CalendarService.GetPeriodAsync(TenantId,
