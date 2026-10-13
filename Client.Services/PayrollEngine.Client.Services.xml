@@ -1563,6 +1563,9 @@
         <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.PeriodTimeUnit">
             <inheritdoc />
         </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.TimeMap">
+            <inheritdoc />
+        </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetPeriod(System.DateTime,System.Int32)">
             <inheritdoc />
         </member>
