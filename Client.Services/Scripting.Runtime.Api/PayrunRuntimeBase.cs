@@ -178,6 +178,31 @@ public abstract class PayrunRuntimeBase : PayrollRuntime, IPayrunRuntime
     }
 
     /// <inheritdoc />
+    public List<DateTime> GetConsolidatedPeriodStarts(DateTime periodMoment)
+    {
+        var periodStarts = new List<DateTime>();
+        var jobPeriodStart = GetEvaluationPeriod().Item1;
+        var (start, end) = GetPeriod(GetCyclePeriodStart(periodMoment), 0);
+        while (start < jobPeriodStart)
+        {
+            // cycle date at or after the moment
+            if (CycleAssignment == CalendarCycleAssignment.PeriodEnd
+                    ? end >= periodMoment
+                    : GetPayDate(start).Date >= periodMoment.Date)
+            {
+                periodStarts.Add(start);
+            }
+            var next = GetPeriod(start, 1);
+            if (next.Item1 <= start)
+            {
+                break;
+            }
+            (start, end) = next;
+        }
+        return periodStarts;
+    }
+
+    /// <inheritdoc />
     public IList<Tuple<decimal, string, Tuple<DateTime, DateTime>, decimal, List<string>, Dictionary<string, object>>> GetConsolidatedWageTypeResults(
         IList<decimal> wageTypeNumbers, DateTime periodMoment, string forecast = null, int? jobStatus = null, IList<string> tags = null, bool noRetro = false)
     {

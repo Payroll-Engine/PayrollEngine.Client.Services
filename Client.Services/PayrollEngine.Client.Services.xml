@@ -1560,6 +1560,19 @@
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetPeriod(System.DateTime,System.Int32)">
             <inheritdoc />
         </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.CycleAssignment">
+            <summary>The calendar cycle assignment</summary>
+        </member>
+        <member name="P:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.CycleDate">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCycleDate(System.DateTime)">
+            <summary>Get the calendar cycle date of a period: the pay date or the period end</summary>
+            <param name="periodMoment">The period moment</param>
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCyclePeriodStart(System.DateTime)">
+            <inheritdoc />
+        </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrollRuntime.GetCycle(System.DateTime,System.Int32)">
             <inheritdoc />
         </member>
@@ -1753,6 +1766,9 @@
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetWageTypeResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetConsolidatedPeriodStarts(System.DateTime)">
             <inheritdoc />
         </member>
         <member name="M:PayrollEngine.Client.Scripting.Runtime.Api.PayrunRuntimeBase.GetConsolidatedWageTypeResults(System.Collections.Generic.IList{System.Decimal},System.DateTime,System.String,System.Nullable{System.Int32},System.Collections.Generic.IList{System.String},System.Boolean)">

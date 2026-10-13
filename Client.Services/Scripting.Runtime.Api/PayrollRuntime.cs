@@ -233,6 +233,32 @@ public abstract class PayrollRuntime : RuntimeBase, IPayrollRuntime
 
     #region Cycle
 
+    /// <summary>The calendar cycle assignment</summary>
+    protected CalendarCycleAssignment CycleAssignment =>
+        PayrollCalendar?.CycleAssignment ?? CalendarCycleAssignment.PayDate;
+
+    /// <inheritdoc />
+    public virtual DateTime CycleDate => GetCycleDate(EvaluationDate);
+
+    /// <summary>Get the calendar cycle date of a period: the pay date or the period end</summary>
+    /// <param name="periodMoment">The period moment</param>
+    protected DateTime GetCycleDate(DateTime periodMoment) =>
+        CycleAssignment == CalendarCycleAssignment.PeriodEnd
+            ? GetPeriod(periodMoment, 0).Item2
+            : GetPayDate(periodMoment);
+
+    /// <inheritdoc />
+    public virtual DateTime GetCyclePeriodStart(DateTime cycleStart)
+    {
+        if (CycleAssignment == CalendarCycleAssignment.PeriodEnd)
+        {
+            return GetPeriod(cycleStart, 0).Item1;
+        }
+        // the period including the cycle start less the pay date offset is the first period paid within the cycle
+        var periodMoment = DateTime.SpecifyKind(cycleStart.Date.AddDays(-(PayrollCalendar?.PayDateOffset ?? 0)), DateTimeKind.Utc);
+        return GetPeriod(periodMoment, 0).Item1;
+    }
+
     /// <inheritdoc />
     public virtual Tuple<DateTime, DateTime> GetCycle(DateTime cycleMoment, int offset)
     {
