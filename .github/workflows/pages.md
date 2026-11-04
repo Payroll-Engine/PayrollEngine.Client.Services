@@ -17,6 +17,7 @@ Builds the client API reference with [DocFX](https://dotnet.github.io/docfx/) an
 | Setup .NET | Installs .NET 10 SDK |
 | Configure GitHub Packages | Adds the Payroll-Engine NuGet feed using `PAT_DISPATCH` |
 | Build | `dotnet publish Client.Services/PayrollEngine.Client.Services.csproj -c Release -o publish` |
+| Add PayrollEngine.Lex | Publishes the `PayrollEngine.Lex` package (same version) from a temporary project and copies `PayrollEngine.Lex.dll` and `PayrollEngine.Lex.xml` to `publish/`. Lex is no dependency of Client.Services |
 | Install DocFX | Installs the latest DocFX global tool |
 | Build DocFX | Runs `docfx docfx/docfx.json` — generates HTML into `docfx/_site/` |
 | Upload Pages artifact | Uploads `docfx/_site/` as the GitHub Pages artifact |
@@ -47,3 +48,5 @@ DocFX is configured in `docfx/docfx.json`. The metadata source is the compiled a
 ```
 publish/PayrollEngine.*.dll
 ```
+
+For a local build, `publish/` must contain the same assemblies, including `PayrollEngine.Lex.dll` and `PayrollEngine.Lex.xml`.

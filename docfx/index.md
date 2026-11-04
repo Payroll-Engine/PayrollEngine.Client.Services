@@ -67,8 +67,19 @@ The runtime layer bridges the scripting function contract with the live backend.
 
 ---
 
+## Compliance Sources
+
+Separate package `PayrollEngine.Lex`, not referenced by Client.Services. It is used by the Lex commands of the Payroll Console.
+
+| Namespace | Description |
+|:--|:--|
+| [PayrollEngine.Lex](xref:PayrollEngine.Lex) | Provenance of compliance values in data regulations: `lex.json` manifest model (`LexManifest`, `LexValue`), JSON schema and validation, snapshot creation and verification (`LexSnapshotWriter`, `LexVerifier`), check against the regulation lookups (`LexChecker`, `LexCheckReport`), source URL check (`LexUrlChecker`) and source document verification (`LexSourceVerifier`) |
+
+---
+
 ## Links
 
 - [Documentation](https://payrollengine.org/roles/automator/client-services)
 - [Repository](https://github.com/Payroll-Engine/PayrollEngine.Client.Services)
 - [NuGet](https://www.nuget.org/packages/PayrollEngine.Client.Services)
+- [NuGet PayrollEngine.Lex](https://www.nuget.org/packages/PayrollEngine.Lex)

@@ -48,6 +48,16 @@ jobs:
       - name: Build
         run: dotnet publish Client.Services/PayrollEngine.Client.Services.csproj -c Release -o publish
 
+      # PayrollEngine.Lex is no dependency of Client.Services: publish it from a temporary project
+      - name: Add PayrollEngine.Lex
+        run: |
+          VERSION=$(grep -oP '(?<=<Version>)[^<]+' Directory.Build.props)
+          dotnet new classlib -n LexDocs -o "${RUNNER_TEMP}/LexDocs" --framework net10.0
+          dotnet add "${RUNNER_TEMP}/LexDocs" package PayrollEngine.Lex --version "${VERSION}"
+          dotnet publish "${RUNNER_TEMP}/LexDocs" -c Release -o "${RUNNER_TEMP}/LexDocs/publish"
+          cp "${RUNNER_TEMP}/LexDocs/publish/PayrollEngine.Lex.dll" "${RUNNER_TEMP}/LexDocs/publish/PayrollEngine.Lex.xml" publish/
+          echo "✅ PayrollEngine.Lex ${VERSION} added to publish"
+
       - name: Install DocFX
         run: dotnet tool install -g docfx
 
